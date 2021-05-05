@@ -1,17 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Container from "react-bootstrap/Container";
+import "../../styles/navbar.scss";
 
-export const Navbar = () => {
+export const MyNavbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
-			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
-			</Link>
-			<div className="ml-auto">
-				<Link to="/demo">
-					<button className="btn btn-primary">Check the Context in action</button>
-				</Link>
-			</div>
-		</nav>
+		<Navbar className="myNavbar" expand="lg">
+			<Navbar.Brand href="#home">
+				<img src="https://res.cloudinary.com/scormier/image/upload/v1620161770/cutie-pie/cp-logo_xi19ms.png" />
+			</Navbar.Brand>
+			<Navbar.Toggle aria-controls="basic-navbar-nav" />
+			<Navbar.Collapse id="basic-navbar-nav">
+				<Nav className="ml-auto">
+					<Nav.Link href="#home">home</Nav.Link>
+					<Nav.Link href="#link">shop collection</Nav.Link>
+					<Nav.Link href="#link">login</Nav.Link>
+					<Nav.Link href="#link">create account</Nav.Link>
+				</Nav>
+			</Navbar.Collapse>
+		</Navbar>
 	);
 };
