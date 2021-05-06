@@ -21,6 +21,9 @@ export const Home = () => {
 					/>
 				</Col>
 			</Row>
+			<Row className="mx-auto">
+				<Col sm={12}>cards goes here</Col>
+			</Row>
 			<Row>
 				<Col xs={12} md={8}>
 					Subscribe goes here
