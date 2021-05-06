@@ -11,7 +11,6 @@ import injectContext from "./store/appContext";
 import { MyNavbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Slogan } from "./component/slogan";
-import { Subscribe } from "./component/subscribe";
 
 //create your first component
 const Layout = () => {

@@ -7,7 +7,7 @@ import "../../styles/navbar.scss";
 export const MyNavbar = () => {
 	return (
 		<Navbar className="myNavbar" expand="lg">
-			<Navbar.Brand href="#home">
+			<Navbar.Brand href="/">
 				<img src="https://res.cloudinary.com/scormier/image/upload/v1620161770/cutie-pie/cp-logo_xi19ms.png" />
 			</Navbar.Brand>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
