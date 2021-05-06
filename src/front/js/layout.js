@@ -5,9 +5,10 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
+import { ShopCollection } from "./pages/shop_collection";
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
+import { MyNavbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Slogan } from "./component/slogan";
 import { Subscribe } from "./component/subscribe";
@@ -22,7 +23,7 @@ const Layout = () => {
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<Navbar />
+					<MyNavbar />
 					<Slogan />
 					<Switch>
 						<Route exact path="/">
@@ -33,6 +34,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
+						</Route>
+						<Route exact path="/shop_collection">
+							<ShopCollection />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
