@@ -13,8 +13,8 @@ export const MyNavbar = () => {
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="ml-auto">
-					<Nav.Link href="#home">home</Nav.Link>
-					<Nav.Link href="#link">shop collection</Nav.Link>
+					<Nav.Link href="/">home</Nav.Link>
+					<Nav.Link href="/shop_collection">shop collection</Nav.Link>
 					<Nav.Link href="#link">login</Nav.Link>
 					<Nav.Link href="#link">create account</Nav.Link>
 				</Nav>
