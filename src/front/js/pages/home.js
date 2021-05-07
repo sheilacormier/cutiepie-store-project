@@ -21,9 +21,9 @@ export const Home = () => {
 					<Jumbotron fluid className="jumbotron" />
 				</Col>
 			</Row>
-			<Row className="mx-auto">
-				<Col sm={12} md={6} lg={4}>
-					<div className="container d-flex justify-content-center mt-100">
+			<Row className="mt-100">
+				<Col sm={12} md={6} lg={4} className="mx-auto">
+					<div className="container d-flex justify-content-center">
 						<div className="row">
 							<div>
 								<div className="product-wrapper mb-45 text-center">
@@ -54,7 +54,7 @@ export const Home = () => {
 					</div>
 				</Col>
 				<Col sm={12} md={6} lg={4}>
-					<div className="container d-flex justify-content-center mt-100">
+					<div className="container d-flex justify-content-center">
 						<div className="row">
 							<div>
 								<div className="product-wrapper mb-45 text-center">
@@ -85,7 +85,7 @@ export const Home = () => {
 					</div>
 				</Col>
 				<Col sm={12} md={6} lg={4}>
-					<div className="container d-flex justify-content-center mt-100">
+					<div className="container d-flex justify-content-center">
 						<div className="row">
 							<div>
 								<div className="product-wrapper mb-45 text-center">
@@ -118,18 +118,19 @@ export const Home = () => {
 			</Row>
 
 			<Row>
-				<Col xs={12} md={8} className="position-relative">
-					<img
-						src="https://res.cloudinary.com/scormier/image/upload/v1620161770/cutie-pie/heart-large_trfvou.png"
-						alt="heart"
-						width="37"
-						height="34"
-					/>
-					<div className="subscribetext">Join our family! Subscribe to our newsletter</div>
-					<div className="subscribetext">Promotions, new products and sales directly to your inbox.</div>
+				<Col xs={6} md={4} className="mt-5">
+					<div>
+						<img
+							src="https://res.cloudinary.com/scormier/image/upload/v1620161770/cutie-pie/heart-large_trfvou.png"
+							alt="heart"
+							width="37"
+							height="34"
+						/>
+					</div>
+					<span className="subscribetext">Join our family! Subscribe to our newsletter.</span>
 					<Form>
 						<Form.Row className="align-items-center">
-							<Col sm={5} className="my-1">
+							<Col xs="auto" className="my-1">
 								<Form.Control id="inlineFormInputName" placeholder="youremail@gmail.com" />
 							</Col>
 							<Col xs="auto" className="my-1">
@@ -140,10 +141,13 @@ export const Home = () => {
 						</Form.Row>
 					</Form>
 				</Col>
-				<Col xs={6} md={4}>
+				<Col xs={12} md={8}>
 					<img
+						className="img-fluid"
 						src="https://res.cloudinary.com/scormier/image/upload/v1620405014/cutie-pie/model-babies_ujsoxh.png"
 						alt="Baby model"
+						width="734"
+						height="408"
 					/>
 				</Col>
 			</Row>
