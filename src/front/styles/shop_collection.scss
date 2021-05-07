@@ -1,5 +1,4 @@
 .collection-card{
-    // box-shadow: -7px 7px 15px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
 
@@ -71,9 +70,5 @@
     &:focus{
         box-shadow: none;
     }
-    // &:focus, &:active{
-    //     box-shadow: 0 0 0 0.1rem lighten(rgb(248, 12, 141), 25%);
-        
-    // }
 }
 
