@@ -68,9 +68,12 @@
         color: darken(rgb(248, 12, 141), 25%);
 
     }
-    &:focus, &:active{
-        box-shadow: 0 0 0 0.1rem lighten(rgb(248, 12, 141), 25%);
-        
+    &:focus{
+        box-shadow: none;
     }
+    // &:focus, &:active{
+    //     box-shadow: 0 0 0 0.1rem lighten(rgb(248, 12, 141), 25%);
+        
+    // }
 }
 
