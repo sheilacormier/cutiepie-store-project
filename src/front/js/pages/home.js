@@ -133,7 +133,9 @@ export const Home = () => {
 								<Form.Control id="inlineFormInputName" placeholder="youremail@gmail.com" />
 							</Col>
 							<Col xs="auto" className="my-1">
-								<Button type="submit">Submit</Button>
+								<Button className="" type="submit">
+									Sign Up
+								</Button>
 							</Col>
 						</Form.Row>
 					</Form>
