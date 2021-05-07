@@ -14,25 +14,27 @@
 	justify-content: flex-end;
 }
 
+.btn-addtocart, .btn-addtocart:hover{
+    background: #fd9e77;
+}
+
+.btn-seedetails, .btn-seedetails:hover {
+    background: #35c77e;
+}
+
 .btn-addtocart, .btn-seedetails {
-    background: #fc5959;
-    border-color: #fc5959;
+    border: none;
     width: 50px;
 	height: 50px;
     margin: 0 5px;
     cursor: pointer;
-}
-
-.btn-addtocart, .btn-seedetails, .btn-like{
     color: #fff;
     border-radius: 50%;
     -webkit-border-radius: 50%;
-}
-
-.btn-addtocart:hover, .btn-seedetails:hover{
-    background: #fc5959;
-    border-color: #fff;
-    transform: scale(1.1);
+    &:hover{
+        transform: scale(1.1);
+        color: #fff;
+    }
 }
 
 .btn-like{
@@ -42,16 +44,29 @@
     position: absolute;
 	width: 30px;
 	height: 30px;
-	background: #a37f7f;
+	background: none;
 	right: 30px;
 	top: 20px;
-	z-index: 10;
+    z-index: 10;
+    border: none;
+    font-size: 1.25rem;
+    color: #fff;
+    &:hover{
+        transform: scale(1.2);
+    }
 }
 
-.btn-like {
-	background: #ffcece;
+.btn-like.clicked i{
+    color: crimson;
 }
 
-.btn-like:hover{
-    transform: scale(1.1);
+.page-link{
+    color: #f80c8d;
+    border: none;
+    &:hover{
+        background: none;
+        color: darken(#f80c8d, 25%);
+
+    }
 }
+

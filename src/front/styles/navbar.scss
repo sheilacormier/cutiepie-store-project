@@ -2,6 +2,9 @@
     background: #d4edda;
     .navbar-nav .nav-link{
         color: #f80c8d;
+        &:hover{
+            color: darken(#f80c8d, 25%)
+        }
     }
     
 }
