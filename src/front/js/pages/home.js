@@ -118,7 +118,7 @@ export const Home = () => {
 			</Row>
 
 			<Row>
-				<Col xs={12} md={8}>
+				<Col xs={12} md={8} className="position-relative">
 					<img
 						src="https://res.cloudinary.com/scormier/image/upload/v1620161770/cutie-pie/heart-large_trfvou.png"
 						alt="heart"
@@ -142,10 +142,8 @@ export const Home = () => {
 				</Col>
 				<Col xs={6} md={4}>
 					<img
-						src="https://res.cloudinary.com/scormier/image/upload/v1620330098/cutie-pie/model-baby2_bmnh66.png"
-						alt="Baby in red"
-						width="200"
-						height="304"
+						src="https://res.cloudinary.com/scormier/image/upload/v1620405014/cutie-pie/model-babies_ujsoxh.png"
+						alt="Baby model"
 					/>
 				</Col>
 			</Row>

@@ -36,7 +36,6 @@ export const Login = () => {
 						className="img-fluid"
 						src="https://res.cloudinary.com/scormier/image/upload/v1620161769/cutie-pie/buttlerfly-path_aycx2b.png"
 						alt="butterfly"
-						responsive
 						w-100
 					/>
 				</Col>
