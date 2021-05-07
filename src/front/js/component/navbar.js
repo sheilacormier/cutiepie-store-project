@@ -7,7 +7,7 @@ import "../../styles/navbar.scss";
 export const MyNavbar = () => {
 	return (
 		<Navbar className="myNavbar" expand="lg">
-			<Navbar.Brand href="#home">
+			<Navbar.Brand href="/">
 				<img src="https://res.cloudinary.com/scormier/image/upload/v1620161770/cutie-pie/cp-logo_xi19ms.png" />
 			</Navbar.Brand>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -16,7 +16,7 @@ export const MyNavbar = () => {
 					<Nav.Link href="/">home</Nav.Link>
 					<Nav.Link href="/shop_collection">shop collection</Nav.Link>
 					<Nav.Link href="#link">login</Nav.Link>
-					<Nav.Link href="#link">create account</Nav.Link>
+					<Nav.Link href="/create_account">create account</Nav.Link>
 				</Nav>
 			</Navbar.Collapse>
 		</Navbar>
