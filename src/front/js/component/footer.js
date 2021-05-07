@@ -39,7 +39,7 @@ export const Footer = () => (
 			</Row>
 			<Row>
 				<Col>
-					<span className="copyright">&copy; cuite pie. All rights reserved 2021</span>
+					<span className="copyright">&copy; cutie pie. All rights reserved 2021</span>
 				</Col>
 			</Row>
 		</Container>
