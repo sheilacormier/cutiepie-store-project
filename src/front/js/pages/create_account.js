@@ -34,12 +34,13 @@ export const CreateAccount = () => {
 						</Form.Group>
 					</Form>
 				</Col>
-				<Col className="mx-auto">
+				<Col sm={12} className="mx-auto">
 					<img
+						className="img-fluid"
 						src="https://res.cloudinary.com/scormier/image/upload/v1620161769/cutie-pie/buttlerfly-path_aycx2b.png"
 						alt="butterfly"
-						width="864"
-						height="553"
+						responsive
+						w-100
 					/>
 				</Col>
 			</Row>
