@@ -65,8 +65,12 @@
     border: none;
     &:hover{
         background: none;
-        color: darken(#f80c8d, 25%);
+        color: darken(rgb(248, 12, 141), 25%);
 
+    }
+    &:focus, &:active{
+        box-shadow: 0 0 0 0.1rem lighten(rgb(248, 12, 141), 25%);
+        
     }
 }
 
