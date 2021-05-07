@@ -9,18 +9,15 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import "../../styles/create-login_account.scss";
 
-export const CreateAccount = () => {
+export const Login = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
 		<Container className="my-2">
-			<h5 className="create-account-title text-center">CREATE ACCOUNT</h5>
+			<h5 className="create-account-title text-center">LOGIN</h5>
 			<Row className="mx-auto pt-5">
 				<Col sm={12} md={6} lg={4} className="mx-auto">
 					<Form>
-						<Form.Group controlId="formGroupName">
-							<Form.Control type="name" placeholder="Name" />
-						</Form.Group>
 						<Form.Group controlId="formGroupEmail">
 							<Form.Control type="email" placeholder="Enter email" />
 						</Form.Group>
@@ -29,7 +26,7 @@ export const CreateAccount = () => {
 						</Form.Group>
 						<Form.Group controlId="formGroupSubmit">
 							<Button className="w-100" type="submit">
-								Submit
+								Login
 							</Button>
 						</Form.Group>
 					</Form>
