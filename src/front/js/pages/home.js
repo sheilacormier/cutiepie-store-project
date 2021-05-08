@@ -18,7 +18,6 @@ export const Home = () => {
 		<Container className="my-2">
 			<Row className="justify-content-center align-items center">
 				<Col>
-					{/* <Jumbotron fluid className="jumbotron" /> */}
 					<div className="hero-image" />
 				</Col>
 			</Row>
@@ -40,6 +39,9 @@ export const Home = () => {
 								<div className="product-action-style">
 									<a href="#">
 										<i className="fa fa-heart" />
+									</a>
+									<a href="#">
+										<i className="fas fa-search" />
 									</a>
 									<a href="#">
 										<i className="fa fa-shopping-cart" />
@@ -67,29 +69,7 @@ export const Home = () => {
 										<i className="fa fa-heart" />
 									</a>
 									<a href="#">
-										<i className="fa fa-shopping-cart" />
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</Col>
-				<Col sm={12} md={6} lg={3} className=" d-flex justify-content-center align-items-center">
-					<div className="product-wrapper my-4 text-center">
-						<div className="product-img">
-							<a href="#" data-abc="true">
-								<img
-									src="https://res.cloudinary.com/scormier/image/upload/v1620334490/cutie-pie/outfit3_wco9ga.png"
-									alt=""
-								/>
-							</a>
-							<span className="text-center">
-								<i className="fa fa-rupee" /> $14.99
-							</span>
-							<div className="product-action">
-								<div className="product-action-style">
-									<a href="#">
-										<i className="fa fa-heart" />
+										<i className="fas fa-search" />
 									</a>
 									<a href="#">
 										<i className="fa fa-shopping-cart" />
@@ -115,6 +95,37 @@ export const Home = () => {
 								<div className="product-action-style">
 									<a href="#">
 										<i className="fa fa-heart" />
+									</a>
+									<a href="#">
+										<i className="fas fa-search" />
+									</a>
+									<a href="#">
+										<i className="fa fa-shopping-cart" />
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</Col>
+				<Col sm={12} md={6} lg={3} className=" d-flex justify-content-center align-items-center">
+					<div className="product-wrapper my-4 text-center">
+						<div className="product-img">
+							<a href="#" data-abc="true">
+								<img
+									src="https://res.cloudinary.com/scormier/image/upload/v1620485867/cutie-pie/sample-details1_sm_my7qxl.png"
+									alt=""
+								/>
+							</a>
+							<span className="text-center">
+								<i className="fa fa-rupee" /> $14.99
+							</span>
+							<div className="product-action">
+								<div className="product-action-style">
+									<a href="#">
+										<i className="fa fa-heart" />
+									</a>
+									<a href="/product_details">
+										<i className="fas fa-search" />
 									</a>
 									<a href="#">
 										<i className="fa fa-shopping-cart" />

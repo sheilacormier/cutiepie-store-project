@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../../styles/slogan.scss";
 
 export const Slogan = () => (
-	<div className="mt-auto pt-3 p-2 text-center">
+	<div className="mt-auto pt-4 p-2 text-center">
 		<p className="slogan mb-1">NOTHING BUT THE BEST FOR YOUR BABY</p>
 		<p className="slogan mb-2">
 			CURATED WITH{" "}
