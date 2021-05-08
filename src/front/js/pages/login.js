@@ -29,6 +29,11 @@ export const Login = () => {
 								Login
 							</Button>
 						</Form.Group>
+						<Form.Group controlId="formGroupPasswordReminder">
+							<Button className="w-100" type="submit">
+								Forgot your password?
+							</Button>
+						</Form.Group>
 					</Form>
 				</Col>
 				<Col sm={12} className="mx-auto">
