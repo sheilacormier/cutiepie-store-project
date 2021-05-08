@@ -5,8 +5,9 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./pages/home";
 import { Single } from "./pages/single";
 import { ShopCollection } from "./pages/shop_collection";
-import { CreateAccount } from "./pages/create_account";
-import { Login } from "./pages/login";
+import { Register } from "./pages/register";
+import { Profile } from "./pages/profile";
+import { SignIn } from "./pages/sign_in";
 import injectContext from "./store/appContext";
 
 import { MyNavbar } from "./component/navbar";
@@ -35,11 +36,14 @@ const Layout = () => {
 						<Route exact path="/shop_collection">
 							<ShopCollection />
 						</Route>
-						<Route exact path="/create_account">
-							<CreateAccount />
+						<Route exact path="/register">
+							<Register />
 						</Route>
-						<Route exact path="/login">
-							<Login />
+						<Route exact path="/sign_in">
+							<SignIn />
+						</Route>
+						<Route exact path="/profile">
+							<Profile />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

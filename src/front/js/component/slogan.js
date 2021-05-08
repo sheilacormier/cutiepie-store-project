@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import "../../styles/slogan.scss";
 
 export const Slogan = () => (
-	<div className="mt-auto pt-3 p-2 text-center">
+	<div className="mt-auto pt-3 p-1 text-center">
 		<p className="slogan mb-1">NOTHING BUT THE BEST FOR YOUR BABY</p>
-		<p className="slogan mb-2">
+		<p className="slogan mb-1">
 			CURATED WITH{" "}
 			<img
 				src="https://res.cloudinary.com/scormier/image/upload/v1620161770/cutie-pie/heart-large_trfvou.png"

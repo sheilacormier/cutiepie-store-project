@@ -7,15 +7,15 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import "../../styles/create-login_account.scss";
+import "../../styles/create-sign_in_account.scss";
 
-export const CreateAccount = () => {
+export const Register = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
 		<Container className="my-2">
-			<h5 className="create-account-title text-center">CREATE ACCOUNT</h5>
-			<Row className="mx-auto pt-5">
+			<h5 className="create-account-title text-center pt-2">REGISTER</h5>
+			<Row className="mx-auto pt-4">
 				<Col sm={12} md={6} lg={4} className="mx-auto">
 					<Form>
 						<Form.Group controlId="formGroupName">
