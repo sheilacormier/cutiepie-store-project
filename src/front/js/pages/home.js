@@ -16,109 +16,117 @@ export const Home = () => {
 
 	return (
 		<Container className="my-2">
-			<Row className="mx-auto">
-				<Col sm={12}>
-					<Jumbotron fluid className="jumbotron" />
-				</Col>
-			</Row>
-			<Row className="mt-100">
-				<Col sm={12} md={6} lg={4} className="mx-auto">
-					<div className="container d-flex justify-content-center">
-						<div className="row">
-							<div>
-								<div className="product-wrapper mb-45 text-center">
-									<div className="product-img">
-										<a href="#" data-abc="true">
-											<img
-												src="https://res.cloudinary.com/scormier/image/upload/v1620334490/cutie-pie/outfit1_l8oaq2.png"
-												alt=""
-											/>
-										</a>
-										<span className="text-center">
-											<i className="fa fa-rupee" /> $24.99
-										</span>
-										<div className="product-action">
-											<div className="product-action-style">
-												<a href="#">
-													<i className="fa fa-heart" />
-												</a>
-												<a href="#">
-													<i className="fa fa-shopping-cart" />
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</Col>
-				<Col sm={12} md={6} lg={4}>
-					<div className="container d-flex justify-content-center">
-						<div className="row">
-							<div>
-								<div className="product-wrapper mb-45 text-center">
-									<div className="product-img">
-										<a href="#" data-abc="true">
-											<img
-												src="https://res.cloudinary.com/scormier/image/upload/v1620334490/cutie-pie/outfit2_hdw0oc.png"
-												alt=""
-											/>
-										</a>
-										<span className="text-center">
-											<i className="fa fa-rupee" /> $34.99
-										</span>
-										<div className="product-action">
-											<div className="product-action-style">
-												<a href="#">
-													<i className="fa fa-heart" />
-												</a>
-												<a href="#">
-													<i className="fa fa-shopping-cart" />
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</Col>
-				<Col sm={12} md={6} lg={4}>
-					<div className="container d-flex justify-content-center">
-						<div className="row">
-							<div>
-								<div className="product-wrapper mb-45 text-center">
-									<div className="product-img">
-										<a href="#" data-abc="true">
-											<img
-												src="https://res.cloudinary.com/scormier/image/upload/v1620334490/cutie-pie/outfit3_wco9ga.png"
-												alt=""
-											/>
-										</a>
-										<span className="text-center">
-											<i className="fa fa-rupee" /> $14.99
-										</span>
-										<div className="product-action">
-											<div className="product-action-style">
-												<a href="#">
-													<i className="fa fa-heart" />
-												</a>
-												<a href="#">
-													<i className="fa fa-shopping-cart" />
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+			<Row className="justify-content-center align-items center">
+				<Col>
+					{/* <Jumbotron fluid className="jumbotron" /> */}
+					<div className="hero-image" />
 				</Col>
 			</Row>
 
 			<Row>
-				<Col xs={6} md={4} className="mt-5">
+				<Col sm={12} md={6} lg={3} className="d-flex justify-content-center align-items-center">
+					<div className="product-wrapper my-4 text-center">
+						<div className="product-img">
+							<a href="#" data-abc="true">
+								<img
+									src="https://res.cloudinary.com/scormier/image/upload/v1620334490/cutie-pie/outfit1_l8oaq2.png"
+									alt=""
+								/>
+							</a>
+							<span className="text-center">
+								<i className="fa fa-rupee" /> $24.99
+							</span>
+							<div className="product-action">
+								<div className="product-action-style">
+									<a href="#">
+										<i className="fa fa-heart" />
+									</a>
+									<a href="#">
+										<i className="fa fa-shopping-cart" />
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</Col>
+				<Col sm={12} md={6} lg={3} className="d-flex justify-content-center align-items-center">
+					<div className="product-wrapper my-4 text-center">
+						<div className="product-img">
+							<a href="#" data-abc="true">
+								<img
+									src="https://res.cloudinary.com/scormier/image/upload/v1620334490/cutie-pie/outfit2_hdw0oc.png"
+									alt=""
+								/>
+							</a>
+							<span className="text-center">
+								<i className="fa fa-rupee" /> $34.99
+							</span>
+							<div className="product-action">
+								<div className="product-action-style">
+									<a href="#">
+										<i className="fa fa-heart" />
+									</a>
+									<a href="#">
+										<i className="fa fa-shopping-cart" />
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</Col>
+				<Col sm={12} md={6} lg={3} className=" d-flex justify-content-center align-items-center">
+					<div className="product-wrapper my-4 text-center">
+						<div className="product-img">
+							<a href="#" data-abc="true">
+								<img
+									src="https://res.cloudinary.com/scormier/image/upload/v1620334490/cutie-pie/outfit3_wco9ga.png"
+									alt=""
+								/>
+							</a>
+							<span className="text-center">
+								<i className="fa fa-rupee" /> $14.99
+							</span>
+							<div className="product-action">
+								<div className="product-action-style">
+									<a href="#">
+										<i className="fa fa-heart" />
+									</a>
+									<a href="#">
+										<i className="fa fa-shopping-cart" />
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</Col>
+				<Col sm={12} md={6} lg={3} className=" d-flex justify-content-center align-items-center">
+					<div className="product-wrapper my-4 text-center">
+						<div className="product-img">
+							<a href="#" data-abc="true">
+								<img
+									src="https://res.cloudinary.com/scormier/image/upload/v1620334490/cutie-pie/outfit3_wco9ga.png"
+									alt=""
+								/>
+							</a>
+							<span className="text-center">
+								<i className="fa fa-rupee" /> $14.99
+							</span>
+							<div className="product-action">
+								<div className="product-action-style">
+									<a href="#">
+										<i className="fa fa-heart" />
+									</a>
+									<a href="#">
+										<i className="fa fa-shopping-cart" />
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</Col>
+			</Row>
+			<Row>
+				<Col xs={6} md={4} className="my-3">
 					<div>
 						<img
 							src="https://res.cloudinary.com/scormier/image/upload/v1620161770/cutie-pie/heart-large_trfvou.png"

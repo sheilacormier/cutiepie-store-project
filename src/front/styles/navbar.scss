@@ -9,8 +9,12 @@
     
 }
 
-// .navbar-light .navbar-toggler-icon{
-//     background-image: url("https://res.cloudinary.com/scormier/image/upload/v1620265208/cutie-pie/pie_hn2tdx.png");
-//     width: 40px;
-//     height: 40px;
-// }
+.navbar-toggler{
+    padding: 1px 6px;
+}
+
+.navbar-light .navbar-toggler-icon{
+    background-image: url("https://res.cloudinary.com/scormier/image/upload/v1620265208/cutie-pie/pie_hn2tdx.png");
+    width: 40px;
+    height: 40px;
+}
