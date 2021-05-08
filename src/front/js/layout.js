@@ -36,11 +36,14 @@ const Layout = () => {
 						<Route exact path="/shop_collection">
 							<ShopCollection />
 						</Route>
-						<Route exact path="/create_account">
-							<CreateAccount />
+						<Route exact path="/register">
+							<Register />
 						</Route>
-						<Route exact path="/login">
-							<Login />
+						<Route exact path="/sign_in">
+							<SignIn />
+						</Route>
+						<Route exact path="/profile">
+							<Profile />
 						</Route>
 						<Route exact path="/product_details">
 							<ProductDetails />

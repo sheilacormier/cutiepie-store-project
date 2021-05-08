@@ -16,7 +16,7 @@ export const Home = () => {
 
 	return (
 		<Container className="my-2">
-			<Row className="justify-content-center align-items center">
+			<Row className="justify-content-center align-items-center">
 				<Col>
 					<div className="hero-image" />
 				</Col>

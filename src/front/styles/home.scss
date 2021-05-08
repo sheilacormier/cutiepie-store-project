@@ -1,13 +1,3 @@
-.jumbotron {
-    background-image: url("https://res.cloudinary.com/scormier/image/upload/v1620161770/cutie-pie/model-baby_tcmmus.jpg");
-    height: 250%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    background-color: white;
-}
-
 .hero-image{
     height: 50vh;
     background-image: url("https://res.cloudinary.com/scormier/image/upload/v1620161770/cutie-pie/model-baby_tcmmus.jpg");
@@ -15,7 +5,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    background-color: white;
 }
 
 .subscribetext {
@@ -23,13 +12,14 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #35c77e;
 }
+
 .btn-primary {
     color: #fff;
     background-color: #02c5ff;
     border-color: #02c5ff;
-}
-.btn-primary:hover {
-    background: #03a9db;
-    border-color: #03a9db;    
+    &:hover{
+        background: #03a9db;
+        border-color: #03a9db; 
+    }
 }
 

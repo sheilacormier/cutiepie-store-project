@@ -7,17 +7,20 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import "../../styles/create-login_account.scss";
+import "../../styles/create-sign_in_account.scss";
 
-export const Login = () => {
+export const Register = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
 		<Container className="my-2">
-			<h5 className="create-account-title text-center">LOGIN</h5>
-			<Row className="mx-auto pt-5">
+			<h5 className="create-account-title text-center pt-2">REGISTER</h5>
+			<Row className="mx-auto pt-4">
 				<Col sm={12} md={6} lg={4} className="mx-auto">
 					<Form>
+						<Form.Group controlId="formGroupName">
+							<Form.Control type="name" placeholder="Name" />
+						</Form.Group>
 						<Form.Group controlId="formGroupEmail">
 							<Form.Control type="email" placeholder="Enter email" />
 						</Form.Group>
@@ -26,12 +29,7 @@ export const Login = () => {
 						</Form.Group>
 						<Form.Group controlId="formGroupSubmit">
 							<Button className="w-100" type="submit">
-								Login
-							</Button>
-						</Form.Group>
-						<Form.Group controlId="formGroupPasswordReminder">
-							<Button className="w-100" type="submit">
-								Forgot your password?
+								Submit
 							</Button>
 						</Form.Group>
 					</Form>

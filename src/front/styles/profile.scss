@@ -1,0 +1,13 @@
+.hero-image-profile{
+    height: 50vh;
+    background-image: url("https://res.cloudinary.com/scormier/image/upload/v1620490307/cutie-pie/model-babies2_hofgql.jpg");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.profile-container{
+    background: -webkit-gradient(linear, left top, right top, from(#f29263), to(#ee5a6f));
+    background: linear-gradient(to right, #ee5a6f, #f29263)
+}
