@@ -5,9 +5,10 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./pages/home";
 import { Single } from "./pages/single";
 import { ShopCollection } from "./pages/shop_collection";
-import { CreateAccount } from "./pages/create_account";
+import { Register } from "./pages/register";
 import { ProductDetails } from "./pages/product_details";
-import { Login } from "./pages/login";
+import { SignIn } from "./pages/sign_in";
+import { Profile } from "./pages/profile";
 import injectContext from "./store/appContext";
 
 import { MyNavbar } from "./component/navbar";

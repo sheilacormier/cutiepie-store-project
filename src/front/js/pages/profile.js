@@ -16,7 +16,7 @@ export const Profile = () => {
 		<Container className=" my-2">
 			<Container>
 				<Row className="py-2">
-					<Col md={2} className="profile-container rounded">
+					<Col md={2} className="profile-container">
 						<div>
 							<div className="card-block text-center text-white">
 								<div className="">
