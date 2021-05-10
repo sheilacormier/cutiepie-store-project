@@ -38,7 +38,7 @@ export const ProductDetails = () => {
 									<span>$55</span>
 								</h4>
 								<hr />
-								<span className="colors-wrapper">
+								<div className="colors-wrapper">
 									<span className="color-label">Color: blue</span>
 									<ul className="preview-thumbnail nav nav-tabs">
 										<li className="active">
@@ -47,19 +47,29 @@ export const ProductDetails = () => {
 											</a>
 										</li>
 									</ul>
-								</span>
-								<span className="sizes-wrapper">
-									<span className="size-label">Size:</span>
-									<Form.Group className="mt-3">
-										<Form.Control md="3" size="sm" as="select">
-											<option>0-3 months</option>
-											<option>3-6 months</option>
-											<option>6-12 months</option>
-										</Form.Control>
-									</Form.Group>
-								</span>
-								<span className="quantity-label">Quantity</span>
-
+								</div>
+								<div className="sizes-wrapper">
+									<span className="size-label">Size: 0-3 months</span>
+									<Row>
+										<Col xs="auto">
+											<Form.Group className="mt-3">
+												<Form.Control size="sm" as="select">
+													<option>0-3 months</option>
+													<option>3-6 months</option>
+													<option>6-12 months</option>
+												</Form.Control>
+											</Form.Group>
+										</Col>
+									</Row>
+								</div>
+								<div className="quantity-wrapper">
+									<span className="quantity-label">Quantity</span>
+									<div className="mt-2">
+										<input className="quantitybtn" type="button" value="-" />
+										<input className="quantitynum" type="button" value="1" />
+										<input className="quantitybtn" type="button" value="+" />
+									</div>
+								</div>
 								<div>
 									<button className="add-to-cart btn btn-default w-100" type="button">
 										add to cart

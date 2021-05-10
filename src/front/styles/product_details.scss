@@ -63,6 +63,10 @@
     margin-top: 10px;    
 }
 
+.quantity-wrapper {
+    margin-top: 10px;    
+}
+
 .product-brand{
     text-transform: UPPERCASE;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -102,6 +106,23 @@
     color: grey;
 }
 
+.quantitybtn{
+    background-color: #fff;
+    border: 1px solid #f97f4d;
+    color: grey;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.quantitynum{
+    background-color: #fff;
+    border: 0px;
+    color: grey;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 hr {
     width:100%;
     color: grey;
@@ -138,6 +159,7 @@ hr {
     text-transform: UPPERCASE;
     font-weight: bold;
     color: #fff;
+    margin-top: 20px;
     -webkit-transition: background .3s ease;
           transition: background .3s ease; 
 }
