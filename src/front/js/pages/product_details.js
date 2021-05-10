@@ -38,8 +38,8 @@ export const ProductDetails = () => {
 									<span>$55</span>
 								</h4>
 								<hr />
-								<h5 className="colors">
-									Color: blue
+								<span className="colors-wrapper">
+									<span className="color-label">Color: blue</span>
 									<ul className="preview-thumbnail nav nav-tabs">
 										<li className="active">
 											<a data-target="#pic-1">
@@ -47,20 +47,20 @@ export const ProductDetails = () => {
 											</a>
 										</li>
 									</ul>
-								</h5>
-								<h5 className="sizes">
-									Size:
-									<Form.Group>
+								</span>
+								<span className="sizes-wrapper">
+									<span className="size-label">Size:</span>
+									<Form.Group className="mt-3">
 										<Form.Control md="3" size="sm" as="select">
 											<option>0-3 months</option>
 											<option>3-6 months</option>
 											<option>6-12 months</option>
 										</Form.Control>
 									</Form.Group>
-								</h5>
-								<h5 className="sizes">Quantity</h5>
+								</span>
+								<span className="quantity-label">Quantity</span>
 
-								<div className="action">
+								<div>
 									<button className="add-to-cart btn btn-default w-100" type="button">
 										add to cart
 									</button>
@@ -74,7 +74,12 @@ export const ProductDetails = () => {
 				<Col xl={12} className="mt-4 mp-4">
 					<p className="product-description">
 						Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et!
-						Massa senectus enim minim sociosqu delectus posuere.
+						Massa senectus enim minim sociosqu delectus posuere. Suspendisse quos? Tempus cras iure
+						temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu
+						delectus posuere. Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem!
+						Repudiandae et! Massa senectus enim minim sociosqu delectus posuere. Suspendisse quos? Tempus
+						cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim
+						sociosqu delectus posuere.
 					</p>
 				</Col>
 			</Row>
