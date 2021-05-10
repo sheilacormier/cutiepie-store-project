@@ -23,35 +23,41 @@ export const Home = () => {
 			</Row>
 
 			<Row>
-				<Col sm={12} md={6} lg={3} className="d-flex justify-content-center align-items-center">
-					<div className="product-wrapper my-4 text-center">
-						<div className="product-img">
-							<a href="#" data-abc="true">
-								<img
-									src="https://res.cloudinary.com/scormier/image/upload/v1620334490/cutie-pie/outfit1_l8oaq2.png"
-									alt=""
-								/>
-							</a>
-							<span className="text-center">
-								<i className="fa fa-rupee" /> $24.99
-							</span>
-							<div className="product-action">
-								<div className="product-action-style">
-									<a href="#">
-										<i className="fa fa-heart" />
+				{store.homeCards.map((item, index) => {
+					return (
+						<Col
+							sm={12}
+							md={6}
+							lg={3}
+							key={index}
+							className="d-flex justify-content-center align-items-center">
+							<div className="product-wrapper my-4 text-center">
+								<div className="product-img">
+									<a href="#" data-abc="true">
+										<img className="thumb-size" src={item.img} alt="outfit" />
 									</a>
-									<a href="#">
-										<i className="fas fa-search" />
-									</a>
-									<a href="#">
-										<i className="fa fa-shopping-cart" />
-									</a>
+									<span className="text-center">
+										<i className="fa fa-rupee" /> $24.99
+									</span>
+									<div className="product-action">
+										<div className="product-action-style">
+											<a href="#">
+												<i className="fa fa-heart" />
+											</a>
+											<a href="#">
+												<i className="fas fa-search" />
+											</a>
+											<a href="#">
+												<i className="fa fa-shopping-cart" />
+											</a>
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-				</Col>
-				<Col sm={12} md={6} lg={3} className="d-flex justify-content-center align-items-center">
+						</Col>
+					);
+				})}
+				{/* <Col sm={12} md={6} lg={3} className="d-flex justify-content-center align-items-center">
 					<div className="product-wrapper my-4 text-center">
 						<div className="product-img">
 							<a href="#" data-abc="true">
@@ -134,7 +140,7 @@ export const Home = () => {
 							</div>
 						</div>
 					</div>
-				</Col>
+				</Col> */}
 			</Row>
 			<Row>
 				<Col xs={6} md={4} className="my-3">
