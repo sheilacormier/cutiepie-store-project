@@ -37,22 +37,29 @@ export const ProductDetails = () => {
 								<h4 className="price">
 									<span>$55</span>
 								</h4>
-								<p className="product-description">
-									Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem!
-									Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.
-								</p>
-								<h5 className="sizes">Size: dropdown here</h5>
+								<hr />
 								<h5 className="colors">
-									Colors:
+									Color: blue
 									<ul className="preview-thumbnail nav nav-tabs">
 										<li className="active">
-											<a data-target="#pic-1" data-toggle="tab">
+											<a data-target="#pic-1">
 												<img src="https://res.cloudinary.com/scormier/image/upload/v1620484388/cutie-pie/sample-details1_eeqkzy.png" />
 											</a>
 										</li>
 									</ul>
 								</h5>
+								<h5 className="sizes">
+									Size:
+									<Form.Group>
+										<Form.Control md="3" size="sm" as="select">
+											<option>0-3 months</option>
+											<option>3-6 months</option>
+											<option>6-12 months</option>
+										</Form.Control>
+									</Form.Group>
+								</h5>
 								<h5 className="sizes">Quantity</h5>
+
 								<div className="action">
 									<button className="add-to-cart btn btn-default w-100" type="button">
 										add to cart
@@ -61,6 +68,14 @@ export const ProductDetails = () => {
 							</div>
 						</div>
 					</div>
+				</Col>
+			</Row>
+			<Row>
+				<Col xl={12} className="mt-4 mp-4">
+					<p className="product-description">
+						Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et!
+						Massa senectus enim minim sociosqu delectus posuere.
+					</p>
 				</Col>
 			</Row>
 		</Container>
