@@ -53,10 +53,10 @@ export const ShopCollection = () => {
 									</Button>
 									<Card.Img variant="top" src={item.img} />
 									<Container className="bottom-btn-container">
-										<Button bsPrefix="btn-addtocart" variant="warning">
+										<Button href="#" bsPrefix="btn-addtocart" variant="warning">
 											<i className="fa fa-shopping-cart" />
 										</Button>
-										<Button bsPrefix="btn-seedetails" variant="warning">
+										<Button href="/product_details" bsPrefix="btn-seedetails" variant="warning">
 											<i className="fas fa-search" />
 										</Button>
 									</Container>

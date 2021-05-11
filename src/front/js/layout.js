@@ -10,7 +10,6 @@ import { ProductDetails } from "./pages/product_details";
 import { SignIn } from "./pages/sign_in";
 import { Profile } from "./pages/profile";
 import injectContext from "./store/appContext";
-
 import { MyNavbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Slogan } from "./component/slogan";

@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
 import "../../styles/profile.scss";
 
 export const Profile = () => {
@@ -14,44 +15,52 @@ export const Profile = () => {
 
 	return (
 		<Container className=" my-2">
-			<Container>
-				<Row className="py-2">
-					<Col md={2} className="profile-container">
-						<div>
-							<div className="card-block text-center text-white">
-								<div className="">
-									{" "}
-									<img
-										src="https://img.icons8.com/bubbles/100/000000/user.png"
-										className="img-radius"
-										alt="User-Profile-Image"
-									/>{" "}
-								</div>
-								<h6 className="f-w-600">Hembo Tingor</h6>
-								<p>Web Designer</p>{" "}
-								<i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16" />
-							</div>
+			<Row className="align-items-center justify-content center">
+				<Col xs={12} sm={5} lg={4}>
+					<Nav defaultActiveKey="/home" className="flex-column profile-container">
+						<h3 className="text-white align-self-center pt-1">Your User Profile</h3>
+						<div className="text-white d-flex align-items-center justify-content-center">
+							<img
+								src="https://res.cloudinary.com/scormier/image/upload/v1620690465/cutie-pie/1452484590-sweet-baby-boy-image-screenshot_wzzhx5.jpg"
+								className="rounded-circle profile-image"
+								alt="User-Profile-Image"
+							/>
+							<h5>Welcome Back to</h5>
 						</div>
-					</Col>
+						<div className="logo d-flex align-self-end">
+							<img
+								className="p-2"
+								src="https://res.cloudinary.com/scormier/image/upload/v1620161770/cutie-pie/cp-logo_xi19ms.png"
+							/>
+						</div>
+						<Nav.Link className="pb-1" href="/home">
+							Active
+						</Nav.Link>
+						<Nav.Link className="pt-1" eventKey="link-1 pt-1">
+							Link
+						</Nav.Link>
+					</Nav>
+				</Col>
 
-					<Col md={10}>
+				<Col xs={12} sm={7} lg={6}>
+					<div>
 						<Form>
 							<Form.Group controlId="formBasicEmail">
-								<Form.Label>Email address</Form.Label>
-								<Form.Control type="email" placeholder="Enter email" />
-								<Form.Text className="text-muted">
-									Well never share your email with anyone else.
-								</Form.Text>
-								<Form.Label>Email address</Form.Label>
-								<Form.Control type="email" placeholder="Enter email" />
-								<Form.Text className="text-muted">
-									Well never share your email with anyone else.
-								</Form.Text>
+								<Form.Label>Your email</Form.Label>
+								<Form.Control className="" type="email" placeholder="Email" />
+								<Button href="#" bsPrefix="btn-addtocart" variant="warning">
+									<i className="fa fa-shopping-cart" />
+								</Button>
+								<Form.Text className="text-muted">Update email</Form.Text>
+
+								<Form.Label>Your password</Form.Label>
+								<Form.Control className="" type="password" placeholder="Password" />
+								<Form.Text className="text-muted">Update password</Form.Text>
 							</Form.Group>
 						</Form>
-					</Col>
-				</Row>
-			</Container>
+					</div>
+				</Col>
+			</Row>
 			<Row className="justify-content-center align-items-center pb-1 my-2">
 				<Col>
 					<div className="hero-image-profile" />

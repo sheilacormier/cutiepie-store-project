@@ -8,7 +8,18 @@
 }
 
 .profile-container{
-    background: -webkit-gradient(linear, left top, right top, from(#f29263), to(#ee5a6f));
-    background: linear-gradient(to right, #ee5a6f, #f29263);
-    border-radius: 25%;
+    background: -webkit-gradient(linear, left bottom, right top, from(#d4edda), to(darken(#d4edda, 25%)));
+    background: linear-gradient(to top, #d4edda, darken(#d4edda, 25%));
+    border-radius: 25px;
+}
+
+.profile-image{
+    width: 50px;
+    height: 50px;
+}
+
+.logo{
+    position: absolute;
+    top: 45%;
+    right: 10%;
 }
