@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import Image from "react-bootstrap/Image";
+
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
