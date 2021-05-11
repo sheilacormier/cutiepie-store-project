@@ -39,6 +39,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					img: "https://via.placeholder.com/250x220?text=Placeholder"
 				}
 			],
+
 			homeCards: [
 				{
 					id: "1",

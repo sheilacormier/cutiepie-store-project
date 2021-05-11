@@ -59,3 +59,12 @@
     bottom: 20px;
     opacity: 1;
 }
+.product-img:hover {
+    overflow: hidden;
+    position: relative;
+    border: 0px;
+    border-radius: 10;
+    background-color: #fd9e77;
+    opacity: 1;
+    transition: all 0.6s ease 0s;
+}
