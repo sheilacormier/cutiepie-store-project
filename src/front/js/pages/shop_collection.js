@@ -56,7 +56,7 @@ export const ShopCollection = () => {
 										<Button href="#" bsPrefix="btn-addtocart" variant="warning">
 											<i className="fa fa-shopping-cart" />
 										</Button>
-										<Button href="/product_details" bsPrefix="btn-seedetails" variant="warning">
+										<Button href="/product_details/:id" bsPrefix="btn-seedetails" variant="warning">
 											<i className="fas fa-search" />
 										</Button>
 									</Container>

@@ -8,7 +8,7 @@ import { ShopCollection } from "./pages/shop_collection";
 import { Register } from "./pages/register";
 import { ProductDetails } from "./pages/product_details";
 import { SignIn } from "./pages/sign_in";
-import { Profile } from "./pages/profile";
+import { Profile } from "./pages/profile_copy";
 import injectContext from "./store/appContext";
 import { MyNavbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -42,7 +42,7 @@ const Layout = () => {
 						<Route exact path="/sign_in">
 							<SignIn />
 						</Route>
-						<Route exact path="/profile">
+						<Route exact path="/profile_copy">
 							<Profile />
 						</Route>
 						<Route exact path="/product_details/:id">
