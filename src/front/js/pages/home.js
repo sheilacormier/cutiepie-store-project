@@ -44,7 +44,7 @@ export const Home = () => {
 											<a href="#">
 												<i className="fa fa-heart" />
 											</a>
-											<a href={`/ProductDetails/${index}`}>
+											<a href={`/product_details/${index}`}>
 												<i className="fas fa-search" />
 											</a>
 											<a href="#">
