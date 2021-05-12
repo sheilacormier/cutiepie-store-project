@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
+import injectContext from "./store/appContext";
 
 import { Home } from "./pages/home";
 import { Single } from "./pages/single";
@@ -9,10 +10,10 @@ import { Register } from "./pages/register";
 import { ProductDetails } from "./pages/product_details";
 import { SignIn } from "./pages/sign_in";
 import { Profile } from "./pages/profile";
-import injectContext from "./store/appContext";
 import { MyNavbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Slogan } from "./component/slogan";
+import { PrivacyPolicy } from "./pages/privacy_policy";
 
 //create your first component
 const Layout = () => {
@@ -47,6 +48,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/product_details/:theid">
 							<ProductDetails />
+						</Route>
+						<Route exact path="/privacy_policy">
+							<PrivacyPolicy />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

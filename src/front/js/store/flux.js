@@ -138,6 +138,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				// setStore({ demo: demo });
+			},
+			signIn: (email, password) => {
+				console.log(email, password);
 			}
 		}
 	};
