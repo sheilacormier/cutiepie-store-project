@@ -24,7 +24,7 @@ export const Footer = () => (
 							<Link to="/terms_conditions">terms and conditions</Link>
 						</li>
 						<li>
-							<Link to="/">privacy policy</Link>
+							<Link to="/privacy_policy">privacy policy</Link>
 						</li>
 					</ul>
 				</Col>
