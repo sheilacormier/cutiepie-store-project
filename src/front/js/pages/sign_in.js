@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 
 import Form from "react-bootstrap/Form";
@@ -11,18 +11,55 @@ import "../../styles/create-sign_in_account.scss";
 
 export const SignIn = () => {
 	const { store, actions } = useContext(Context);
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [validated, setValidated] = useState(false);
+
+	const handleSubmit = () => {
+		if (email !== "" && password !== "") {
+			actions.signIn(email, password);
+		}
+	};
+
+	useEffect(
+		() => {
+			if (validated) handleSubmit();
+		},
+		[validated]
+	);
+
+	const validateForm = e => {
+		e.preventDefault();
+		const form = e.currentTarget;
+		if (form.checkValidity() === false) {
+			e.preventDefault();
+			e.stopPropagation();
+		} else if (form.checkValidity() && email !== "" && password !== "") {
+			setValidated(true);
+		}
+	};
 
 	return (
 		<Container className="my-2">
 			<h5 className="create-account-title text-center pt-2">SIGN IN</h5>
 			<Row className="mx-auto pt-4">
 				<Col sm={12} md={6} lg={4} className="mx-auto">
-					<Form>
+					<Form noValidate validated={validated} onSubmit={validateForm}>
 						<Form.Group controlId="formGroupEmail">
-							<Form.Control type="email" placeholder="Enter email" />
+							<Form.Control
+								type="email"
+								placeholder="Enter email"
+								value={email}
+								onChange={e => setEmail(e.target.value)}
+							/>
 						</Form.Group>
 						<Form.Group controlId="formGroupPassword">
-							<Form.Control type="password" placeholder="Password" />
+							<Form.Control
+								type="password"
+								placeholder="Password"
+								value={password}
+								onChange={e => setPassword(e.target.value)}
+							/>
 						</Form.Group>
 						<Form.Group controlId="formGroupSubmit">
 							<Button className="w-100" type="submit">
