@@ -11,6 +11,7 @@ import { Register } from "./pages/register";
 import { ProductDetails } from "./pages/product_details";
 import { SignIn } from "./pages/sign_in";
 import { Profile } from "./pages/profile";
+import { TermsConditions } from "./pages/terms_conditions";
 import { MyNavbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Slogan } from "./component/slogan";
@@ -49,6 +50,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/profile_copy">
 							<Profile />
+						</Route>
+						<Route exact path="/terms_conditions">
+							<TermsConditions />
 						</Route>
 						<Route exact path="/product_details/:theid">
 							<ProductDetails />

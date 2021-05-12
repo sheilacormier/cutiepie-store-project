@@ -15,13 +15,13 @@ export const Footer = () => (
 				<Col xs={12} md={8}>
 					<ul className="footerlinks">
 						<li>
-							<Link href="/">about us</Link>
+							<Link to="/">about us</Link>
 						</li>
 						<li>
-							<Link href="/">contact us</Link>
+							<Link to="/">contact us</Link>
 						</li>
 						<li>
-							<Link href="/">terms and conditions</Link>
+							<Link to="/terms_conditions">terms and conditions</Link>
 						</li>
 						<li>
 							<Link to="/privacy_policy">privacy policy</Link>
