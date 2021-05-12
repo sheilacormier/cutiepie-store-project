@@ -1,6 +1,32 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			wishlist: [
+				{
+					h1: "Leopard Onesie",
+					img: "https://via.placeholder.com/250x220?text=Placeholder"
+				},
+				{
+					h1: "Leopard Onesie",
+					img: "https://via.placeholder.com/250x220?text=Placeholder"
+				},
+				{
+					h1: "Leopard Onesie",
+					img: "https://via.placeholder.com/250x220?text=Placeholder"
+				},
+				{
+					h1: "Leopard Onesie",
+					img: "https://via.placeholder.com/250x220?text=Placeholder"
+				},
+				{
+					h1: "Leopard Onesie",
+					img: "https://via.placeholder.com/250x220?text=Placeholder"
+				},
+				{
+					h1: "Leopard Onesie",
+					img: "https://via.placeholder.com/250x220?text=Placeholder"
+				}
+			],
 			shopCollection: [
 				{
 					h1: "Leopard Onesie",
