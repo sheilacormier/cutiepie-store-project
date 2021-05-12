@@ -42,7 +42,7 @@ export const Wishlist = () => {
 					</li>
 				</ul>
 			</nav> */}
-			<h4 className="pb-3 text-center page-title">Your Wished Items</h4>
+			<h4 className="pb-3 text-center page-title">YOUR WISHED ITEMS</h4>
 			<Row className="mx-auto">
 				{store.wishlist.map((item, index) => {
 					return (

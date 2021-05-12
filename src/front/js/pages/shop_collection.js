@@ -16,7 +16,7 @@ export const ShopCollection = () => {
 			<h4 className="text-center page-title">
 				<i className="fas fa-store" />
 				<span> </span>
-				Collection
+				COLLECTION
 			</h4>
 			<nav aria-label="page-navigation">
 				<ul className="pagination justify-content-end">
