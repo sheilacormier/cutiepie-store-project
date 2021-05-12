@@ -9,16 +9,11 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import "../../styles/shop_collection&wishlist.scss";
 
-export const ShopCollection = () => {
+export const Wishlist = () => {
 	const { store, actions } = useContext(Context);
 	return (
 		<Container className="my-3">
-			<h4 className="text-center page-title">
-				<i className="fas fa-store" />
-				<span> </span>
-				Collection
-			</h4>
-			<nav aria-label="page-navigation">
+			{/* <nav aria-label="page-navigation">
 				<ul className="pagination justify-content-end">
 					<li className="page-item">
 						<a className="page-link" href="#">
@@ -46,9 +41,10 @@ export const ShopCollection = () => {
 						</a>
 					</li>
 				</ul>
-			</nav>
+			</nav> */}
+			<h4 className="pb-3 text-center page-title">Your Wished Items</h4>
 			<Row className="mx-auto">
-				{store.shopCollection.map((item, index) => {
+				{store.wishlist.map((item, index) => {
 					return (
 						<Col sm={12} md={6} lg={4} key={index}>
 							<Card className="mb-3 collection-card" style={{ width: "18rem" }}>

@@ -6,6 +6,7 @@ import injectContext from "./store/appContext";
 import { Home } from "./pages/home";
 import { Single } from "./pages/single";
 import { ShopCollection } from "./pages/shop_collection";
+import { Wishlist } from "./pages/wishlist";
 import { Register } from "./pages/register";
 import { ProductDetails } from "./pages/product_details";
 import { SignIn } from "./pages/sign_in";
@@ -36,6 +37,9 @@ const Layout = () => {
 						</Route> */}
 						<Route exact path="/shop_collection">
 							<ShopCollection />
+						</Route>
+						<Route exact path="/wishlist">
+							<Wishlist />
 						</Route>
 						<Route exact path="/register">
 							<Register />
