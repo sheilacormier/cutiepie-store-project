@@ -11,7 +11,6 @@ import "../../styles/create-sign_in_account.scss";
 
 export const Register = () => {
 	const { store, actions } = useContext(Context);
-	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [validated, setValidated] = useState(false);
@@ -45,15 +44,6 @@ export const Register = () => {
 			<Row className="mx-auto pt-4">
 				<Col sm={12} md={6} lg={4} className="mx-auto">
 					<Form noValidate validated={validated} onSubmit={validateForm}>
-						<Form.Group controlId="formGroupName">
-							<Form.Control
-								required
-								type="name"
-								placeholder="Name"
-								value={name}
-								onChange={e => setName(e.target.value)}
-							/>
-						</Form.Group>
 						<Form.Group controlId="formGroupEmail">
 							<Form.Control
 								required
