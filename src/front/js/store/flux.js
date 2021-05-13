@@ -167,6 +167,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			signIn: (email, password) => {
 				console.log(email, password);
+			},
+
+			register: (name, email, password) => {
+				console.log(name, email, password);
 			}
 		}
 	};

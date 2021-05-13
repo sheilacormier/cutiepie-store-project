@@ -12,9 +12,9 @@ import "../../styles/shop_collection&wishlist.scss";
 export const Wishlist = () => {
 	const { store, actions } = useContext(Context);
 	return (
-		<Container className="my-3">
-			{/* <nav aria-label="page-navigation">
-				<ul className="pagination justify-content-end">
+		<Container className="mb-3">
+			<nav aria-label="page-navigation">
+				<ul className="pagination justify-content-end mb-0 py-2">
 					<li className="page-item">
 						<a className="page-link" href="#">
 							{"<<"}
@@ -41,8 +41,8 @@ export const Wishlist = () => {
 						</a>
 					</li>
 				</ul>
-			</nav> */}
-			<h4 className="pb-3 text-center page-title">YOUR WISHED ITEMS</h4>
+			</nav>
+			<h5 className="pt-2 pb-3 text-center page-title">YOUR WISHED ITEMS</h5>
 			<Row className="mx-auto">
 				{store.wishlist.map((item, index) => {
 					return (
