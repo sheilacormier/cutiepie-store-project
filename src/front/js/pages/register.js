@@ -63,8 +63,12 @@ export const Register = () => {
 							/>
 						</Form.Group>
 						<Form.Group controlId="formGroupSubmit">
-							<Button className="w-100" type="submit">
+							<Button className="w-100" type="submit" bsPrefix="btn-signin">
 								Submit
+								<span />
+								<span />
+								<span />
+								<span />
 							</Button>
 						</Form.Group>
 					</Form>

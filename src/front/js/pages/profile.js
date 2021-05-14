@@ -24,15 +24,15 @@ export const Profile = () => {
 							className=" align-self-center m-2 rounded-circle profile-image"
 							alt="User-Profile-Image"
 						/>
-						<Button className="align-self-center" bsPrefix="btn-upload-photo" variant="warning">
+						<Button className="align-self-center mt-1" bsPrefix="btn-upload-photo" variant="warning">
 							Upload photo
 						</Button>
 
-						<Nav className="flex-column">
-							<Nav.Link className="p-1" href="/wishlist">
+						<Nav className="justify-content-between">
+							<Nav.Link className="py-1 px-2" href="/wishlist">
 								my wishlist
 							</Nav.Link>
-							<Nav.Link className="p-1" eventKey="link-1">
+							<Nav.Link className="py-1 px-2" eventKey="link-1">
 								logout
 							</Nav.Link>
 						</Nav>

@@ -42,11 +42,7 @@ export const ShopCollection = () => {
 					</li>
 				</ul>
 			</nav>
-			<h5 className="text-center page-title pt-2 pb-3">
-				<i className="fas fa-store" />
-				<span> </span>
-				COLLECTION
-			</h5>
+			<h5 className="text-center page-title pt-2 pb-3">SHOP COLLECTION</h5>
 			<Row className="mx-auto">
 				{store.shopCollection.map((item, index) => {
 					return (

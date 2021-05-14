@@ -59,7 +59,7 @@ export const Home = () => {
 				})}
 			</Row>
 			<Row>
-				<Col xs={6} md={4} className="my-3">
+				<Col xs={12} md={4} className="my-3">
 					<div>
 						<img
 							src="https://res.cloudinary.com/scormier/image/upload/v1620161770/cutie-pie/heart-large_trfvou.png"
@@ -70,13 +70,19 @@ export const Home = () => {
 					</div>
 					<span className="subscribetext">Join our family! Subscribe to our newsletter.</span>
 					<Form>
-						<Form.Row className="align-items-center">
-							<Col xs="auto" className="my-1">
+						<Form.Row className="">
+							<Col xs="auto" className="w-100 justify-content-center align-items-center my-1">
 								<Form.Control id="inlineFormInputName" placeholder="youremail@gmail.com" />
 							</Col>
 							<Col xs="auto" className="my-1">
-								<Button className="" type="submit">
+								<Button type="submit" bsPrefix="btn-signup-newsletter">
 									Sign Up
+									<span />
+									<span />
+									<span />
+									<span />
+									{/* <div className="btn-signup-newsletter__horizontal" />
+									<div className="btn-signup-newsletter__vertical" /> */}
 								</Button>
 							</Col>
 						</Form.Row>

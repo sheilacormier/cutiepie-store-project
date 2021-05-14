@@ -43,7 +43,7 @@ export const SignIn = () => {
 		<Container className="my-2">
 			<h5 className="create-account-title text-center pt-2">SIGN IN</h5>
 			<Row className="mx-auto pt-4">
-				<Col sm={12} md={6} lg={4} className="mx-auto">
+				<Col sm={12} md={6} lg={4} className="mx-auto align-items-center">
 					<Form noValidate validated={validated} onSubmit={validateForm}>
 						<Form.Group controlId="formGroupEmail">
 							<Form.Control
@@ -62,13 +62,21 @@ export const SignIn = () => {
 							/>
 						</Form.Group>
 						<Form.Group controlId="formGroupSubmit">
-							<Button className="w-100" type="submit">
+							<Button className="w-100" type="submit" bsPrefix="btn-signin">
 								Sign in
+								<span />
+								<span />
+								<span />
+								<span />
 							</Button>
 						</Form.Group>
 						<Form.Group controlId="formGroupPasswordReminder">
-							<Button className="w-100" type="submit">
+							<Button className="w-100" type="submit" bsPrefix="btn-signin">
 								Forgot your password?
+								<span />
+								<span />
+								<span />
+								<span />
 							</Button>
 						</Form.Group>
 					</Form>

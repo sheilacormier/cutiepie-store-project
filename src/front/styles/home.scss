@@ -13,13 +13,143 @@
     color: #35c77e;
 }
 
-.btn-primary {
-    color: #fff;
-    background-color: #02c5ff;
-    border-color: #02c5ff;
+.btn-signup-newsletter{
+     --c: #f97f4d;
+    color: var(--c);
+    border: 0.2em solid #f97f4d;
+    border-radius: 0.5em;
+    height: 3.25rem;
+    padding: 0.5rem 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: 0.7s;
+    color: darken(#f97f4d, 25%);
+    background-color: transparent;
     &:hover{
-        background: #03a9db;
-        border-color: #03a9db; 
+        color: #fff;
     }
 }
 
+.btn-signup-newsletter span{
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    background-color: var(--c);
+    transform: translateY(150%);
+    border-radius: 50%;
+    left: calc((var(--n) - 1) * 25%);
+    transition: 0.7s;
+    transition-delay: calc((var(--n) - 1) * 0.1s);
+    z-index: -1;
+}
+
+.btn-signup-newsletter:hover span {
+    transform: translateY(0) scale(2);
+}
+
+.btn-signup-newsletter span:nth-child(1) {
+    --n: 1;
+}
+
+.btn-signup-newsletter span:nth-child(2) {
+    --n: 2;
+}
+
+.btn-signup-newsletter span:nth-child(3) {
+    --n: 3;
+}
+
+.btn-signup-newsletter span:nth-child(4) {
+    --n: 4;
+}
+
+// .btn-primary {
+//     color: #fff;
+//     background-color: #02c5ff;
+//     border-color: #02c5ff;
+//     &:hover{
+//         background: #03a9db;
+//         border-color: #03a9db; 
+//     }
+// }
+
+// .btn-signup-newsletter {
+	
+// 	--offset: 10px;
+// 	--border-size: 2px;
+	
+// 	// display: block;
+// 	position: relative;
+// 	padding: 1rem;
+// 	appearance: none;
+// 	border: 0;
+// 	background: transparent;
+// 	color: #e55743;
+// 	// text-transform: uppercase;
+// 	// letter-spacing: .25em;
+// 	outline: none;
+// 	cursor: pointer;
+// 	font-weight: bold;
+// 	border-radius: 0;
+// 	box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+// 	transition: background .8s ease;
+	
+// 	&:hover {
+// 		background: rgba(100, 0, 0, .03);
+// 	}
+	
+// 	&__horizontal,
+// 	&__vertical {
+// 		position: absolute;
+// 		top: var(--horizontal-offset, 0);
+// 		right: var(--vertical-offset, 0);
+// 		bottom: var(--horizontal-offset, 0);
+// 		left: var(--vertical-offset, 0);
+// 		transition: transform .8s ease;
+// 		will-change: transform;
+		
+// 		&::before {
+// 			content: '';
+// 			position: absolute;
+// 			border: inherit;
+// 		}
+// 	}
+	
+// 	&__horizontal {
+// 		--vertical-offset: calc(var(--offset) * -1);
+// 		border-top: var(--border-size) solid currentcolor;
+// 		border-bottom: var(--border-size) solid currentcolor;
+		
+// 		&::before {
+// 			top: calc(var(--vertical-offset) - var(--border-size));
+// 			bottom: calc(var(--vertical-offset) - var(--border-size));
+// 			left: calc(var(--vertical-offset) * -1);
+// 			right: calc(var(--vertical-offset) * -1);
+// 		}
+// 	}
+	
+// 	&:hover &__horizontal {
+// 		transform: scaleX(0);
+// 	}
+	
+// 	&__vertical {
+// 		--horizontal-offset: calc(var(--offset) * -1);
+// 		border-left: var(--border-size) solid currentcolor;
+// 		border-right: var(--border-size) solid currentcolor;
+		
+// 		&::before {
+// 			top: calc(var(--horizontal-offset) * -1);
+// 			bottom: calc(var(--horizontal-offset) * -1);
+// 			left: calc(var(--horizontal-offset) - var(--border-size));
+// 			right: calc(var(--horizontal-offset) - var(--border-size));
+// 		}
+// 	}
+	
+// 	&:hover &__vertical {
+// 		transform: scaleY(0);
+// 	}
+	
+// }
