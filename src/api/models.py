@@ -16,7 +16,7 @@ class User(db.Model):
     password = db.Column(db.String(80), unique=False, nullable=False)
     photo_url = db.Column(db.String(200), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
-    productDetails = db.relationship("productDetails", secondary=favorites_planets)
+    productDetails = db.relationship("productDetails", secondary=wishlist_productDetails)
     customer_id = db.Column(db.Integer, db.ForeignKey('productDetails.id'))    
 
     def __repr__(self):

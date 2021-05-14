@@ -148,8 +148,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					size: "0-3 months",
 					img: "https://res.cloudinary.com/scormier/image/upload/v1620334490/cutie-pie/outfit3_wco9ga.png",
 					description:
-                        "Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et",
-                    url:""
+						"Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et",
+					url: ""
 				},
 				{
 					id: "4",
