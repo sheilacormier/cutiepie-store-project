@@ -4,65 +4,80 @@ const getState = ({ getStore, getActions, setStore }) => {
 			wishlist: [
 				{
 					h1: "Leopard Onesie",
-					img: "https://via.placeholder.com/250x220?text=Placeholder"
+					img: "https://via.placeholder.com/250x220?text=Placeholder",
+					url: ""
 				},
 				{
 					h1: "Leopard Onesie",
-					img: "https://via.placeholder.com/250x220?text=Placeholder"
+					img: "https://via.placeholder.com/250x220?text=Placeholder",
+					url: ""
 				},
 				{
 					h1: "Leopard Onesie",
-					img: "https://via.placeholder.com/250x220?text=Placeholder"
+					img: "https://via.placeholder.com/250x220?text=Placeholder",
+					url: ""
 				},
 				{
 					h1: "Leopard Onesie",
-					img: "https://via.placeholder.com/250x220?text=Placeholder"
+					img: "https://via.placeholder.com/250x220?text=Placeholder",
+					url: ""
 				},
 				{
 					h1: "Leopard Onesie",
-					img: "https://via.placeholder.com/250x220?text=Placeholder"
+					img: "https://via.placeholder.com/250x220?text=Placeholder",
+					url: ""
 				},
 				{
 					h1: "Leopard Onesie",
-					img: "https://via.placeholder.com/250x220?text=Placeholder"
+					img: "https://via.placeholder.com/250x220?text=Placeholder",
+					url: ""
 				}
 			],
 			shopCollection: [
 				{
 					h1: "Leopard Onesie",
-					img: "https://via.placeholder.com/250x220?text=Placeholder"
+					img: "https://via.placeholder.com/250x220?text=Placeholder",
+					url: ""
 				},
 				{
 					h1: "Leopard Onesie",
-					img: "https://via.placeholder.com/250x220?text=Placeholder"
+					img: "https://via.placeholder.com/250x220?text=Placeholder",
+					url: ""
 				},
 				{
 					h1: "Leopard Onesie",
-					img: "https://via.placeholder.com/250x220?text=Placeholder"
+					img: "https://via.placeholder.com/250x220?text=Placeholder",
+					url: ""
 				},
 				{
 					h1: "Leopard Onesie",
-					img: "https://via.placeholder.com/250x220?text=Placeholder"
+					img: "https://via.placeholder.com/250x220?text=Placeholder",
+					url: ""
 				},
 				{
 					h1: "Leopard Onesie",
-					img: "https://via.placeholder.com/250x220?text=Placeholder"
+					img: "https://via.placeholder.com/250x220?text=Placeholder",
+					url: ""
 				},
 				{
 					h1: "Leopard Onesie",
-					img: "https://via.placeholder.com/250x220?text=Placeholder"
+					img: "https://via.placeholder.com/250x220?text=Placeholder",
+					url: ""
 				},
 				{
 					h1: "Leopard Onesie",
-					img: "https://via.placeholder.com/250x220?text=Placeholder"
+					img: "https://via.placeholder.com/250x220?text=Placeholder",
+					url: ""
 				},
 				{
 					h1: "Leopard Onesie",
-					img: "https://via.placeholder.com/250x220?text=Placeholder"
+					img: "https://via.placeholder.com/250x220?text=Placeholder",
+					url: ""
 				},
 				{
 					h1: "Leopard Onesie",
-					img: "https://via.placeholder.com/250x220?text=Placeholder"
+					img: "https://via.placeholder.com/250x220?text=Placeholder",
+					url: ""
 				}
 			],
 
@@ -70,23 +85,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 				{
 					id: "1",
 					price: "$35",
-					img: "https://res.cloudinary.com/scormier/image/upload/v1620334490/cutie-pie/outfit1_l8oaq2.png"
+					img: "https://res.cloudinary.com/scormier/image/upload/v1620334490/cutie-pie/outfit1_l8oaq2.png",
+					url: ""
 				},
 				{
 					id: "2",
 					price: "$45",
-					img: "https://res.cloudinary.com/scormier/image/upload/v1620334490/cutie-pie/outfit2_hdw0oc.png"
+					img: "https://res.cloudinary.com/scormier/image/upload/v1620334490/cutie-pie/outfit2_hdw0oc.png",
+					url: ""
 				},
 				{
 					id: "3",
 					price: "$25",
-					img: "https://res.cloudinary.com/scormier/image/upload/v1620334490/cutie-pie/outfit3_wco9ga.png"
+					img: "https://res.cloudinary.com/scormier/image/upload/v1620334490/cutie-pie/outfit3_wco9ga.png",
+					url: ""
 				},
 				{
 					id: "4",
 					price: "$55",
 					img:
-						"https://res.cloudinary.com/scormier/image/upload/v1620485867/cutie-pie/sample-details1_sm_my7qxl.png"
+						"https://res.cloudinary.com/scormier/image/upload/v1620485867/cutie-pie/sample-details1_sm_my7qxl.png",
+					url: ""
 				}
 			],
 
@@ -100,7 +119,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					size: "0-3 months",
 					img: "https://res.cloudinary.com/scormier/image/upload/v1620334490/cutie-pie/outfit1_l8oaq2.png",
 					description:
-						"Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et"
+						"Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et",
+					url: ""
 				},
 				{
 					id: "2",
@@ -111,7 +131,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					size: "0-3 months",
 					img: "https://res.cloudinary.com/scormier/image/upload/v1620334490/cutie-pie/outfit2_hdw0oc.png",
 					description:
-						"Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et"
+						"Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et",
+					url: ""
 				},
 				{
 					id: "3",
@@ -134,7 +155,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					img:
 						"https://res.cloudinary.com/scormier/image/upload/v1620485867/cutie-pie/sample-details1_sm_my7qxl.png",
 					description:
-						"Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et"
+						"Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et",
+					url: ""
 				}
 			]
 		},
