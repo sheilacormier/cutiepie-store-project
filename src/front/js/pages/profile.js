@@ -24,7 +24,9 @@ export const Profile = () => {
 							className=" align-self-center m-2 rounded-circle profile-image"
 							alt="User-Profile-Image"
 						/>
-						<Form.Text className="align-self-center">jonh.doe@gmail.com</Form.Text>
+						<Button className="align-self-center" bsPrefix="btn-upload-photo" variant="warning">
+							Upload photo
+						</Button>
 
 						<Nav className="flex-column">
 							<Nav.Link className="p-1" href="/wishlist">
