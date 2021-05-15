@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useRef } from "react";
 import { Context } from "../store/appContext";
 
 import Form from "react-bootstrap/Form";
@@ -12,7 +12,37 @@ import "../../styles/profile.scss";
 
 export const Profile = () => {
 	const { store, actions } = useContext(Context);
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [validated, setValidated] = useState(false);
 
+	const handleEmailSubmit = async e => {
+		e.preventDefault();
+		const form = e.currentTarget;
+
+		if (form.checkValidity() === false) {
+			e.preventDefault();
+			e.stopPropagation();
+		} else if (form.checkValidity()) {
+			let updateEmail = await actions.updateEmail(email);
+		}
+
+		setValidated(true);
+	};
+
+	const handlePassSubmit = async e => {
+		e.preventDefault();
+		const form = e.currentTarget;
+
+		if (form.checkValidity() === false) {
+			e.preventDefault();
+			e.stopPropagation();
+		} else if (form.checkValidity()) {
+			let updatePassword = await actions.updatePassword(password);
+		}
+
+		setValidated(true);
+	};
 	return (
 		<Container className="my-1">
 			<Row className="mx-auto align-items-center justify-content-center mt-2">
@@ -24,7 +54,11 @@ export const Profile = () => {
 							className=" align-self-center m-2 rounded-circle profile-image"
 							alt="User-Profile-Image"
 						/>
-						<Button className="align-self-center mt-1" bsPrefix="btn-upload-photo" variant="warning">
+						<Button
+							type="submit"
+							className="align-self-center mt-1"
+							bsPrefix="btn-upload-photo"
+							variant="warning">
 							Upload photo
 						</Button>
 
@@ -40,21 +74,54 @@ export const Profile = () => {
 				</Col>
 				<Col xs={12} md={6} className="p-0">
 					<div className="profile-container p-2 d-flex flex-column">
-						<Form>
+						<Form noValidate validated={validated} onSubmit={handleEmailSubmit}>
 							<h3 className="text-center">Login Information</h3>
 							<Form.Group controlId="formBasicEmail" className=" mx-2 pt-1 mb-0">
 								<div className="d-flex flex-column">
-									<Form.Control className="" type="email" placeholder="Email" />
+									<Form.Control
+										type="email"
+										placeholder="Email"
+										required
+										onChange={e => setEmail(e.target.value)}
+									/>
 
-									<Button className="align-self-end" bsPrefix="btn-update-email" variant="warning">
+									<Button
+										type="submit"
+										className="align-self-end"
+										bsPrefix="btn-update-email"
+										variant="warning">
 										Update Email
 									</Button>
 								</div>
+							</Form.Group>
+						</Form>
 
+						{/* <div className="d-flex flex-column">
+									<Form.Control type="password" placeholder="Current Password" required />
+
+									<Button
+										type="submit"
+										className="align-self-end"
+										bsPrefix="btn-update-password"
+										variant="warning">
+										Update Password
+									</Button>
+								</div> */}
+						<Form noValidate validated={validated} onSubmit={handlePassSubmit}>
+							<Form.Group controlId="formPassword" className=" mx-2 pt-1 mb-0">
 								<div className="d-flex flex-column">
-									<Form.Control className="" type="password" placeholder="Password" />
+									<Form.Control
+										type="password"
+										placeholder="New Password"
+										required
+										onChange={e => setPassword(e.target.value)}
+									/>
 
-									<Button className="align-self-end" bsPrefix="btn-update-password" variant="warning">
+									<Button
+										type="submit"
+										className="align-self-end"
+										bsPrefix="btn-update-password"
+										variant="warning">
 										Update Password
 									</Button>
 								</div>

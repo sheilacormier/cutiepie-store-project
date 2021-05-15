@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useRef } from "react";
 import { Context } from "../store/appContext";
 
 import Jumbotron from "react-bootstrap/Jumbotron";
@@ -13,6 +13,21 @@ import "../../styles/home.scss";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
+	const [email, setEmail] = useState("");
+	const emailRef = useRef(null);
+	const [validated, setValidated] = useState(false);
+
+	const handleSubmit = async e => {
+		const form = e.currentTarget;
+		if (form.checkValidity() === false) {
+			e.preventDefault();
+			e.stopPropagation();
+		} else if (form.checkValidity()) {
+			let signupNewsletter = await actions.newsletter(email);
+		}
+
+		setValidated(true);
+	};
 
 	return (
 		<Container className="my-2">
@@ -69,10 +84,22 @@ export const Home = () => {
 						/>
 					</div>
 					<span className="subscribetext">Join our family! Subscribe to our newsletter.</span>
-					<Form>
-						<Form.Row className="">
+					<Form noValidate validated={validated} onSubmit={handleSubmit}>
+						<Form.Row>
 							<Col xs="auto" className="w-100 justify-content-center align-items-center my-1">
-								<Form.Control id="inlineFormInputName" placeholder="youremail@gmail.com" />
+								<Form.Control
+									id="inlineFormInputName"
+									placeholder="youremail@gmail.com"
+									type="email"
+									value={email}
+									required
+									autoComplete
+									onChange={e => setEmail(e.target.value)}
+									ref={emailRef}
+								/>
+								<Form.Control.Feedback type="invalid">
+									{email && emailRef.current && emailRef.current.validationMessage}
+								</Form.Control.Feedback>
 							</Col>
 							<Col xs="auto" className="my-1">
 								<Button type="submit" bsPrefix="btn-signup-newsletter">
@@ -81,8 +108,6 @@ export const Home = () => {
 									<span />
 									<span />
 									<span />
-									{/* <div className="btn-signup-newsletter__horizontal" />
-									<div className="btn-signup-newsletter__vertical" /> */}
 								</Button>
 							</Col>
 						</Form.Row>

@@ -200,6 +200,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			register: (name, email, password) => {
 				console.log(name, email, password);
+			},
+
+			newsletter: email => {
+				console.log(email);
 			}
 		}
 	};

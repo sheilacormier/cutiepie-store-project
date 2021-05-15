@@ -17,22 +17,10 @@ export const Register = () => {
 	const [password, setPassword] = useState("");
 	const [validated, setValidated] = useState(false);
 
-	const handleSubmit = () => {
-		if (name !== "" && email !== "" && password !== "") {
-			actions.register(email, password);
-		}
-	};
-
-	useEffect(
-		() => {
-			if (validated) handleSubmit();
-		},
-		[validated]
-	);
-
-	const validateForm = async e => {
+	const handleSubmit = async e => {
 		e.preventDefault();
 		const form = e.currentTarget;
+
 		if (form.checkValidity() === false) {
 			e.preventDefault();
 			e.stopPropagation();
@@ -47,7 +35,7 @@ export const Register = () => {
 			<h5 className="create-account-title text-center pt-2">REGISTER</h5>
 			<Row className="mx-auto pt-4">
 				<Col sm={12} md={6} lg={4} className="mx-auto">
-					<Form noValidate validated={validated} onSubmit={validateForm}>
+					<Form noValidate validated={validated} onSubmit={handleSubmit}>
 						<Form.Group controlId="formGroupEmail">
 							<Form.Control
 								required
