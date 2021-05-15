@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import { Context } from "../store/appContext";
 
 import Form from "react-bootstrap/Form";
@@ -11,13 +11,15 @@ import "../../styles/create-sign_in_account.scss";
 
 export const Register = () => {
 	const { store, actions } = useContext(Context);
+	const emailRef = useRef(null);
+	const passRef = useRef(null);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [validated, setValidated] = useState(false);
 
 	const handleSubmit = () => {
 		if (name !== "" && email !== "" && password !== "") {
-			actions.register(name, email, password);
+			actions.register(email, password);
 		}
 	};
 
@@ -28,15 +30,17 @@ export const Register = () => {
 		[validated]
 	);
 
-	const validateForm = e => {
+	const validateForm = async e => {
 		e.preventDefault();
 		const form = e.currentTarget;
 		if (form.checkValidity() === false) {
 			e.preventDefault();
 			e.stopPropagation();
-		} else if (form.checkValidity() && name !== "" && email !== "" && password !== "") {
-			setValidated(true);
+		} else if (form.checkValidity()) {
+			let signin = await actions.register(email, password);
 		}
+
+		setValidated(true);
 	};
 	return (
 		<Container className="my-2">
@@ -47,20 +51,30 @@ export const Register = () => {
 						<Form.Group controlId="formGroupEmail">
 							<Form.Control
 								required
+								autoComplete
 								type="email"
 								placeholder="Enter email"
 								value={email}
 								onChange={e => setEmail(e.target.value)}
+								ref={emailRef}
 							/>
+							<Form.Control.Feedback type="invalid">
+								{emailRef && emailRef.current && emailRef.current.validationMessage}
+							</Form.Control.Feedback>
 						</Form.Group>
 						<Form.Group controlId="formGroupPassword">
 							<Form.Control
 								required
+								autoComplete
 								type="password"
 								placeholder="Password"
 								value={password}
 								onChange={e => setPassword(e.target.value)}
+								ref={passRef}
 							/>
+							<Form.Control.Feedback type="invalid">
+								{passRef && passRef.current && passRef.current.validationMessage}
+							</Form.Control.Feedback>
 						</Form.Group>
 						<Form.Group controlId="formGroupSubmit">
 							<Button className="w-100" type="submit" bsPrefix="btn-signin">
