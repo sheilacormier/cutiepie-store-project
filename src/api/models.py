@@ -55,5 +55,5 @@ class Product(db.Model):
             "size": self.size,                    
             "img": self.img,
             "description": self.description,
-            "url": self.url,
+            "url": self.url
         } 
