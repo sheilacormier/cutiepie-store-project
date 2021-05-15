@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import { Context } from "../store/appContext";
 
 import Form from "react-bootstrap/Form";
@@ -11,32 +11,24 @@ import "../../styles/create-sign_in_account.scss";
 
 export const SignIn = () => {
 	const { store, actions } = useContext(Context);
+	const emailRef = useRef(null);
+	const passRef = useRef(null);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [validated, setValidated] = useState(false);
 
-	const handleSubmit = () => {
-		if (email !== "" && password !== "") {
-			actions.signIn(email, password);
-		}
-	};
-
-	useEffect(
-		() => {
-			if (validated) handleSubmit();
-		},
-		[validated]
-	);
-
-	const validateForm = e => {
+	const handleSubmit = async e => {
 		e.preventDefault();
 		const form = e.currentTarget;
+
 		if (form.checkValidity() === false) {
 			e.preventDefault();
 			e.stopPropagation();
-		} else if (form.checkValidity() && email !== "" && password !== "") {
-			setValidated(true);
+		} else if (form.checkValidity()) {
+			let signin = await actions.signIn(email, password);
 		}
+
+		setValidated(true);
 	};
 
 	return (
@@ -44,14 +36,20 @@ export const SignIn = () => {
 			<h5 className="create-account-title text-center pt-2">SIGN IN</h5>
 			<Row className="mx-auto pt-4">
 				<Col sm={12} md={6} lg={4} className="mx-auto align-items-center">
-					<Form noValidate validated={validated} onSubmit={validateForm}>
+					<Form noValidate validated={validated} onSubmit={handleSubmit}>
 						<Form.Group controlId="formGroupEmail">
 							<Form.Control
 								type="email"
 								placeholder="Enter email"
 								value={email}
 								onChange={e => setEmail(e.target.value)}
+								required
+								autoComplete
+								ref={emailRef}
 							/>
+							<Form.Control.Feedback type="invalid">
+								{emailRef && emailRef.current && emailRef.current.validationMessage}
+							</Form.Control.Feedback>
 						</Form.Group>
 						<Form.Group controlId="formGroupPassword">
 							<Form.Control
@@ -59,7 +57,13 @@ export const SignIn = () => {
 								placeholder="Password"
 								value={password}
 								onChange={e => setPassword(e.target.value)}
+								required
+								autoComplete
+								ref={passRef}
 							/>
+							<Form.Control.Feedback type="invalid">
+								{passRef && passRef.current && passRef.current.validationMessage}
+							</Form.Control.Feedback>
 						</Form.Group>
 						<Form.Group controlId="formGroupSubmit">
 							<Button className="w-100" type="submit" bsPrefix="btn-signin">

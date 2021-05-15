@@ -195,6 +195,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			signIn: (email, password) => {
 				console.log(email, password);
+				// return fetch();
 			},
 
 			register: (name, email, password) => {
