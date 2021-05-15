@@ -15,11 +15,11 @@ export const ProductDetails = () => {
 
 	return (
 		<Container className="my-2">
-			<Row className="mx-auto pt-5">
-				<Col xl={6} className="justify-content-center text-center">
+			<Row className="mx-auto pt-4">
+				<Col xl={6} className="justify-content-center text-center pt-2">
 					<img src={store.productDetails[0].img} />
 				</Col>
-				<Col xl={6} className="mx-auto">
+				<Col xl={6} className="mx-auto pt-2">
 					<div className="container-fluid">
 						<h4 className="product-brand">{store.productDetails[0].brand}</h4>
 						<h4 className="product-title">{store.productDetails[0].title}</h4>
