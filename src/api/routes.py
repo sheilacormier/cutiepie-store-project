@@ -42,7 +42,7 @@ def login():
 
 #Endpoint to retrieve all users
 @api.route('/user', methods=['GET'])
-def handle_users():
+def select_users():
     users = User.query.all()
     response_body = {
         "msg": "These are all users",
@@ -50,9 +50,9 @@ def handle_users():
     }
     return jsonify(response_body), 200
 
-#Endpoint to post users
+#Endpoint to add users
 @api.route('/user', methods=['POST'])
-def post_users():
+def add_users():
     users = User.query.all()
     response_body = {
         "msg": "new user",
@@ -60,8 +60,14 @@ def post_users():
     }
     return jsonify(response_body), 200
 
+#Endpoint to modify/update users
+@api.route('/user', methods=['PUT']) 
+def update_users():
+    email = request.json.get("email", None)
+    resource_id = email = request.json.get("email", None)
+    resource_type = email = request.json.get("type", None)
 
-#Endpoint to add to wishlist
+#Endpoint to modify/update to wishlist
 @api.route('/user', methods=['PUT']) 
 def update_user_wishlist():
     email = request.json.get("email", None)
@@ -95,9 +101,9 @@ def update_user_wishlist():
 
 # --------------Product Routes---------------
 
-#Endpoint to fetch products
+#Endpoint to retrieve products
 @api.route('/product', methods=['GET'])
-def get_product():
+def select_product():
     product = Product.query.all()
     response_body = {
         "products": list(map(lambda x: x.serialize(), product))
