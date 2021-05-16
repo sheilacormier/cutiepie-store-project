@@ -13,6 +13,7 @@ from flask_jwt_extended import JWTManager
 
 api = Blueprint('api', __name__)
 
+
 # Handle/serialize errors like a JSON object
 @api.errorhandler(APIException)
 def handle_invalid_usage(error):
@@ -25,8 +26,6 @@ def sitemap():
 
 # Create a route to authenticate your users and return JWTs. The
 # create_access_token() function is used to actually generate the JWT.
-
-
 
 @api.route("/login", methods=["POST"])
 def login():
@@ -50,22 +49,25 @@ def select_users():
     }
     return jsonify(response_body), 200
 
-#Endpoint to add users
-@api.route('/user', methods=['POST'])
-def add_users():
-    users = User.query.all()
-    response_body = {
-        "msg": "new user",
-        "users": list(map(lambda x:x.serialize(),users))
-    }
-    return jsonify(response_body), 200
-
 #Endpoint to modify/update users
 @api.route('/user', methods=['PUT']) 
 def update_users():
     email = request.json.get("email", None)
     resource_id = email = request.json.get("email", None)
     resource_type = email = request.json.get("type", None)
+
+#Endpoint to add users
+@api.route('/user', methods=['POST'])
+def create_person():
+        body = request.get_json() # get the request body content
+        if body is None:
+            return "The request body is null", 400
+        if 'email' not in body:
+            return 'You need to specify the email',400
+        if 'password' not in body:
+            return 'You need to enter a password', 400
+
+        return "ok", 200
 
 #Endpoint to modify/update to wishlist
 @api.route('/user', methods=['PUT']) 
@@ -113,21 +115,26 @@ def select_product():
 
 #Endpoint to add products
 @api.route('/product', methods=['POST'])
-def add_product():
-    product = Product.query.all()
-    response_body = {
-        "products": list(map(lambda x: x.serialize(), product))
-    }
-    return jsonify(response_body), 200
+def create_product():
+        body = request.get_json() # get the request body content
+        if body is None:
+            return "The request body is null", 400
+        if 'brand' not in body:
+            return 'You need to specify the brand',400
+        if 'title' not in body:
+            return 'You need to enter a title', 400  
 
+        return "ok", 200
 
 #Endpoint to delete products
-@api.route('/product', methods=['DELETE'])
-def delete_product():
-    product = Product.query.all()
-    response_body = {
-        "products": list(map(lambda x: x.serialize(), product))
-    }
-    return jsonify(response_body), 200 
+@api.route("/product/<int:id>", methods=["DELETE"])
+def product_delete(id):
+    product = Product.query.get(id)
+    db.session.delete(product)
+    db.session.commit()
+
+    return "Product was successfully deleted"
+
+
 
 
