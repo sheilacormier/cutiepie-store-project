@@ -12,6 +12,8 @@ import "../../styles/profile.scss";
 
 export const Profile = () => {
 	const { store, actions } = useContext(Context);
+	const emailRef = useRef(null);
+	const passRef = useRef(null);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [validated, setValidated] = useState(false);
@@ -80,10 +82,15 @@ export const Profile = () => {
 								<div className="d-flex flex-column">
 									<Form.Control
 										type="email"
+										value={email}
 										placeholder="Email"
 										required
 										onChange={e => setEmail(e.target.value)}
+										ref={emailRef}
 									/>
+									<Form.Control.Feedback type="invalid">
+										{emailRef && emailRef.current && emailRef.current.validationMessage}
+									</Form.Control.Feedback>
 
 									<Button
 										type="submit"
@@ -112,10 +119,16 @@ export const Profile = () => {
 								<div className="d-flex flex-column">
 									<Form.Control
 										type="password"
+										value={password}
 										placeholder="New Password"
 										required
 										onChange={e => setPassword(e.target.value)}
+										ref={passRef}
 									/>
+
+									<Form.Control.Feedback type="invalid">
+										{passRef && passRef.current && passRef.current.validationMessage}
+									</Form.Control.Feedback>
 
 									<Button
 										type="submit"
