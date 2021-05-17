@@ -32,9 +32,9 @@ def generate_sitemap(app):
 
     links_html = "".join(["<li><a href='" + y + "'>" + y + "</a></li>" for y in links])
     return """
-        <div style="text-align: center;">
+        <div style="text-align: center; width: 600px; margin: auto;">
         <img style="max-height: 80px" src='https://res.cloudinary.com/scormier/image/upload/v1620161770/cutie-pie/cp-logo_xi19ms.png' />
         <h1>Cutie Pie API</h1>
         <p>API HOST: <script>document.write('<input style="padding: 5px; width: 300px" type="text" value="'+window.location.href+'" />');</script></p>        
-        <p>Endpoints: </p>
+        <p>Endpoints</p>
         <ul style="text-align: left;">"""+links_html+"</ul></div>"
