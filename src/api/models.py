@@ -13,7 +13,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    photo_url = db.Column(db.String(200), unique=False, nullable=False)
+    photo_url = db.Column(db.String(200), unique=False, nullable=True)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
     wishlist = db.relationship("Product", secondary=wishlist_productDetails)
         
@@ -38,9 +38,9 @@ class Product(db.Model):
     price = db.Column(db.String(50))
     color = db.Column(db.String(50))
     size = db.Column(db.String(50))
-    img = db.Column(db.String(50))
-    description = db.Column(db.String(800))       
-    url = db.Column(db.String(800))     
+    img = db.Column(db.String(250))
+    description = db.Column(db.String(250))       
+    url = db.Column(db.String(250))     
 
     def __repr__(self):
         return '<Product %r>' % self.title
