@@ -204,6 +204,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			newsletter: email => {
 				console.log(email);
+			},
+
+			updateEmail: email => {
+				console.log(email);
+			},
+
+			updatePassword: password => {
+				console.log(password);
 			}
 		}
 	};
