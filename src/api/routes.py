@@ -30,15 +30,19 @@ def sitemap():
 # create_access_token() function is used to actually generate the JWT.
 @api.route("/login", methods=["POST"])
 def login():
-    username = request.json.get("username", None)
+    email = request.json.get("email", None)
     password = request.json.get("password", None)
 
-    user = User.query.filter_by(username=username).first()
+    user = User.query.filter_by(email=email).first()
     if user is None or password != user.password:
         return jsonify({"msg": "Incorrect username or password"}), 401
 
-    access_token = create_access_token(identity=username)
-    return jsonify(access_token=access_token)
+    access_token = create_access_token(identity=email)
+    payload = {
+        'token': access_token,
+        'user': user.serialize()
+    }
+    return jsonify(payload), 200
 
 
 # Protect a route with jwt_required, which will kick out requests

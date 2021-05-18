@@ -25,37 +25,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => setStore({ product: data.products }));
 			},
 
-			login: (username, password) => {
-				return fetch(`${base_url}/login`, {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify({
-						username: username,
-						password: password
-					})
-				})
-					.then(res => res.json())
-					.then(data => {
-						setStore({
-							user: {
-								...data.user,
-								loggedIn: true
-							}
-						});
-						// add token and info to local storage
-						localStorage.setItem(
-							"cutie-pie",
-							JSON.stringify({
-								token: data.user.token,
-								display_name: data.user.first_name, // Users first name typically
-								email: data.user.email
-							})
-						);
-					});
-			},
-
 			checkToken: () => {
 				let tokenCheck = JSON.parse(localStorage.getItem("cutie-pie"));
 				console.log(tokenCheck);
@@ -146,8 +115,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// setStore({ demo: demo });
 			},
 			signIn: (email, password) => {
-				console.log(email, password);
-				// return fetch();
+				return fetch(`${base_url}/login/`, {
+					method: "POST",
+					cors: "no-cors",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						email: email,
+						password: password
+					})
+				})
+					.then(res => res.json())
+					.then(data => {
+						setStore({
+							user: {
+								...data.user,
+								loggedIn: true
+							}
+						});
+						// add token and info to local storage
+						localStorage.setItem(
+							"cutie-pie",
+							JSON.stringify({
+								token: data.user.token,
+								display_name: data.user.first_name, // Users first name typically
+								email: data.user.email
+							})
+						);
+					});
 			},
 
 			register: (name, email, password) => {
