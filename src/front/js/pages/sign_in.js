@@ -44,7 +44,7 @@ export const SignIn = () => {
 								value={email}
 								onChange={e => setEmail(e.target.value)}
 								required
-								autoComplete
+								autoComplete="email"
 								ref={emailRef}
 							/>
 							<Form.Control.Feedback type="invalid">
@@ -58,7 +58,7 @@ export const SignIn = () => {
 								value={password}
 								onChange={e => setPassword(e.target.value)}
 								required
-								autoComplete
+								autoComplete="password"
 								ref={passRef}
 							/>
 							<Form.Control.Feedback type="invalid">
@@ -90,7 +90,6 @@ export const SignIn = () => {
 						className="img-fluid"
 						src="https://res.cloudinary.com/scormier/image/upload/v1620161769/cutie-pie/buttlerfly-path_aycx2b.png"
 						alt="butterfly"
-						w-100
 					/>
 				</Col>
 			</Row>

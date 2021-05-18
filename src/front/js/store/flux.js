@@ -22,14 +22,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().checkToken();
 				fetch(`${base_url}/product`)
 					.then(res => res.json())
-					.then(data => setStore({ product: data.products }));
+					.then(data =>
+						setStore({
+							product: data.products,
+							homeCards: data.products.slice(0, 4)
+						})
+					);
 			},
 
 			checkToken: () => {
 				let tokenCheck = JSON.parse(localStorage.getItem("cutie-pie"));
-				console.log(tokenCheck);
+
 				if (tokenCheck !== null) {
 					// token is present, so do something (set loggedIn, maybe?)
+					console.log(tokenCheck);
 					let validate_token = fetch(`${base_url}/validate`, {
 						headers: {
 							"Content-Type": "application/json",
@@ -138,12 +144,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 						localStorage.setItem(
 							"cutie-pie",
 							JSON.stringify({
-								token: data.user.token,
+								token: data.token,
 								display_name: data.user.first_name, // Users first name typically
 								email: data.user.email
 							})
 						);
 					});
+			},
+			signout: () => {
+				setStore({
+					user: {
+						...getStore().user,
+						loggedIn: false
+					}
+				});
 			},
 
 			register: (name, email, password) => {

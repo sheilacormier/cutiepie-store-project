@@ -38,7 +38,7 @@ export const Home = () => {
 			</Row>
 
 			<Row>
-				{store.product.map((product, index) => {
+				{store.homeCards.map((product, index) => {
 					return (
 						<Col
 							sm={12}

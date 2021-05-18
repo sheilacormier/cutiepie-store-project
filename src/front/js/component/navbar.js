@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../store/appContext";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
@@ -6,6 +7,7 @@ import { Link } from "react-router-dom";
 import "../../styles/navbar.scss";
 
 export const MyNavbar = () => {
+	const { store, actions } = useContext(Context);
 	return (
 		<Navbar className="myNavbar" expand="lg">
 			<Navbar.Brand as={Link} to="/">
@@ -20,9 +22,16 @@ export const MyNavbar = () => {
 					<Nav.Link as={Link} to="/shop_collection">
 						shop collection
 					</Nav.Link>
-					<Nav.Link as={Link} to="/sign_in">
-						sign in
-					</Nav.Link>
+					{store.user.loggedIn ? (
+						<Nav.Link as={Link} to="/" onClick={e => actions.signout()}>
+							log out
+						</Nav.Link>
+					) : (
+						<Nav.Link as={Link} to="/sign_in">
+							sign in
+						</Nav.Link>
+					)}
+
 					<Nav.Link as={Link} to="/profile">
 						profile
 					</Nav.Link>
