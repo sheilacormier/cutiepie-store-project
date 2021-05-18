@@ -18,8 +18,9 @@ export const MyNavbar = () => {
 					</Nav.Link>
 					<Nav.Link href="/shop_collection">shop collection</Nav.Link>
 					<Nav.Link href="/sign_in">sign in</Nav.Link>
-					<Nav.Link href="/profile_copy">profile</Nav.Link>
+					<Nav.Link href="/profile">profile</Nav.Link>
 					<Nav.Link href="/register">register</Nav.Link>
+					<Nav.Link href="/wishlist">wishlist</Nav.Link>
 				</Nav>
 			</Navbar.Collapse>
 		</Navbar>

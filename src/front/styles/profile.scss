@@ -33,6 +33,12 @@
     height: 120px;
 }
 
+@media (min-width:768px){
+        .logout{
+        border-left: 1px solid #d4edda;
+        }
+}
+
 .btn-update-email, .btn-update-password, .btn-upload-photo{
     color: #fd9e77;
     position: relative;

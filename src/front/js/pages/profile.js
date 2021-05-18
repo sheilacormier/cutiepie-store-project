@@ -64,8 +64,8 @@ export const Profile = () => {
 							</Button>
 						</div>
 
-						<Nav className="justify-content-xs-between justify-content-md-center">
-							<Nav.Link className="py-1 px-2 pl-md-4" href="/wishlist">
+						<Nav className="justify-content-between justify-content-md-center">
+							<Nav.Link className="py-1 px-2 pr-md-4" href="/wishlist">
 								my wishlist
 							</Nav.Link>
 							<Nav.Link className="py-1 px-2 pl-md-4 logout" eventKey="link-1">
