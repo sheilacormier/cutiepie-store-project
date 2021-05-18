@@ -40,7 +40,7 @@ def login():
 
 # Protect a route with jwt_required, which will kick out requests
 # without a valid JWT present.
-@api.route("/valdiate", methods=["GET"])
+@api.route("/validate", methods=["GET"])
 @jwt_required()
 def validate_token():
     # Access the identity of the current user with get_jwt_identity
