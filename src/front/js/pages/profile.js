@@ -16,7 +16,8 @@ export const Profile = () => {
 	const passRef = useRef(null);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [validated, setValidated] = useState(false);
+	const [passValid, setPassValidated] = useState(false);
+	const [emailValid, setEmailValidated] = useState(false);
 
 	const handleEmailSubmit = async e => {
 		e.preventDefault();
@@ -29,7 +30,7 @@ export const Profile = () => {
 			let updateEmail = await actions.updateEmail(email);
 		}
 
-		setValidated(true);
+		setEmailValidated(true);
 	};
 
 	const handlePassSubmit = async e => {
@@ -43,42 +44,41 @@ export const Profile = () => {
 			let updatePassword = await actions.updatePassword(password);
 		}
 
-		setValidated(true);
+		setPassValidated(true);
 	};
 	return (
 		<Container className="my-1">
 			<Row className="mx-auto align-items-center justify-content-center mt-2">
 				<Col xs={12} md={6} className="p-0">
-					<div className="d-flex flex-column profile-container p-2">
+					<div className="d-flex flex-column profile-container profile-container-left p-2">
 						<h3 className="text-center">Your User Profile</h3>
 						<img
 							src="https://res.cloudinary.com/scormier/image/upload/v1620690465/cutie-pie/1452484590-sweet-baby-boy-image-screenshot_wzzhx5.jpg"
 							className=" align-self-center m-2 rounded-circle profile-image"
 							alt="User-Profile-Image"
 						/>
-						<Button
-							type="submit"
-							className="align-self-center mt-1"
-							bsPrefix="btn-upload-photo"
-							variant="warning">
-							Upload photo
-						</Button>
+						<div className="d-flex flex-column align-items-center justify-content-center">
+							<Form.File className="text-center mt-1" />
+							<Button type="submit" className="mt-3" bsPrefix="btn-upload-photo" variant="warning">
+								Upload photo
+							</Button>
+						</div>
 
-						<Nav className="justify-content-between">
-							<Nav.Link className="py-1 px-2" href="/wishlist">
+						<Nav className="justify-content-xs-between justify-content-md-center">
+							<Nav.Link className="py-1 px-2 pl-md-4" href="/wishlist">
 								my wishlist
 							</Nav.Link>
-							<Nav.Link className="py-1 px-2" eventKey="link-1">
+							<Nav.Link className="py-1 px-2 pl-md-4 logout" eventKey="link-1">
 								logout
 							</Nav.Link>
 						</Nav>
 					</div>
 				</Col>
 				<Col xs={12} md={6} className="p-0">
-					<div className="profile-container p-2 d-flex flex-column">
-						<Form noValidate validated={validated} onSubmit={handleEmailSubmit}>
+					<div className="profile-container py-3 px-2 d-flex flex-column">
+						<Form noValidate validated={emailValid} onSubmit={handleEmailSubmit}>
 							<h3 className="text-center">Login Information</h3>
-							<Form.Group controlId="formBasicEmail" className=" mx-2 pt-1 mb-0">
+							<Form.Group controlId="formBasicEmail" className=" mx-2 mt-2 mb-0">
 								<div className="d-flex flex-column">
 									<Form.Control
 										type="email"
@@ -88,10 +88,9 @@ export const Profile = () => {
 										onChange={e => setEmail(e.target.value)}
 										ref={emailRef}
 									/>
-									<Form.Control.Feedback type="invalid">
+									<Form.Control.Feedback as="div" type="invalid" className="w-50">
 										{emailRef && emailRef.current && emailRef.current.validationMessage}
 									</Form.Control.Feedback>
-
 									<Button
 										type="submit"
 										className="align-self-end"
@@ -114,7 +113,7 @@ export const Profile = () => {
 										Update Password
 									</Button>
 								</div> */}
-						<Form noValidate validated={validated} onSubmit={handlePassSubmit}>
+						<Form noValidate validated={passValid} onSubmit={handlePassSubmit}>
 							<Form.Group controlId="formPassword" className=" mx-2 pt-1 mb-0">
 								<div className="d-flex flex-column">
 									<Form.Control

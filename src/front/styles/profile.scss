@@ -12,7 +12,20 @@
     border: 1px solid #d4edda;
     border-radius: 5px;
     color: #fd9e77;
+}
+    @media (min-width:768px){
+        .profile-container{
+        border: none;
+        }
+}
 
+@media (min-width:768px){
+        .profile-container-left{
+        border-right: 1px solid #d4edda;
+        }
+        .profile-container{
+            border-radius: 0;
+        }
 }
 
 .profile-image{
@@ -68,3 +81,55 @@ a.nav-link{
         color: darken(#fd9e77, 25%);
     }
 }
+
+// #file-upload-button.form-control-file {
+//     --c: #f97f4d;
+//     color: var(--c);
+//     border: 0.1em solid #f97f4d;
+//     border-radius: 0.5em;
+//     height: 3.25rem;
+//     text-transform: uppercase;
+//     font-weight: bold;
+//     position: relative;
+//     overflow: hidden;
+//     z-index: 1;
+//     transition: 0.7s;
+//     color: darken(#f97f4d, 25%);
+//     background-color: transparent;
+//     &:hover{
+//         color: #fff;
+//     }
+// }
+
+// #file-upload-button.form-control-file span{
+//     position: absolute;
+//     width: 25%;
+//     height: 100%;
+//     background-color: var(--c);
+//     transform: translateY(150%);
+//     border-radius: 50%;
+//     left: calc((var(--n) - 1) * 25%);
+//     transition: 0.7s;
+//     transition-delay: calc((var(--n) - 1) * 0.1s);
+//     z-index: -1;
+// }
+
+// #file-upload-button.form-control-file:hover span {
+//     transform: translateY(0) scale(2);
+// }
+
+// #file-upload-button.form-control-file span:nth-child(1) {
+//     --n: 1;
+// }
+
+// #file-upload-button.form-control-file span:nth-child(2) {
+//     --n: 2;
+// }
+
+// #file-upload-button.form-control-file span:nth-child(3) {
+//     --n: 3;
+// }
+
+// #file-upload-button.form-control-file span:nth-child(4) {
+//     --n: 4;
+// }

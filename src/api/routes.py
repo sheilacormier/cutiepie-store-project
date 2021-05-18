@@ -13,7 +13,6 @@ from flask_jwt_extended import JWTManager
 
 api = Blueprint('api', __name__)
 
-
 # Handle/serialize errors like a JSON object
 @api.errorhandler(APIException)
 def handle_invalid_usage(error):
