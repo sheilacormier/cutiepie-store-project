@@ -38,7 +38,7 @@ export const Home = () => {
 			</Row>
 
 			<Row>
-				{store.homeCards.map((item, index) => {
+				{store.product.map((product, index) => {
 					return (
 						<Col
 							sm={12}
@@ -48,21 +48,21 @@ export const Home = () => {
 							className="d-flex justify-content-center align-items-center">
 							<div className="product-wrapper my-4 text-center">
 								<div className="product-img">
-									<a href={item.url} data-abc="true">
-										<img src={item.img} alt="outfit" />
+									<a href={product.url} data-abc="true">
+										<img src={product.img} alt="outfit" />
 									</a>
 									<span className="text-center">
-										<i className="fa fa-rupee" /> {item.price}
+										<i className="fa fa-rupee" /> {product.price}
 									</span>
 									<div className="product-action">
 										<div className="product-action-style">
-											<a href="#" onClick={() => actions.addWishlist(item)}>
+											<a href="#" onClick={() => actions.addWishlist(product)}>
 												<i className="fa fa-heart" />
 											</a>
 											<a href={`/product_details/${index}`}>
 												<i className="fas fa-search" />
 											</a>
-											<a href={item.url}>
+											<a href={product.url}>
 												<i className="fa fa-shopping-cart" />
 											</a>
 										</div>
