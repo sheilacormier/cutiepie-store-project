@@ -12,20 +12,22 @@ from flask_jwt_extended import JWTManager
 
 
 api = Blueprint('api', __name__)
+jwt = JWTManager()
 
 # Handle/serialize errors like a JSON object
 @api.errorhandler(APIException)
 def handle_invalid_usage(error):
     return jsonify(error.to_dict()), error.status_code
 
+
 # generate sitemap with all your endpoints
 @api.route('/')
 def sitemap():
     return generate_sitemap(app)
 
+
 # Create a route to authenticate your users and return JWTs. The
 # create_access_token() function is used to actually generate the JWT.
-
 @api.route("/login", methods=["POST"])
 def login():
     username = request.json.get("username", None)
@@ -37,6 +39,7 @@ def login():
 
     access_token = create_access_token(identity=username)
     return jsonify(access_token=access_token)
+
 
 # Protect a route with jwt_required, which will kick out requests
 # without a valid JWT present.
@@ -51,17 +54,28 @@ def validate_token():
     }
     return jsonify(payload), 200
 
-#Endpoint to retrieve all users
-@api.route('/user', methods=['GET'])
-def select_users():
-    users = User.query.all()
-    response_body = {
-        "msg": "These are all users",
-        "users": list(map(lambda x:x.serialize(),users))
-    }
-    return jsonify(response_body), 200
 
-#Endpoint to modify/update users
+# Protect a route with jwt_required
+@api.route("/protected", methods=["GET"])
+@jwt_required()
+def protected():
+    # Access the identity of the current user with get_jwt_identity
+    current_user = get_jwt_identity()
+    return jsonify({
+        "logged_in_as": current_user,
+        "msg": "Access Granted to Private route"
+    }), 200
+
+
+#Endpoint to retrieve one user by ID
+@api.route('/user/<int:id>', methods=['GET'])
+def get_one_user(id):
+    users = User.query.get(id)
+    users = users.serialize()
+    return jsonify(users), 200
+
+
+#Endpoint updates the user's information by ID
 @api.route('/user/<int:id>', methods=['PUT']) 
 def update_user(id):
         user = User.query.get(id)
@@ -84,7 +98,8 @@ def update_user(id):
             user.photo_url = upload(photo_url)
             
         db.session.commit()
-        
+
+
 #Endpoint to add users
 @api.route('/user', methods=['POST'])
 def create_person():
@@ -98,12 +113,14 @@ def create_person():
 
         return "ok", 200
 
+
 #Endpoint to modify/update to wishlist
 @api.route('/user', methods=['PUT']) 
 def update_user_wishlist():
     email = request.json.get("email", None)
     resource_id = email = request.json.get("email", None)
     resource_type = email = request.json.get("type", None)
+
 
 # Test presence of variables
     if user_email is None:
@@ -130,7 +147,9 @@ def update_user_wishlist():
         "user": user.serialize()
     }
 
+
 # --------------Product Routes---------------
+
 
 #Endpoint to retrieve products
 @api.route('/product', methods=['GET'])
@@ -154,6 +173,7 @@ def create_product():
             return 'You need to enter a title', 400  
 
         return "ok", 200
+
 
 #Endpoint to delete products
 @api.route("/product/<int:id>", methods=["DELETE"])

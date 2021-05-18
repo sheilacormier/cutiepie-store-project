@@ -18,8 +18,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			// Use getActions to call a function within a fuction
 			initialize: () => {
-				checkToken();
-
+				getActions().checkToken();
 				fetch(`${base_url}/product`)
 					.then(res => res.json())
 					.then(data => setStore({ product: data.products }));
@@ -57,8 +56,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			checkToken: () => {
-				let tokenCheck = JSON.parse(localStorage.getItem)("cutie-pie");
-
+				let tokenCheck = JSON.parse(localStorage.getItem("cutie-pie"));
+				console.log(tokenCheck);
 				if (tokenCheck !== null) {
 					// token is present, so do something (set loggedIn, maybe?)
 					let validate_token = fetch(`${base_url}/validate`, {
