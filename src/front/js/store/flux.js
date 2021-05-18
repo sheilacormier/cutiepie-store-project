@@ -1,16 +1,31 @@
 const getState = ({ getStore, getActions, setStore }) => {
+<<<<<<< HEAD
 	const base_url = "https://3001-ivory-dingo-evk7hwf6.ws-us04.gitpod.io/";
 	return {
 		store: {
 			wishlist: [],
+=======
+	const base_url = "https://3001-ivory-dingo-evk7hwf6.ws-us04.gitpod.io/api";
+	return {
+		store: {
+>>>>>>> ec2efb94faf5c5fb2107a6663a718a3222de391e
 			product: [],
 			shopCollection: [],
 			homeCards: [],
-			productDetails: []
+			productDetails: [],
+			user: {
+				token: "",
+				loggedIn: false,
+				display_name: "",
+				email: "",
+				id: null,
+				wishlist: []
+			}
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
 			initialize: () => {
+<<<<<<< HEAD
 				fetch(`${base_url}/user`)
 					.then(res => res.json())
 					.then(data => setStore({ user: data.user }));
@@ -18,6 +33,81 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(`${base_url}/product`)
 					.then(res => res.json())
 					.then(data => setStore({ product: data.product }));
+=======
+				checkToken();
+
+				fetch(`${base_url}/product`)
+					.then(res => res.json())
+					.then(data => setStore({ product: data.products }));
+			},
+
+			login: (username, password) => {
+				return fetch(`${base_url}/login`, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						username: username,
+						password: password
+					})
+				})
+					.then(res => res.json())
+					.then(data => {
+						setStore({
+							user: {
+								...data.user,
+								loggedIn: true
+							}
+						});
+						// add token and info to local storage
+						localStorage.setItem(
+							"cutie-pie",
+							JSON.stringify({
+								token: data.user.token,
+								display_name: data.user.first_name, // Users first name typically
+								email: data.user.email
+							})
+						);
+					});
+			},
+
+			checkToken: () => {
+				let tokenCheck = JSON.parse(localStorage.getItem)("cutie-pie");
+
+				if (tokenCheck !== null) {
+					// token is present, so do something (set loggedIn, maybe?)
+					let validate_token = fetch(`${base_url}/validate`, {
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${tokenCheck.token}`
+						}
+					})
+						.then(res => res.json())
+						.then(data =>
+							setStore({
+								user: {
+									...getStore().user,
+									...tokenCheck,
+									loggedIn: true
+								}
+							})
+						);
+				} else {
+					// token is not present, redirect to login flow
+				}
+			},
+
+			getUserProfile: (uid, token) => {
+				return fetch(`${base_url}/user/${uid}`, {
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${token}`
+					}
+				})
+					.then(res => res.json())
+					.then(data => setStore({ user: data.users }));
+>>>>>>> ec2efb94faf5c5fb2107a6663a718a3222de391e
 			},
 
 			addWishlist: data => {

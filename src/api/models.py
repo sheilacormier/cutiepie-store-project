@@ -25,7 +25,7 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
-            "wishlist_users": list(map(lambda x: x.serialize(), self.wishlist)),
+            "wishlist": list(map(lambda x: x.serialize(), self.wishlist)),
             # do not serialize the password, its a security breach
         }
 

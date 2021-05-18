@@ -38,6 +38,19 @@ def login():
     access_token = create_access_token(identity=username)
     return jsonify(access_token=access_token)
 
+# Protect a route with jwt_required, which will kick out requests
+# without a valid JWT present.
+@api.route("/validate", methods=["GET"])
+@jwt_required()
+def validate_token():
+    # Access the identity of the current user with get_jwt_identity
+    current_user = get_jwt_identity()
+    payload = {
+        'logged_in_as': current_user,
+        'msg': 'The token is valid.'
+    }
+    return jsonify(payload), 200
+
 #Endpoint to retrieve all users
 @api.route('/user', methods=['GET'])
 def select_users():
