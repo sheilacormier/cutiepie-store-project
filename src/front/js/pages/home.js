@@ -48,7 +48,7 @@ export const Home = () => {
 							className="d-flex justify-content-center align-items-center">
 							<div className="product-wrapper my-4 text-center">
 								<div className="product-img">
-									<a href="#" data-abc="true">
+									<a href={item.url} data-abc="true">
 										<img src={item.img} alt="outfit" />
 									</a>
 									<span className="text-center">
@@ -56,13 +56,13 @@ export const Home = () => {
 									</span>
 									<div className="product-action">
 										<div className="product-action-style">
-											<a href="#">
+											<a href="#" onClick={() => actions.addWishlist(item)}>
 												<i className="fa fa-heart" />
 											</a>
 											<a href={`/product_details/${index}`}>
 												<i className="fas fa-search" />
 											</a>
-											<a href="#">
+											<a href={item.url}>
 												<i className="fa fa-shopping-cart" />
 											</a>
 										</div>

@@ -49,12 +49,29 @@ def select_users():
     return jsonify(response_body), 200
 
 #Endpoint to modify/update users
-@api.route('/user', methods=['PUT']) 
-def update_users():
-    email = request.json.get("email", None)
-    resource_id = email = request.json.get("email", None)
-    resource_type = email = request.json.get("type", None)
+@api.route('/user/<int:id>', methods=['PUT']) 
+def update_user(id):
+        user = User.query.get(id)
+        email = request.json.get('email', None)
+        password = request.json.get('password', None)
+        photo_url = request.files['file']
 
+        # if params are empty, return a 400
+        if not email:
+            return jsonify({"msg": "Missing email parameter"}), 400
+        if not password:
+            return jsonify({"msg": "Missing password parameter"}), 400
+
+        user = User.query.filter_by(id=user_id).first()
+        # if there is no photo, just create update
+        user.email = email
+        user.password = password
+        
+        if photo is not None:
+            user.photo_url = upload(photo_url)
+            
+        db.session.commit()
+        
 #Endpoint to add users
 @api.route('/user', methods=['POST'])
 def create_person():
