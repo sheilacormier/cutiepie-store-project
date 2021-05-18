@@ -1,19 +1,13 @@
 const getState = ({ getStore, getActions, setStore }) => {
-<<<<<<< HEAD
-	const base_url = "https://3001-ivory-dingo-evk7hwf6.ws-us04.gitpod.io/";
-	return {
-		store: {
-			wishlist: [],
-=======
 	const base_url = "https://3001-ivory-dingo-evk7hwf6.ws-us04.gitpod.io/api";
 	return {
 		store: {
->>>>>>> ec2efb94faf5c5fb2107a6663a718a3222de391e
 			product: [],
 			shopCollection: [],
 			homeCards: [],
 			productDetails: [],
 			user: {
+				photo_url: "",
 				token: "",
 				loggedIn: false,
 				display_name: "",
@@ -25,16 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			// Use getActions to call a function within a fuction
 			initialize: () => {
-<<<<<<< HEAD
-				fetch(`${base_url}/user`)
-					.then(res => res.json())
-					.then(data => setStore({ user: data.user }));
-
-				fetch(`${base_url}/product`)
-					.then(res => res.json())
-					.then(data => setStore({ product: data.product }));
-=======
-				checkToken();
+				getActions().checkToken();
 
 				fetch(`${base_url}/product`)
 					.then(res => res.json())
@@ -107,7 +92,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(res => res.json())
 					.then(data => setStore({ user: data.users }));
->>>>>>> ec2efb94faf5c5fb2107a6663a718a3222de391e
 			},
 
 			addWishlist: data => {
