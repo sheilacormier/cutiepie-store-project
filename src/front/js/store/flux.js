@@ -146,8 +146,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log("Error loading message from backend", error));
 			},
 
-			register: (name, email, password) => {
-				console.log(name, email, password);
+			register: (email, password) => {
+				console.log(email, password);
 			},
 
 			newsletter: email => {

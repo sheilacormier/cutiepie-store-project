@@ -20,7 +20,7 @@ export const ProductDetails = () => {
 			{store.product.length > 0 && (
 				<Row className="mx-auto pt-4">
 					<Col xl={6} className="justify-content-center text-center pt-2">
-						<img src={store.product[productIndex].img} />
+						<img className="large-product-pic" src={store.product[productIndex].img} />
 					</Col>
 					<Col xl={6} className="mx-auto pt-2">
 						<div className="container-fluid">
@@ -41,19 +41,18 @@ export const ProductDetails = () => {
 								</ul>
 							</div>
 							<div className="sizes-wrapper">
-								<span className="size-label">Size: {store.product[productIndex].size}</span>
+								<span className="size-label">Size: </span>
 								<Row>
 									<Col xs="auto">
 										<Form.Group className="mt-3">
 											<Form.Control size="sm" as="select">
-												<option>0-3 months</option>
-												<option>3-6 months</option>
-												<option>6-12 months</option>
+												<option>{store.product[productIndex].size}</option>
 											</Form.Control>
 										</Form.Group>
 									</Col>
 								</Row>
 							</div>
+							<p className="product-description">{store.product[productIndex].description}</p>
 							{/* <div>
 							<span className="quantity-label">Quantity</span>
 							<div className="mt-2">
@@ -63,14 +62,15 @@ export const ProductDetails = () => {
 							</div>
 						</div> */}
 							<div>
-								<button className="add-to-cart btn btn-default w-100" type="button">
+								<Button
+									href={store.product[productIndex].url}
+									className="add-to-cart btn btn-default w-100"
+									type="button"
+									target="_blank">
 									buy now
-								</button>
+								</Button>
 							</div>
 						</div>
-					</Col>
-					<Col xl={12} className="mt-4 mp-4">
-						<p className="product-description">{store.product[productIndex].description}</p>
 					</Col>
 				</Row>
 			)}

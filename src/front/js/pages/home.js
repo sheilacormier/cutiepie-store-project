@@ -49,7 +49,7 @@ export const Home = () => {
 							<div className="product-wrapper my-4 text-center">
 								<div className="product-img">
 									<a href={product.url} data-abc="true">
-										<img className="pic-size" src={product.img} alt="outfit" />
+										<img className="product-pic" src={product.img} alt="outfit" />
 									</a>
 									<span className="text-center">
 										<i className="fa fa-rupee" /> {product.price}
@@ -62,9 +62,9 @@ export const Home = () => {
 											<Link to={`/product_details/${index}`}>
 												<i className="fas fa-search" />
 											</Link>
-											<Link to={product.url}>
+											<a href={product.url} target="_blank" rel="noopener noreferrer">
 												<i className="fa fa-shopping-cart" />
-											</Link>
+											</a>
 										</div>
 									</div>
 								</div>
