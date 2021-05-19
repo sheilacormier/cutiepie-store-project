@@ -39,7 +39,7 @@ export const Register = () => {
 						<Form.Group controlId="formGroupEmail">
 							<Form.Control
 								required
-								autoComplete
+								autoComplete="on"
 								type="email"
 								placeholder="Enter email"
 								value={email}
@@ -53,7 +53,7 @@ export const Register = () => {
 						<Form.Group controlId="formGroupPassword">
 							<Form.Control
 								required
-								autoComplete
+								autoComplete="on"
 								type="password"
 								placeholder="Password"
 								value={password}

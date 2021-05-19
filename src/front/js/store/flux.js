@@ -25,7 +25,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data =>
 						setStore({
 							product: data.products,
-							homeCards: data.products.slice(0, 4)
+							homeCards: data.products.slice(0, 4),
+							shopCollection: data.products
 						})
 					);
 			},

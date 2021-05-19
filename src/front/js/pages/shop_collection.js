@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
+
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -44,7 +46,7 @@ export const ShopCollection = () => {
 			</nav>
 			<h5 className="text-center page-title pt-2 pb-3">SHOP COLLECTION</h5>
 			<Row className="mx-auto">
-				{store.shopCollection.map((item, index) => {
+				{store.shopCollection.map((product, index) => {
 					return (
 						<Col sm={12} md={6} lg={4} key={index}>
 							<Card className="mb-3 collection-card" style={{ width: "18rem" }}>
@@ -52,20 +54,24 @@ export const ShopCollection = () => {
 									<Button bsPrefix="btn-like" variant="warning">
 										<i className="fa fa-heart" />
 									</Button>
-									<Card.Img variant="top" src={item.img} />
+									<Card.Img className="pt-2 pb-4" variant="top" src={product.img} />
 									<Container className="bottom-btn-container">
-										<Button href="#" bsPrefix="btn-addtocart" variant="warning">
+										<Button as={Link} to="#" bsPrefix="btn-addtocart" variant="warning">
 											<i className="fa fa-shopping-cart" />
 										</Button>
-										<Button href="/product_details/:id" bsPrefix="btn-seedetails" variant="warning">
+										<Button
+											as={Link}
+											to="/product_details/:productid"
+											bsPrefix="btn-seedetails"
+											variant="warning">
 											<i className="fas fa-search" />
 										</Button>
 									</Container>
 								</Container>
 
 								<Card.Body className="text-center">
-									<Card.Title className="mt-3">{item.h1}</Card.Title>
-									<Card.Text>Price: $300</Card.Text>
+									<Card.Title className="mt-3">{product.title}</Card.Title>
+									<Card.Text>{product.price}</Card.Text>
 								</Card.Body>
 							</Card>
 						</Col>

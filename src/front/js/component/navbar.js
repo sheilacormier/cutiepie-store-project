@@ -24,7 +24,7 @@ export const MyNavbar = () => {
 					</Nav.Link>
 					{store.user.loggedIn ? (
 						<Nav.Link as={Link} to="/" onClick={e => actions.signout()}>
-							log out
+							logout
 						</Nav.Link>
 					) : (
 						<Nav.Link as={Link} to="/sign_in">
