@@ -44,7 +44,7 @@ export const SignIn = () => {
 								value={email}
 								onChange={e => setEmail(e.target.value)}
 								required
-								autoComplete="email"
+								autoComplete="on"
 								ref={emailRef}
 							/>
 							<Form.Control.Feedback type="invalid">
@@ -58,7 +58,7 @@ export const SignIn = () => {
 								value={password}
 								onChange={e => setPassword(e.target.value)}
 								required
-								autoComplete="password"
+								autoComplete="on"
 								ref={passRef}
 							/>
 							<Form.Control.Feedback type="invalid">

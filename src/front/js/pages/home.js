@@ -93,7 +93,7 @@ export const Home = () => {
 									type="email"
 									value={email}
 									required
-									autoComplete
+									autoComplete="on"
 									onChange={e => setEmail(e.target.value)}
 									ref={emailRef}
 								/>

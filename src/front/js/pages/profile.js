@@ -8,16 +8,23 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
+import { Link } from "react-router-dom";
+
 import "../../styles/profile.scss";
 
 export const Profile = () => {
 	const { store, actions } = useContext(Context);
 	const emailRef = useRef(null);
 	const passRef = useRef(null);
+	const [file, setFile] = useState(null);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [passValid, setPassValidated] = useState(false);
 	const [emailValid, setEmailValidated] = useState(false);
+
+	// const handlePhotoUpload = e {
+
+	// }
 
 	const handleEmailSubmit = async e => {
 		e.preventDefault();
@@ -54,26 +61,37 @@ export const Profile = () => {
 						<div className="d-flex flex-column profile-container profile-container-left p-2">
 							<h3 className="text-center">Your User Profile</h3>
 							<img
-								src="https://res.cloudinary.com/scormier/image/upload/v1620690465/cutie-pie/1452484590-sweet-baby-boy-image-screenshot_wzzhx5.jpg"
-								className=" align-self-center m-2 rounded-circle profile-image"
+								src={
+									store.user.photo_url !== null &&
+									"https://res.cloudinary.com/scormier/image/upload/v1620690465/cutie-pie/1452484590-sweet-baby-boy-image-screenshot_wzzhx5.jpg"
+								}
+								className="align-self-center m-2 rounded-circle profile-image"
 								alt="User-Profile-Image"
 							/>
 							<div className="d-flex flex-column flex-md-row align-items-center justify-content-center">
 								{/* <Form.File.Label className="upload-photo">
 								Choose file */}
-								<Form.File.Input className="w-50 form-file mt-1" />
+								<Form.File.Input
+									className="w-50 form-file mt-1"
+									onChange={e => setFile(e.target.files[0])}
+								/>
 								{/* </Form.File.Label> */}
 
-								<Button type="submit" className="mt-2" bsPrefix="btn-upload-photo" variant="warning">
+								<Button
+									// onSubmit={handlePhotoUpload}
+									type="submit"
+									className="mt-2"
+									bsPrefix="btn-upload-photo"
+									variant="warning">
 									Upload photo
 								</Button>
 							</div>
 
 							<Nav className="justify-content-between justify-content-md-center">
-								<Nav.Link className="py-1 px-2 pr-md-4" href="/wishlist">
+								<Nav.Link className="py-1 px-2 pr-md-4" as={Link} to="/wishlist">
 									my wishlist
 								</Nav.Link>
-								<Nav.Link className="py-1 px-2 pl-md-4 logout" eventKey="link-1">
+								<Nav.Link className="py-1 px-2 pl-md-4 logout" as={Link} to="/logout">
 									logout
 								</Nav.Link>
 							</Nav>

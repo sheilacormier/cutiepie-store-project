@@ -26,6 +26,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({
 							product: data.products,
 							homeCards: data.products.slice(0, 4),
+							shopCollection: data.products,
 							productDetails: data.products
 						})
 					);
