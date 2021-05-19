@@ -91,7 +91,12 @@ export const Profile = () => {
 								<Nav.Link className="py-1 px-2 pr-md-4" as={Link} to="/wishlist">
 									my wishlist
 								</Nav.Link>
-								<Nav.Link className="py-1 px-2 pl-md-4 logout" as={Link} to="/logout">
+
+								<Nav.Link
+									className="py-1 px-2 pl-md-4 logout"
+									as={Link}
+									to="/"
+									onClick={e => actions.signout()}>
 									logout
 								</Nav.Link>
 							</Nav>
