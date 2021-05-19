@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
@@ -33,9 +34,9 @@ export const ProductDetails = () => {
 								<span className="color-label">Color: {store.product[productIndex].color}</span>
 								<ul className="preview-thumbnail nav nav-tabs">
 									<li>
-										<a href="#">
+										<Link to="#">
 											<img src={store.product[productIndex].img} />
-										</a>
+										</Link>
 									</li>
 								</ul>
 							</div>
