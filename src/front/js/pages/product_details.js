@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 
@@ -62,9 +63,11 @@ export const ProductDetails = () => {
 							</div>
 						</div> */}
 							<div>
-								<button className="add-to-cart btn btn-default w-100" type="button">
-									buy now
-								</button>
+								<Link to={store.product[productIndex].url}>
+									<button className="add-to-cart btn btn-default w-100" type="button">
+										buy now
+									</button>
+								</Link>
 							</div>
 						</div>
 					</Col>
