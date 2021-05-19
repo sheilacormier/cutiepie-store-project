@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
@@ -35,9 +34,9 @@ export const ProductDetails = () => {
 								<span className="color-label">Color: {store.product[productIndex].color}</span>
 								<ul className="preview-thumbnail nav nav-tabs">
 									<li>
-										<Link to="#">
+										<a href="#">
 											<img src={store.product[productIndex].img} />
-										</Link>
+										</a>
 									</li>
 								</ul>
 							</div>
@@ -64,11 +63,9 @@ export const ProductDetails = () => {
 							</div>
 						</div> */}
 							<div>
-								<Link to={store.product[productIndex].url}>
-									<button className="add-to-cart btn btn-default w-100" type="button">
-										buy now
-									</button>
-								</Link>
+								<button className="add-to-cart btn btn-default w-100" type="button">
+									buy now
+								</button>
 							</div>
 						</div>
 					</Col>
