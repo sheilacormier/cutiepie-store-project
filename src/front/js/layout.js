@@ -34,9 +34,6 @@ const Layout = () => {
 						<Route exact path="/">
 							<Home />
 						</Route>
-						{/* <Route exact path="/single/:theid">
-							<Single />
-						</Route> */}
 						<Route exact path="/shop_collection">
 							<ShopCollection />
 						</Route>
@@ -55,7 +52,7 @@ const Layout = () => {
 						<Route exact path="/terms_conditions">
 							<TermsConditions />
 						</Route>
-						<Route exact path="/product_details/:theid">
+						<Route exact path="/product_details/:productIndex">
 							<ProductDetails />
 						</Route>
 						<Route exact path="/privacy_policy">
