@@ -1,6 +1,6 @@
 import React, { useContext, useState, useRef } from "react";
 import { Context } from "../store/appContext";
-
+import { Link } from "react-router-dom";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
@@ -49,22 +49,22 @@ export const Home = () => {
 							<div className="product-wrapper my-4 text-center">
 								<div className="product-img">
 									<a href={product.url} data-abc="true">
-										<img src={product.img} alt="outfit" />
+										<img className="pic-size" src={product.img} alt="outfit" />
 									</a>
 									<span className="text-center">
 										<i className="fa fa-rupee" /> {product.price}
 									</span>
 									<div className="product-action">
 										<div className="product-action-style">
-											<a href="#" onClick={() => actions.addWishlist(product)}>
+											<Link to="#" onClick={() => actions.addWishlist(product)}>
 												<i className="fa fa-heart" />
-											</a>
-											<a href={`/product_details/${index}`}>
+											</Link>
+											<Link to={`/product_details/${index}`}>
 												<i className="fas fa-search" />
-											</a>
-											<a href={product.url}>
+											</Link>
+											<Link to={product.url}>
 												<i className="fa fa-shopping-cart" />
-											</a>
+											</Link>
 										</div>
 									</div>
 								</div>
