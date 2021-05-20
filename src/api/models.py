@@ -39,6 +39,7 @@ class Product(db.Model):
     color = db.Column(db.String(50))
     size = db.Column(db.String(50))
     img = db.Column(db.String(250))
+    variants = db.relationship("Variant", backref='product',lazy=True)
     description = db.Column(db.String(250))       
     url = db.Column(db.String(250))     
 
@@ -51,9 +52,29 @@ class Product(db.Model):
             "brand": self.brand,
             "title": self.title,
             "price": self.price,
+            "variants": list(map(lambda x: x.serialize(), self.variants)),
             "color": self.color,
             "size": self.size,                    
             "img": self.img,
             "description": self.description,
             "url": self.url
         } 
+
+class Variant(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    color = db.Column(db.String(50), nullable=False)
+    size = db.Column(db.String(50), nullable=False)
+    img = db.Column(db.String(250), nullable=False)
+    product_id = db.Column(db.Integer, db.ForeignKey('product.id'),
+        nullable=False)
+
+    def __repr__(self):
+        return '<Variant %r>' % self.id
+    
+    def serialize(self):
+        return {
+            "id": self.id,
+            "color": self.color,
+            "size": self.size,
+            "img": self.img
+        }

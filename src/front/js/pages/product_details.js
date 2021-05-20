@@ -15,6 +15,7 @@ import "../../styles/product_details.scss";
 export const ProductDetails = () => {
 	const { store, actions } = useContext(Context);
 	let { productIndex } = useParams();
+	let variants = store.product.length > 0 && store.product[productIndex].variants;
 	return (
 		<Container className="my-2">
 			{store.product.length > 0 && (
@@ -30,23 +31,41 @@ export const ProductDetails = () => {
 								<span>{store.product[productIndex].price}</span>
 							</h4>
 							<hr />
-							<div className="colors-wrapper">
-								<span className="color-label">Color: {store.product[productIndex].color}</span>
-								<ul className="preview-thumbnail nav nav-tabs">
-									<li>
-										<a href="#">
-											<img src={store.product[productIndex].img} />
-										</a>
-									</li>
-								</ul>
-							</div>
+							<Row className="colors-wrapper">
+								<Col>
+									<h6>Color:</h6>
+									<Row>
+										{variants.length > 0
+											? variants.map((variant, index) => {
+													return (
+														<Col
+															className="d-flex flex-column align-items-center"
+															key={index}>
+															<Link to="#" onClick={e => e.preventDefault()} className="">
+																<img src={variant.img} />
+															</Link>
+															<br />
+															<p className="color-label mt-3"> {variant.color}</p>
+														</Col>
+													);
+											  })
+											: "No Variants Available"}
+									</Row>
+								</Col>
+							</Row>
 							<div className="sizes-wrapper">
 								<span className="size-label">Size: </span>
 								<Row>
 									<Col xs="auto">
 										<Form.Group className="mt-3">
 											<Form.Control size="sm" as="select">
-												<option>{store.product[productIndex].size}</option>
+												{variants.length > 0 ? (
+													variants.map((variant, index) => {
+														return <option key={index}>{variant.size}</option>;
+													})
+												) : (
+													<option>No Sizes Available</option>
+												)}
 											</Form.Control>
 										</Form.Group>
 									</Col>
