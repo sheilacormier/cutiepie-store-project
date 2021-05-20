@@ -62,11 +62,7 @@ export const Home = () => {
 											<Link to={`/product_details/${index}`}>
 												<i className="fas fa-search" />
 											</Link>
-<<<<<<< HEAD
-											<a href={product.url}>
-=======
 											<a href={product.url} target="_blank" rel="noopener noreferrer">
->>>>>>> b2a03ebe67bd5d2c9befcc91e4997250d28ed82d
 												<i className="fa fa-shopping-cart" />
 											</a>
 										</div>
