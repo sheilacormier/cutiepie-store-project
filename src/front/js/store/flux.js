@@ -1,5 +1,5 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const base_url = "https://3001-ivory-dingo-evk7hwf6.ws-us04.gitpod.io/api";
+	const base_url = "https://3001-red-finch-vudtfijl.ws-us04.gitpod.io/api";
 	return {
 		store: {
 			product: [],
@@ -27,7 +27,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 							product: data.products,
 							homeCards: data.products.slice(0, 4),
 							shopCollection: data.products,
-							productDetails: data.products
+							productDetails: data.products,
+							wishlist: data.products
 						})
 					);
 			},
@@ -160,6 +161,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			updatePassword: password => {
 				console.log(password);
+			},
+
+			uploadImage: () => {
+				console.log("this is uploadImage");
 			}
 
 			// changeColor: (index, color) => {

@@ -16,15 +16,122 @@ export const Profile = () => {
 	const { store, actions } = useContext(Context);
 	const emailRef = useRef(null);
 	const passRef = useRef(null);
-	const [file, setFile] = useState(null);
+
+	// const [image, setImage] = useState("");
+	// const [uploading, setUploading] = useState(false);
+
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [passValid, setPassValidated] = useState(false);
 	const [emailValid, setEmailValidated] = useState(false);
 
-	// const handlePhotoUpload = e {
+	//This is another example that uploads to cloudinary and shows on the page
+	const [fileInputState, setFileInputState] = useState("");
+	const [selectedFile, setSelectedFile] = useState("");
+	const [previewSource, setPreviewSource] = useState();
+	const handleFileInputChange = e => {
+		const file = e.target.files[0];
+		previewFile(file);
+	};
 
+	const previewFile = file => {
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onloadend = () => {
+			setPreviewSource(reader.result);
+		};
+	};
+
+	const handleSubmitFile = e => {
+		e.preventDefault();
+		if (!previewSource) return;
+		uploadImage(previewSource);
+	};
+
+	const uploadImage = async base64EncodedImage => {
+		console.log(base64EncodedImage);
+		let data = new FormData();
+		let payload = {
+			photo: fileInputState
+		};
+		for (let key in payload) {
+			if (key === "photo_url") {
+				data.append("file", payload[key]);
+			} else {
+				data.append(key, payload[key]);
+			}
+		}
+		console.log(data);
+		try {
+			fetch("https://3001-red-finch-vudtfijl.ws-us04.gitpod.io/api/user", {
+				method: "PUT",
+				body: JSON.stringify({ data: base64EncodedImage }),
+				headers: { "Content-type": "application/json" }
+			})
+				.then(resp => resp.json())
+				.then(data => {
+					// setStatus(data);
+					actions.uploadImage(user.photo_url);
+				});
+		} catch (error) {
+			console.error(error);
+		}
+
+		// try {
+		// 	await fetch("/api/upload", {
+		// 		method: "POST",
+		// 		body: JSON.stringify({ data: base64EncodedImage }),
+		// 		headers: { "Content-type": "application/json" }
+		// 	});
+		// } catch (error) {
+		// 	console.error(error);
+		// }
+	};
+
+	// This sends the image to the state
+	// const uploadImage = e => {
+	// 	let data = new FormData();
+	// let payload = {
+	// 	photo: image
+	// };
+	// for (let key in payload) {
+	// 	if (key === "photo") {
+	// 		data.user.photo.append("photo", payload[key]);
+	// 	} else {
+	// 		data.user.photo.append(key, payload[key]);
+	// 	}
 	// }
+	// console.log(data);
+
+	// 	fetch("https://3001-ivory-dingo-evk7hwf6.ws-us04.gitpod.io//api/user/", {
+	// 		method: "POST",
+	// 		body: data
+	// 	})
+	// 		.then(resp => resp.json())
+	// 		.then(data => {
+	// 			setStatus(data);
+	// 			actions.uploadImage(data.user.photo_url);
+	// 		})
+	// 		.catch(err => console.error(err));
+	// };
+
+	// This one sends the image to cloudinary and can show the image on the page
+	// const uploadImage = async e => {
+	// 	const files = e.target.files;
+	// 	const data = new FormData();
+	// 	data.append("file", files[0]);
+	// 	data.append("upload_preset", "vfxhggou");
+	// 	setUploading(true);
+
+	// 	const res = await fetch("https://api.cloudinary.com/v1_1/scormier/image/upload", {
+	// 		method: "POST",
+	// 		body: data
+	// 	});
+	// 	const file = await res.json();
+
+	// 	setImage(file.secure_url);
+	// 	setUploading(false);
+	// };
 
 	const handleEmailSubmit = async e => {
 		e.preventDefault();
@@ -60,32 +167,32 @@ export const Profile = () => {
 					<Col xs={12} md={6} className="p-0">
 						<div className="d-flex flex-column profile-container profile-container-left p-2">
 							<h3 className="text-center">Your User Profile</h3>
-							<img
-								src={
-									store.user.photo_url !== null &&
-									"https://res.cloudinary.com/scormier/image/upload/v1620690465/cutie-pie/1452484590-sweet-baby-boy-image-screenshot_wzzhx5.jpg"
-								}
-								className="align-self-center m-2 rounded-circle profile-image"
-								alt="User-Profile-Image"
-							/>
-							<div className="d-flex flex-column flex-md-row align-items-center justify-content-center">
-								{/* <Form.File.Label className="upload-photo">
-								Choose file */}
-								<Form.File.Input
-									className="w-50 form-file mt-1"
-									onChange={e => setFile(e.target.files[0])}
-								/>
-								{/* </Form.File.Label> */}
+							{previewSource && (
+								<img
+									src={previewSource}
+									// store.user.photo_url !== null &&
+									// "https://res.cloudinary.com/scormier/image/upload/v1620690465/cutie-pie/1452484590-sweet-baby-boy-image-screenshot_wzzhx5.jpg"
 
-								<Button
-									// onSubmit={handlePhotoUpload}
-									type="submit"
-									className="mt-2"
-									bsPrefix="btn-upload-photo"
-									variant="warning">
+									className="align-self-center m-2 rounded-circle profile-image"
+									alt="User-Profile-Image"
+								/>
+							)}
+
+							{/* <div className="d-flex flex-column flex-md-row align-items-center justify-content-center"> */}
+							<Form
+								onSubmit={handleSubmitFile}
+								className="d-flex flex-column flex-md-row align-items-center justify-content-center">
+								<Form.File.Input
+									value={fileInputState}
+									className="w-50 form-file mt-1"
+									onChange={handleFileInputChange}
+								/>
+
+								<Button type="submit" className="mt-2" bsPrefix="btn-upload-photo" variant="warning">
 									Upload photo
 								</Button>
-							</div>
+							</Form>
+							{/* </div> */}
 
 							<Nav className="justify-content-between justify-content-md-center">
 								<Nav.Link className="py-1 px-2 pr-md-4" as={Link} to="/wishlist">
