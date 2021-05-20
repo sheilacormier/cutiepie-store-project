@@ -16,36 +16,46 @@ export const ProductDetails = () => {
 	const { store, actions } = useContext(Context);
 	let { productIndex } = useParams();
 	let variants = store.product.length > 0 && store.product[productIndex].variants;
+	const [toggled, setToggled] = useState("");
+	const toggleImage = () => setToggled(!toggled);
+
 	return (
-		<Container className="my-2">
+		<Container className="my-2 mb-5">
 			{store.product.length > 0 && (
 				<Row className="mx-auto pt-4">
-					<Col xl={6} className="justify-content-center text-center pt-2">
-						<img className="large-product-pic" src={store.product[productIndex].img} />
+					<Col xl={6} className="large-product-pic justify-content-center text-center pt-2">
+						{toggled !== undefined && (
+							<img className="large-product-pic" src={store.product[productIndex].img} />
+						)}
 					</Col>
 					<Col xl={6} className="mx-auto pt-2">
 						<div className="container-fluid">
 							<h4 className="product-brand">{store.product[productIndex].brand}</h4>
 							<h4 className="product-title">{store.product[productIndex].title}</h4>
-							<h4 className="price">
+							<h4 className="product-price">
 								<span>{store.product[productIndex].price}</span>
 							</h4>
 							<hr />
 							<Row className="colors-wrapper">
 								<Col>
-									<h6>Color:</h6>
+									<span className="color-label">Color:</span>
 									<Row>
 										{variants.length > 0
 											? variants.map((variant, index) => {
 													return (
 														<Col
-															className="d-flex flex-column align-items-center"
+															className="d-flex flex-column align-items-center mt-2"
 															key={index}>
-															<Link to="#" onClick={e => e.preventDefault()} className="">
+															<Link
+																to="#"
+																// onClick={() => setToggled(index)}
+																onClick={toggleImage}
+																// onClick={e => e.preventDefault()}
+																className="thumb-product-pic">
 																<img src={variant.img} />
 															</Link>
 															<br />
-															<p className="color-label mt-3"> {variant.color}</p>
+															<p className="color mt-1"> {variant.color}</p>
 														</Col>
 													);
 											  })
@@ -54,10 +64,10 @@ export const ProductDetails = () => {
 								</Col>
 							</Row>
 							<div className="sizes-wrapper">
-								<span className="size-label">Size: </span>
+								<span className="size-label">Size:</span>
 								<Row>
 									<Col xs="auto">
-										<Form.Group className="mt-3">
+										<Form.Group className="mt-2">
 											<Form.Control size="sm" as="select">
 												{variants.length > 0 ? (
 													variants.map((variant, index) => {
@@ -72,14 +82,6 @@ export const ProductDetails = () => {
 								</Row>
 							</div>
 							<p className="product-description">{store.product[productIndex].description}</p>
-							{/* <div>
-							<span className="quantity-label">Quantity</span>
-							<div className="mt-2">
-								<input className="quantitybtn" type="button" value="-" />
-								<input className="quantitynum" type="button" value="1" />
-								<input className="quantitybtn" type="button" value="+" />
-							</div>
-						</div> */}
 							<div>
 								<Button
 									href={store.product[productIndex].url}
