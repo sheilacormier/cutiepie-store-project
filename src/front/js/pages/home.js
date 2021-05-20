@@ -62,9 +62,9 @@ export const Home = () => {
 											<Link to={`/product_details/${index}`}>
 												<i className="fas fa-search" />
 											</Link>
-											<Link to={product.url}>
+											<a href={product.url}>
 												<i className="fa fa-shopping-cart" />
-											</Link>
+											</a>
 										</div>
 									</div>
 								</div>

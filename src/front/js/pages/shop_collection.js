@@ -51,7 +51,10 @@ export const ShopCollection = () => {
 						<Col sm={12} md={6} lg={4} key={index}>
 							<Card className="mb-3 collection-card" style={{ width: "18rem" }}>
 								<Container className="p-0">
-									<Button bsPrefix="btn-like" variant="warning">
+									<Button
+										bsPrefix="btn-like"
+										variant="warning"
+										onClick={() => actions.addWishlist(product)}>
 										<i className="fa fa-heart" />
 									</Button>
 									<Card.Img className="pt-2 pb-4" variant="top" src={product.img} />
