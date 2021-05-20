@@ -9,6 +9,12 @@
     margin-top: 10px;    
 }
 
+.large-product-pic {
+    width: 100%;
+   
+    object-fit: cover;
+}
+
 .product-brand{
     text-transform: UPPERCASE;
     font-family: Verdana, Geneva, Tahoma, sans-serif;

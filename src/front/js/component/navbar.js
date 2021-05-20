@@ -10,8 +10,8 @@ export const MyNavbar = () => {
 	const { store, actions } = useContext(Context);
 	return (
 		<Navbar className="myNavbar" expand="lg">
-			<Navbar.Brand as={Link} to="/">
-				<img src="https://res.cloudinary.com/scormier/image/upload/v1620161770/cutie-pie/cp-logo_xi19ms.png" />
+			<Navbar.Brand className="" as={Link} to="/">
+				<img src="https://res.cloudinary.com/scormier/image/upload/v1621447616/cutie-pie/cutie-pie_logo73x100_lojwos.png" />
 			</Navbar.Brand>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<Navbar.Collapse id="basic-navbar-nav">

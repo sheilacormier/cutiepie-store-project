@@ -1,6 +1,7 @@
 .myNavbar{
     background: #d4edda;
     .navbar-nav .nav-link{
+        font-size: 18px;
         color: #f80c8d;
         &:hover{
             color: darken(#f80c8d, 25%)
@@ -18,3 +19,5 @@
     width: 40px;
     height: 40px;
 }
+
+
