@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
@@ -15,18 +15,21 @@ import "../../styles/product_details.scss";
 export const ProductDetails = () => {
 	const { store, actions } = useContext(Context);
 	let { productIndex } = useParams();
+	let products = store.product;
 	let variants = store.product.length > 0 && store.product[productIndex].variants;
-	const [toggled, setToggled] = useState("");
-	const toggleImage = () => setToggled(!toggled);
-
+	const [selectedimage, setSelectedimage] = useState("");
+	useEffect(
+		() => {
+			if (store.product.length > 0) setSelectedimage(store.product[productIndex].img);
+		},
+		[products]
+	);
 	return (
 		<Container className="my-2 mb-5">
 			{store.product.length > 0 && (
 				<Row className="mx-auto pt-4">
 					<Col xl={6} className="large-product-pic justify-content-center text-center pt-2">
-						{toggled !== undefined && (
-							<img className="large-product-pic" src={store.product[productIndex].img} />
-						)}
+						<img className="large-product-pic" src={selectedimage} />
 					</Col>
 					<Col xl={6} className="mx-auto pt-2">
 						<div className="container-fluid">
@@ -48,9 +51,7 @@ export const ProductDetails = () => {
 															key={index}>
 															<Link
 																to="#"
-																// onClick={() => setToggled(index)}
-																// onClick={e => e.preventDefault()}
-																onClick={toggleImage}
+																onClick={e => setSelectedimage(variant.img)}
 																className="thumb-product-pic">
 																<img src={variant.img} />
 															</Link>
