@@ -1,5 +1,6 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const base_url = "https://3001-red-finch-vudtfijl.ws-us04.gitpod.io/api";
+	// const base_url = "https://3001-pink-aardvark-jkrb8r4r.ws-us04.gitpod.io/api";
+	const base_url = `${process.env.BACKEND_URL}/api`;
 	return {
 		store: {
 			product: [],
@@ -51,6 +52,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 								user: {
 									...getStore().user,
 									...tokenCheck,
+									...data.user,
 									loggedIn: true
 								}
 							})
@@ -161,11 +163,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			updatePassword: password => {
 				console.log(password);
-			},
-
-			uploadImage: () => {
-				console.log("this is uploadImage");
 			}
+
+			// uploadImage: user => {
+			// 	setStore({
+			// 		...getStore().user,
+			// 		photo_url: image
+			// 	});
+			// }
 
 			// changeColor: (index, color) => {
 			// 	//get the store
