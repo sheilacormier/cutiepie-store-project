@@ -22,7 +22,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// Use getActions to call a function within a fuction
 			initialize: () => {
 				getActions().checkToken();
-					fetch(`${base_url}/product`)
+				getActions().getAllProducts();
+			},
+
+			getAllProducts: () => {
+				return fetch(`${base_url}/product`)
 					.then(res => res.json())
 					.then(data =>
 						setStore({
@@ -32,7 +36,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 							productDetails: data.products,
 							wishlist: data.products
 						})
-					);
+					)
+					.catch(err => console.error(err));
 			},
 
 			checkToken: () => {

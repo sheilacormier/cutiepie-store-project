@@ -53,9 +53,7 @@ class Product(db.Model):
             "brand": self.brand,
             "title": self.title,
             "price": self.price,
-            "variants": list(map(lambda x: x.serialize(), self.variants)),
-            "color": self.color,
-            "size": self.size,                    
+            "variants": list(map(lambda x: x.serialize(), self.variants)),                   
             "img": self.img,
             "description": self.description,
             "url": self.url
