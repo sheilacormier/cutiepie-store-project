@@ -49,8 +49,8 @@ export const ProductDetails = () => {
 															<Link
 																to="#"
 																// onClick={() => setToggled(index)}
-																onClick={toggleImage}
 																// onClick={e => e.preventDefault()}
+																onClick={toggleImage}
 																className="thumb-product-pic">
 																<img src={variant.img} />
 															</Link>
