@@ -23,24 +23,32 @@ export const MyNavbar = () => {
 						shop collection
 					</Nav.Link>
 					{store.user.loggedIn ? (
-						<Nav.Link as={Link} to="/" onClick={e => actions.signout()}>
-							logout
-						</Nav.Link>
+						<>
+							<Nav.Link as={Link} to="/profile">
+								profile
+							</Nav.Link>
+							<Nav.Link as={Link} to="/wishlist">
+								wishlist
+							</Nav.Link>
+							<Nav.Link as={Link} to="/" onClick={e => actions.signout()}>
+								logout
+							</Nav.Link>
+						</>
 					) : (
-						<Nav.Link as={Link} to="/sign_in">
-							sign in
-						</Nav.Link>
-					)}
+						<>
+							<Nav.Link as={Link} to="/sign_in">
+								sign in
+							</Nav.Link>
+							<div className="d-flex flex-column align-content-center justify-content-center">/</div>
 
-					<Nav.Link as={Link} to="/profile">
-						profile
-					</Nav.Link>
-					<Nav.Link as={Link} to="/register">
-						register
-					</Nav.Link>
-					<Nav.Link as={Link} to="/wishlist">
-						wishlist
-					</Nav.Link>
+							<Nav.Link as={Link} to="/register">
+								register
+							</Nav.Link>
+							<Nav.Link as={Link} to="/profile">
+								profile
+							</Nav.Link>
+						</>
+					)}
 				</Nav>
 			</Navbar.Collapse>
 		</Navbar>

@@ -26,6 +26,7 @@ class User(db.Model):
             "id": self.id,
             "email": self.email,
             "wishlist": list(map(lambda x: x.serialize(), self.wishlist)),
+            "photo_url": self.photo_url
             # do not serialize the password, its a security breach
         }
 

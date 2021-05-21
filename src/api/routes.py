@@ -52,9 +52,11 @@ def login():
 def validate_token():
     # Access the identity of the current user with get_jwt_identity
     current_user = get_jwt_identity()
+    user = User.query.filter_by(email=current_user).first()
     payload = {
         'logged_in_as': current_user,
-        'msg': 'The token is valid.'
+        'msg': 'The token is valid.',
+        'user': user.serialize()
     }
     return jsonify(payload), 200
 
@@ -80,28 +82,39 @@ def get_one_user(id):
 
 
 #Endpoint updates the user's information by ID
-@api.route('/user/<int:id>', methods=['PUT']) 
-def update_user(id):
-        user = User.query.get(id)
-        email = request.json.get('email', None)
-        password = request.json.get('password', None)
-        photo_url = request.files['file']
-
-        # if params are empty, return a 400
-        if not email:
-            return jsonify({"msg": "Missing email parameter"}), 400
-        if not password:
-            return jsonify({"msg": "Missing password parameter"}), 400
-
-        user = User.query.filter_by(id=user_id).first()
-        # if there is no photo, just create update
-        user.email = email
-        user.password = password
+@api.route('/user', methods=['PUT']) 
+def update_user():
         
-        if photo is not None:
-            user.photo_url = upload(photo_url)
-            
-        db.session.commit()
+    # user = User.query.get(id)
+    email = request.form.get('email', None)
+    password = request.form.get('password', None)
+    photo = request.files['photo']
+
+    # if params are empty, return a 400
+    if not email:
+        return jsonify({"msg": "Missing email parameter"}), 400
+    # if not password:
+    #     return jsonify({"msg": "Missing password parameter"}), 400
+    
+
+    user = User.query.filter_by(email=email).first()
+    user.email = email
+
+    if password is not None:
+        user.password = password
+    
+    # if there is no photo, just create update 
+    if photo is not None:
+        result = upload(photo)
+        user.photo_url = result["secure_url"]
+        
+    db.session.commit()
+    payload = {
+        'msg': 'Profile successfully updated.',
+        'user': user.serialize()
+    }
+
+    return jsonify(payload),200
 
 
 #Endpoint to add users

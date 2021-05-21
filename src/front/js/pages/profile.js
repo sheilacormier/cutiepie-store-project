@@ -16,15 +16,45 @@ export const Profile = () => {
 	const { store, actions } = useContext(Context);
 	const emailRef = useRef(null);
 	const passRef = useRef(null);
-	const [file, setFile] = useState(null);
-	const [email, setEmail] = useState("");
+
+	const [src, setSrc] = useState(store.user.photo_url);
+	const [image, setImage] = useState(null);
+
+	const [email, setEmail] = useState(store.user.email);
 	const [password, setPassword] = useState("");
 	const [passValid, setPassValidated] = useState(false);
 	const [emailValid, setEmailValidated] = useState(false);
 
-	// const handlePhotoUpload = e {
+	// ______This sends the image to the state
+	const uploadImage = e => {
+		e.preventDefault();
+		let data = new FormData();
+		let payload = {
+			email: email
+		};
 
-	// }
+		if (password !== "") payload.password = password;
+		if (typeof image === "object") payload.photo = image;
+
+		for (let key in payload) {
+			if (key === "photo") {
+				data.append("photo", payload[key]);
+			} else {
+				data.append(key, payload[key]);
+			}
+		}
+		console.log(data);
+
+		fetch(process.env.BACKEND_URL + "/api/user", {
+			method: "PUT",
+			body: data
+		})
+			.then(resp => resp.json())
+			.then(data => {
+				console.log("success");
+			})
+			.catch(err => console.error(err));
+	};
 
 	const handleEmailSubmit = async e => {
 		e.preventDefault();
@@ -53,6 +83,15 @@ export const Profile = () => {
 
 		setPassValidated(true);
 	};
+
+	const changeImage = file => {
+		var reader = new FileReader();
+
+		reader.onload = function(e) {
+			setSrc(e.target.result);
+		};
+		reader.readAsDataURL(file);
+	};
 	return (
 		<Container className="my-1">
 			{typeof store.user.id !== "undefined" && (
@@ -60,32 +99,31 @@ export const Profile = () => {
 					<Col xs={12} md={6} className="p-0">
 						<div className="d-flex flex-column profile-container profile-container-left p-2">
 							<h3 className="text-center">Your User Profile</h3>
+
 							<img
 								src={
-									store.user.photo_url !== null &&
-									"https://res.cloudinary.com/scormier/image/upload/v1620690465/cutie-pie/1452484590-sweet-baby-boy-image-screenshot_wzzhx5.jpg"
+									src !== ""
+										? src
+										: "https://res.cloudinary.com/scormier/image/upload/v1620690465/cutie-pie/1452484590-sweet-baby-boy-image-screenshot_wzzhx5.jpg"
 								}
 								className="align-self-center m-2 rounded-circle profile-image"
 								alt="User-Profile-Image"
 							/>
-							<div className="d-flex flex-column flex-md-row align-items-center justify-content-center">
-								{/* <Form.File.Label className="upload-photo">
-								Choose file */}
+
+							<Form
+								className="d-flex flex-column flex-md-row align-items-center justify-content-center"
+								onSubmit={uploadImage}>
 								<Form.File.Input
 									className="w-50 form-file mt-1"
-									onChange={e => setFile(e.target.files[0])}
+									onChange={e => {
+										changeImage(e.target.files[0]);
+										setImage(e.target.files[0]);
+									}}
 								/>
-								{/* </Form.File.Label> */}
-
-								<Button
-									// onSubmit={handlePhotoUpload}
-									type="submit"
-									className="mt-2"
-									bsPrefix="btn-upload-photo"
-									variant="warning">
+								<Button type="submit" className="mt-2" bsPrefix="btn-upload-photo" variant="warning">
 									Upload photo
 								</Button>
-							</div>
+							</Form>
 
 							<Nav className="justify-content-between justify-content-md-center">
 								<Nav.Link className="py-1 px-2 pr-md-4" as={Link} to="/wishlist">

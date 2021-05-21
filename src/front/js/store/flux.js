@@ -1,5 +1,6 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const base_url = "https://3001-ivory-dingo-evk7hwf6.ws-us04.gitpod.io/api";
+	// const base_url = "https://3001-pink-aardvark-jkrb8r4r.ws-us04.gitpod.io/api";
+	const base_url = `${process.env.BACKEND_URL}/api`;
 	return {
 		store: {
 			product: [],
@@ -27,7 +28,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 							product: data.products,
 							homeCards: data.products.slice(0, 4),
 							shopCollection: data.products,
-							productDetails: data.products
+							productDetails: data.products,
+							wishlist: data.products
 						})
 					);
 			},
@@ -50,6 +52,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 								user: {
 									...getStore().user,
 									...tokenCheck,
+									...data.user,
 									loggedIn: true
 								}
 							})
@@ -152,7 +155,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			updatePassword: password => {
 				console.log(password);
-			},
+			}
+
+			// uploadImage: user => {
+			// 	setStore({
+			// 		...getStore().user,
+			// 		photo_url: image
+			// 	});
+			// }
+
+			// changeColor: (index, color) => {
+			// 	//get the store
+			// 	const store = getStore();
+
+			// 	//we have to loop the entire demo array to look for the respective index
+			// 	//and change its color
+			// 	// const demo = store.demo.map((elm, i) => {
+			// 	// 	if (i === index) elm.background = color;
+			// 	// 	return elm;
+			// 	// });
+
+			// 	//reset the global store
+			// 	// setStore({ demo: demo });
+			// },
 
 			getMessage: () => {
 				// fetching data from the backend
