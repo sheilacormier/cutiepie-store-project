@@ -20,25 +20,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			// Use getActions to call a function within a fuction
 			initialize: () => {
-				// getActions().checkToken();
-				console.log(`${base_url}/product`);
-				fetch(`${base_url}/product`, {
-					mode: "no-cors"
-				})
-					.then(res => {
-						console.log(res);
-						return res.json();
-					})
-					.then(data => {
-						console.log(data);
+				getActions().checkToken();
+				getActions().getAllProducts();
+			},
+
+			getAllProducts: () => {
+				return fetch(`${base_url}/product`)
+					.then(res => res.json())
+					.then(data =>
 						setStore({
 							product: data.products,
 							homeCards: data.products.slice(0, 4),
 							shopCollection: data.products,
 							productDetails: data.products,
 							wishlist: data.products
-						});
-					})
+						})
+					)
 					.catch(err => console.error(err));
 			},
 
