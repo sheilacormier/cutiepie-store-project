@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	// const base_url = "https://3001-pink-aardvark-jkrb8r4r.ws-us04.gitpod.io/api";
+	// const base_url = "https://3001-indigo-scorpion-3ya2agsq.ws-us04.gitpod.io/api";
 	const base_url = `${process.env.BACKEND_URL}/api`;
+	
 	return {
 		store: {
 			product: [],
@@ -21,7 +22,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// Use getActions to call a function within a fuction
 			initialize: () => {
 				getActions().checkToken();
-				fetch(`${base_url}/product`)
+					fetch(`${base_url}/product`)
 					.then(res => res.json())
 					.then(data =>
 						setStore({
@@ -179,13 +180,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	// setStore({ demo: demo });
 			// },
 
-			getMessage: () => {
-				// fetching data from the backend
-				fetch(process.env.BACKEND_URL + "/api/hello")
-					.then(resp => resp.json())
-					.then(data => setStore({ message: data.message }))
-					.catch(error => console.log("Error loading message from backend", error));
-			}
+			// getMessage: () => {
+			// 	// fetching data from the backend
+			// 	fetch(process.env.BACKEND_URL + "/api/hello")
+			// 		.then(resp => resp.json())
+			// 		.then(data => setStore({ message: data.message }))
+			// 		.catch(error => console.log("Error loading message from backend", error));
+			// }
 		}
 	};
 };
