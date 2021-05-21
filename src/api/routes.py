@@ -12,7 +12,7 @@ from flask_jwt_extended import JWTManager
 
 
 api = Blueprint('api', __name__)
-jwt = JWTManager()
+# jwt = JWTManager()
 
 # Handle/serialize errors like a JSON object
 @api.errorhandler(APIException)

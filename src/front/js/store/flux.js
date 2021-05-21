@@ -20,18 +20,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			// Use getActions to call a function within a fuction
 			initialize: () => {
-				getActions().checkToken();
-				fetch(`${base_url}/product`)
-					.then(res => res.json())
-					.then(data =>
+				// getActions().checkToken();
+				console.log(`${base_url}/product`);
+				fetch(`${base_url}/product`, {
+					mode: "no-cors"
+				})
+					.then(res => {
+						console.log(res);
+						return res.json();
+					})
+					.then(data => {
+						console.log(data);
 						setStore({
 							product: data.products,
 							homeCards: data.products.slice(0, 4),
 							shopCollection: data.products,
 							productDetails: data.products,
 							wishlist: data.products
-						})
-					);
+						});
+					})
+					.catch(err => console.error(err));
 			},
 
 			checkToken: () => {
@@ -179,13 +187,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	// setStore({ demo: demo });
 			// },
 
-			getMessage: () => {
-				// fetching data from the backend
-				fetch(process.env.BACKEND_URL + "/api/hello")
-					.then(resp => resp.json())
-					.then(data => setStore({ message: data.message }))
-					.catch(error => console.log("Error loading message from backend", error));
-			}
+			// getMessage: () => {
+			// 	// fetching data from the backend
+			// 	fetch(process.env.BACKEND_URL + "/api/hello")
+			// 		.then(resp => resp.json())
+			// 		.then(data => setStore({ message: data.message }))
+			// 		.catch(error => console.log("Error loading message from backend", error));
+			// }
 		}
 	};
 };
