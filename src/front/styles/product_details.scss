@@ -1,8 +1,7 @@
 .colors-wrapper {
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;    
+    img {
+        max-width: 100px;
+    }
 }
 
 .sizes-wrapper, .quantity-wrapper {
@@ -10,8 +9,7 @@
 }
 
 .large-product-pic {
-    width: 100%;
-   
+    width: 100%;   
     object-fit: cover;
 }
 
@@ -30,45 +28,28 @@
     color: grey;
 }
 
-.price {
+.product-price {
     font-family: sans-serif;
     font-size: 18px;
     color: grey;
 }
 
+.color {
+    font-family: sans-serif;
+    font-size: 12px;
+    color: grey;
+}
+
 .color-label {
     font-family: sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     color: grey;
 }
 
 .size-label {
     font-family: sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     color: grey;
-}
-
-.quantity-label {
-    font-family: sans-serif;
-    font-size: 14px;
-    color: grey;
-}
-
-.quantitybtn{
-    background-color: #fff;
-    border: 1px solid #f97f4d;
-    color: grey;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-.quantitynum{
-    background-color: #fff;
-    border: 0px;
-    color: grey;
-    padding-left: 20px;
-    padding-right: 20px;
 }
 
 hr {
@@ -76,28 +57,16 @@ hr {
     color: grey;
 }
 
-.preview-thumbnail.nav-tabs {
-    border: none;
-    margin-top: 15px;    
-}
-
-.preview-thumbnail.nav-tabs li {
-    width: 18%;
-    margin-right: 2.5%; 
-}
-
-.preview-thumbnail.nav-tabs li img {
+.thumb-product-pic {
     max-width: 100%;
     display: block;
     border: 1px solid #fd9e77;  
 }
 
-.preview-thumbnail.nav-tabs li a {
-    padding: 0;
-    margin: 0;
-}
-.preview-thumbnail.nav-tabs li:last-of-type {
-    margin-right: 0; 
+.product-description{
+    font-family: sans-serif;
+    font-size: 16px;
+    color: grey;
 }
 
 .add-to-cart{
@@ -117,23 +86,16 @@ hr {
     color: #fff;
 }
 
-.not-available {
-    text-align: center;
-    line-height: 2em; 
-}
+// .not-available {
+//     text-align: center;
+//     line-height: 2em; 
+// }
 
-.not-available:before {
-    font-family: fontawesome;
-    content: "\f00d";
-    color: #fff; 
-}
-
-.product-description{
-    font-family: sans-serif;
-    font-size: 16px;
-    color: grey;
-}
-
+// .not-available:before {
+//     font-family: fontawesome;
+//     content: "\f00d";
+//     color: #fff; 
+// }
 
 // .preview {
 //     display: -webkit-box;

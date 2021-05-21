@@ -141,14 +141,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 
-			getMessage: () => {
-				// fetching data from the backend
-				fetch(process.env.BACKEND_URL + "/api/hello")
-					.then(resp => resp.json())
-					.then(data => setStore({ message: data.message }))
-					.catch(error => console.log("Error loading message from backend", error));
-			},
-
 			register: (email, password) => {
 				console.log(email, password);
 			},
@@ -187,9 +179,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	// setStore({ demo: demo });
 			// },
 
-			// exampleFunction: () => {
-			// 	getActions().changeColor(0, "green");
-			// },
+			getMessage: () => {
+				// fetching data from the backend
+				fetch(process.env.BACKEND_URL + "/api/hello")
+					.then(resp => resp.json())
+					.then(data => setStore({ message: data.message }))
+					.catch(error => console.log("Error loading message from backend", error));
+			}
 		}
 	};
 };
