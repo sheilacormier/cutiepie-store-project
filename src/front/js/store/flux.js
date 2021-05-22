@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	// const base_url = "https://3001-pink-aardvark-jkrb8r4r.ws-us04.gitpod.io/api";
+	// const base_url = "https://3001-indigo-scorpion-3ya2agsq.ws-us04.gitpod.io/api";
 	const base_url = `${process.env.BACKEND_URL}/api`;
+
 	return {
 		store: {
 			product: [],
@@ -32,8 +33,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							product: data.products,
 							homeCards: data.products.slice(0, 4),
 							shopCollection: data.products,
-							productDetails: data.products,
-							wishlist: data.products
+							productDetails: data.products
 						})
 					)
 					.catch(err => console.error(err));
@@ -87,7 +87,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore(store);
 			},
 
-			removeWishilist: index => {
+			removeWishlist: index => {
 				//get the store
 				const store = getStore();
 				//and filter data

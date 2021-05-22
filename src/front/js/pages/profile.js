@@ -170,7 +170,6 @@ export const Profile = () => {
 
 							{/* <div className="d-flex flex-column">
 									<Form.Control type="password" placeholder="Current Password" required />
-
 									<Button
 										type="submit"
 										className="align-self-end"
