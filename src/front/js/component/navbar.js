@@ -30,7 +30,7 @@ export const MyNavbar = () => {
 							<Nav.Link as={Link} to="/wishlist">
 								wishlist
 							</Nav.Link>
-							<Nav.Link as={Link} to="/" onClick={e => actions.signout()}>
+							<Nav.Link as={Link} to="/" onClick={e => actions.signOut()}>
 								logout
 							</Nav.Link>
 						</>

@@ -29,6 +29,28 @@ export const Home = () => {
 		setValidated(true);
 	};
 
+	const handleFavoriteClick = async product => {
+		// check if user is logged in, if not, short circuit this function
+		if (!store.user.loggedIn) {
+			actions.setAlert({
+				type: "danger",
+				msg: "Please login to select favorites!",
+				show: true
+			});
+			return;
+		}
+
+		// Query product in the wishlist. This is either Undefined or a product object
+		let productQuery = store.user.wishlist.find(item => item.id === product.id);
+
+		// check if the query was undefined and either add or remove based on result
+		if (typeof productQuery === "undefined") {
+			await actions.addWishlist(product);
+		} else {
+			await actions.removeWishlist(product);
+		}
+	};
+
 	return (
 		<Container className="my-2">
 			<Row className="justify-content-center align-items-center">
@@ -55,7 +77,14 @@ export const Home = () => {
 									</span>
 									<div className="product-action">
 										<div className="product-action-style">
-											<Link to="#" onClick={() => actions.addWishlist(product)}>
+											<Link
+												to="#"
+												className={
+													store.user.wishlist.find(item => item.id === product.id)
+														? "wished"
+														: "not-wished"
+												}
+												onClick={e => handleFavoriteClick(product)}>
 												<i className="fa fa-heart" />
 											</Link>
 											<Link to={`/product_details/${index}`}>

@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
@@ -12,6 +13,22 @@ import "../../styles/shop_collection&wishlist.scss";
 
 export const Wishlist = () => {
 	const { store, actions } = useContext(Context);
+	const handleFavoriteClick = async product => {
+		// check if user is logged in, if not, short circuit this function
+		if (!store.user.loggedIn) {
+			return;
+		}
+
+		// Query product in the wishlist. This is either Undefined or a product object
+		let productQuery = store.user.wishlist.find(item => item.id === product.id);
+
+		// check if the query was undefined and either add or remove based on result
+		if (typeof productQuery === "undefined") {
+			await actions.addWishlist(product);
+		} else {
+			await actions.removeWishlist(product);
+		}
+	};
 
 	return (
 		<Container className="mb-3">
@@ -61,12 +78,7 @@ export const Wishlist = () => {
 												? "wished"
 												: "not-wished"
 										}
-										onClick={async () => {
-											typeof store.user.wishlist.find(item => item.id === product.id) ===
-											"undefined"
-												? await actions.addWishlist(product)
-												: await actions.removeWishlist(product);
-										}}>
+										onClick={e => handleFavoriteClick(product)}>
 										<i className="fa fa-heart" />
 									</Button>
 									<Card.Img className="pt-2" variant="top" src={product.img} />
@@ -74,7 +86,11 @@ export const Wishlist = () => {
 										<Button href="#" bsPrefix="btn-addtocart" variant="warning">
 											<i className="fa fa-shopping-cart fa-lg" />
 										</Button>
-										<Button href="/product_details/:id" bsPrefix="btn-seedetails" variant="warning">
+										<Button
+											as={Link}
+											to={`/product_details/${index}`}
+											bsPrefix="btn-seedetails"
+											variant="warning">
 											<i className="fas fa-search fa-lg" />
 										</Button>
 									</Container>

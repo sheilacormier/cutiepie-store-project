@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-import injectContext from "./store/appContext";
+import injectContext, { Context } from "./store/appContext";
 import PrivateRoute from "./component/privateRoute";
+
+import Toast from "react-bootstrap/Toast";
+import ToastHeader from "react-bootstrap/ToastHeader";
+import ToastBody from "react-bootstrap/ToastBody";
 
 import { Home } from "./pages/home";
 import { Single } from "./pages/single";
@@ -21,6 +25,7 @@ import { AboutUs } from "./pages/about_us";
 
 //create your first component
 const Layout = () => {
+	const { store, actions } = useContext(Context);
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
@@ -29,6 +34,18 @@ const Layout = () => {
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
+					<Toast
+						className={`bg-${store.alert.type}`}
+						onClose={e => actions.clearAlert()}
+						show={store.alert.show}
+						delay={3000}
+						autohide>
+						<Toast.Header>
+							<strong className="mr-auto">Cutie Pie</strong>
+						</Toast.Header>
+						<Toast.Body>{store.alert.msg}</Toast.Body>
+					</Toast>
+
 					<MyNavbar />
 					<Slogan />
 					<Switch>

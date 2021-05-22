@@ -16,6 +16,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				email: "",
 				id: null,
 				wishlist: []
+			},
+			alert: {
+				type: "",
+				msg: "",
+				show: false
 			}
 		},
 		actions: {
@@ -23,6 +28,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 			initialize: () => {
 				getActions().checkToken();
 				getActions().getAllProducts();
+			},
+
+			setAlert: payload => {
+				/* payload should be an object with the following shape:
+                    {
+                        type: "",
+                        msg: "",
+                        show: false
+                    }
+                    type either: danger, success, warning
+                */
+				setStore({ alert: payload });
+			},
+
+			clearAlert: () => {
+				setStore({
+					alert: {
+						type: "",
+						msg: "",
+						show: false
+					}
+				});
 			},
 
 			getAllProducts: () => {
@@ -193,7 +220,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 
-			signout: () => {
+			signOut: () => {
 				setStore({
 					user: {
 						...getStore().user,
