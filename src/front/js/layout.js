@@ -12,11 +12,12 @@ import { Register } from "./pages/register";
 import { ProductDetails } from "./pages/product_details";
 import { SignIn } from "./pages/sign_in";
 import { Profile } from "./pages/profile";
-import { TermsConditions } from "./pages/terms_conditions";
 import { MyNavbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Slogan } from "./component/slogan";
 import { PrivacyPolicy } from "./pages/privacy_policy";
+import { TermsConditions } from "./pages/terms_conditions";
+import { AboutUs } from "./pages/about_us";
 
 //create your first component
 const Layout = () => {
@@ -57,6 +58,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/privacy_policy">
 							<PrivacyPolicy />
+						</Route>
+						<Route exact path="/about_us">
+							<AboutUs />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

@@ -9,12 +9,12 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import "../../styles/create-sign_in_account.scss";
 
-export const PrivacyPolicy = () => {
+export const AboutUs = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
 		<Container className="my-2">
-			<h5 className="create-account-title text-center pt-2">PRIVACY POLICY</h5>
+			<h5 className="create-account-title text-center pt-2">ABOUT US</h5>
 			<Row className="mx-auto pt-4">
 				<Col className="mx-auto">
 					<p>
