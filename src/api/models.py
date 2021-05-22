@@ -40,9 +40,9 @@ class Product(db.Model):
     color = db.Column(db.String(50))
     size = db.Column(db.String(50))
     img = db.Column(db.String(250))
-    variants = db.relationship("Variant", backref='product',lazy=True)
     description = db.Column(db.String(250))       
-    url = db.Column(db.String(250))     
+    url = db.Column(db.String(250))
+    variants = db.relationship("Variant", backref='product',lazy=True)   
 
     def __repr__(self):
         return '<Product %r>' % self.title
