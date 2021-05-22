@@ -16,7 +16,7 @@ export const ProductDetails = () => {
 	const { store, actions } = useContext(Context);
 	let { productIndex } = useParams();
 	let products = store.product;
-	let variants = store.product.length > 0 && store.product[productIndex].variants;
+	let selectedProduct = store.product.length > 0 && store.product[productIndex];
 	const [selectedimage, setSelectedimage] = useState("");
 	useEffect(
 		() => {
@@ -24,6 +24,7 @@ export const ProductDetails = () => {
 		},
 		[products]
 	);
+
 	return (
 		<Container className="my-2 mb-5">
 			{store.product.length > 0 && (
@@ -43,8 +44,8 @@ export const ProductDetails = () => {
 								<Col>
 									<span className="color-label">Color:</span>
 									<Row>
-										{variants.length > 0
-											? variants.map((variant, index) => {
+										{typeof selectedProduct !== "undefined"
+											? selectedProduct.colors.map((variant, index) => {
 													return (
 														<Col
 															className="d-flex flex-column align-items-center mt-2"
@@ -70,8 +71,8 @@ export const ProductDetails = () => {
 									<Col xs="auto">
 										<Form.Group className="mt-2">
 											<Form.Control size="sm" as="select">
-												{variants.length > 0 ? (
-													variants.map((variant, index) => {
+												{typeof selectedProduct !== "undefined" ? (
+													selectedProduct.sizes.map((variant, index) => {
 														return <option key={index}>{variant.size}</option>;
 													})
 												) : (

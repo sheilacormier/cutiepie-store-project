@@ -8,6 +8,16 @@ wishlist_productDetails = db.Table('user_product', db.Model.metadata,
     db.Column('product_id', db.Integer, db.ForeignKey('product.id'), primary_key=True)
 )
 
+product_sizes = db.Table('sizes', db.Model.metadata,
+    db.Column('product_id', db.Integer, db.ForeignKey('product.id'), primary_key=True),
+    db.Column('size_id', db.Integer, db.ForeignKey('size.id'), primary_key=True)
+)
+
+product_colors = db.Table('colors', db.Model.metadata,
+    db.Column('product_id', db.Integer, db.ForeignKey('product.id'), primary_key=True),
+    db.Column('color_id', db.Integer, db.ForeignKey('color.id'), primary_key=True)
+)
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -37,12 +47,11 @@ class Product(db.Model):
     brand = db.Column(db.String(120), nullable=False)
     title = db.Column(db.String(120))
     price = db.Column(db.String(50))
-    color = db.Column(db.String(50))
-    size = db.Column(db.String(50))
     img = db.Column(db.String(250))
     description = db.Column(db.String(250))       
     url = db.Column(db.String(250))
-    variants = db.relationship("Variant", backref='product',lazy=True)   
+    colors = db.relationship("Color", backref="product", secondary=product_colors) 
+    sizes = db.relationship("Size", secondary=product_sizes) 
 
     def __repr__(self):
         return '<Product %r>' % self.title
@@ -53,27 +62,37 @@ class Product(db.Model):
             "brand": self.brand,
             "title": self.title,
             "price": self.price,
-            "variants": list(map(lambda x: x.serialize(), self.variants)),                   
+            "colors": list(map(lambda x: x.serialize(), self.colors)),
+            "sizes": list(map(lambda x: x.serialize(), self.sizes)),
             "img": self.img,
             "description": self.description,
             "url": self.url
         } 
 
-class Variant(db.Model):
+class Size(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    color = db.Column(db.String(50), nullable=False)
-    size = db.Column(db.String(50), nullable=False)
-    img = db.Column(db.String(250), nullable=False)
-    product_id = db.Column(db.Integer, db.ForeignKey('product.id'),
-        nullable=False)
+    size = db.Column(db.String(15), nullable=False)
 
     def __repr__(self):
-        return '<Variant %r>' % self.id
+        return '<Size %r>' % self.size
+    
+    def serialize(self):
+        return {
+            "id": self.id,
+            "size": self.size,
+        }
+
+class Color(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    color = db.Column(db.String(25), nullable=False)
+    img = db.Column(db.String(255), nullable=False)
+
+    def __repr__(self):
+        return '<Color %r>' % self.color
     
     def serialize(self):
         return {
             "id": self.id,
             "color": self.color,
-            "size": self.size,
             "img": self.img
         }
