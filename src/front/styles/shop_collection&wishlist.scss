@@ -57,21 +57,26 @@
 	right: 25px;
 	top: 15px;
     z-index: 10;
+    border-radius: 50%;
+    padding: 1rem;
     border: none;
     font-size: 1.25rem;
-    color: #fff;
     &:hover{
         transform: scale(1.2);
     }
 }
 
-// .btn-like.wished i{
-//     color: crimson;
-// }
+.btn-like.wished i{
+    font-size: 1.5rem;
+    color: #fa0c8d;
+}
 
-// .btn-like.not-wished i{
-//     color: white;
-// }
+.btn-like.not-wished {
+    border: 2px solid #fff;
+        i{
+    color: #fff;
+}
+}
 
 .page-link{
     color: #f80c8d;

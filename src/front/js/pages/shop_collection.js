@@ -14,12 +14,6 @@ import "../../styles/shop_collection&wishlist.scss";
 export const ShopCollection = () => {
 	const { store, actions } = useContext(Context);
 
-	const [isActive, setActive] = useState(false);
-
-	const handleToggle = () => {
-		setActive(!isActive);
-	};
-
 	return (
 		<Container className="mb-3">
 			<nav aria-label="page-navigation">
@@ -61,7 +55,17 @@ export const ShopCollection = () => {
 									<Button
 										bsPrefix="btn-like"
 										variant="warning"
-										onClick={handleToggle && (() => actions.addWishlist(product))}>
+										className={
+											store.user.wishlist.find(item => item.id === product.id)
+												? "wished"
+												: "not-wished"
+										}
+										onClick={async () => {
+											typeof store.user.wishlist.find(item => item.id === product.id) ===
+											"undefined"
+												? await actions.addWishlist(product)
+												: await actions.removeWishlist(product);
+										}}>
 										<i className="fa fa-heart" />
 									</Button>
 									<Card.Img className="pt-2" variant="top" src={product.img} />
