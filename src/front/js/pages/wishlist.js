@@ -49,7 +49,7 @@ export const Wishlist = () => {
 			</nav>
 			<h5 className="pt-2 pb-3 text-center page-title">YOUR WISHED ITEMS</h5>
 			<Row className="mx-auto">
-				{store.wishlist.map((item, index) => {
+				{store.user.wishlist.map((item, index) => {
 					return (
 						<Col sm={12} md={6} lg={4} key={index}>
 							<Card className="mb-3 collection-card" style={{ width: "18rem" }}>
@@ -60,10 +60,10 @@ export const Wishlist = () => {
 									<Card.Img className="pt-2" variant="top" src={item.img} />
 									<Container className="bottom-btn-container pt-2">
 										<Button href="#" bsPrefix="btn-addtocart" variant="warning">
-											<i className="fa fa-shopping-cart" />
+											<i className="fa fa-shopping-cart fa-lg" />
 										</Button>
 										<Button href="/product_details/:id" bsPrefix="btn-seedetails" variant="warning">
-											<i className="fas fa-search" />
+											<i className="fas fa-search fa-lg" />
 										</Button>
 									</Container>
 								</Container>

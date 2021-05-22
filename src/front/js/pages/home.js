@@ -47,10 +47,9 @@ export const Home = () => {
 							key={index}
 							className="d-flex justify-content-center align-items-center">
 							<div className="product-wrapper my-4 text-center">
-								<div className="product-img">
-									{/* <a href={product.url} data-abc="true"> */}
-									<img className="product-pic" src={product.img} alt="outfit" />
-									{/* </a> */}
+								<div className="card product-img" style={{ width: "16rem" }}>
+									<img className="product-pic h-100" src={product.img} alt="outfit" />
+
 									<span className="text-center">
 										<i className="fa fa-rupee" /> {product.price}
 									</span>

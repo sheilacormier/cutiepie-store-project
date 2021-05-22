@@ -67,14 +67,14 @@ export const ShopCollection = () => {
 									<Card.Img className="pt-2" variant="top" src={product.img} />
 									<Container className="bottom-btn-container pt-2">
 										<Button as={Link} to="#" bsPrefix="btn-addtocart" variant="warning">
-											<i className="fa fa-shopping-cart" />
+											<i className="fa fa-shopping-cart fa-lg" />
 										</Button>
 										<Button
 											as={Link}
 											to={`/product_details/${index}`}
 											bsPrefix="btn-seedetails"
 											variant="warning">
-											<i className="fas fa-search" />
+											<i className="fas fa-search fa-lg" />
 										</Button>
 									</Container>
 								</Container>

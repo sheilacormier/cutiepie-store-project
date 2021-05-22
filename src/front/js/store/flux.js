@@ -82,7 +82,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//get the store
 				const store = getStore();
 				//and pushes data
-				store.wishlist.push(data);
+				store.user.wishlist.push(data);
 				//reset the global store
 				setStore(store);
 			},
