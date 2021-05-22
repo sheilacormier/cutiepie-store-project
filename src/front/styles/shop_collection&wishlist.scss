@@ -16,9 +16,9 @@
 }
 
 .bottom-btn-container{
-	position: absolute;
-	z-index: 15;
-    bottom: 25%;
+	// position: absolute;
+	// z-index: 15;
+    // bottom: 25%;
 	display: flex;
 	justify-content: flex-end;
 }
@@ -68,9 +68,13 @@
     }
 }
 
-.btn-like.clicked i{
-    color: crimson;
-}
+// .btn-like.wished i{
+//     color: crimson;
+// }
+
+// .btn-like.not-wished i{
+//     color: white;
+// }
 
 .page-link{
     color: #f80c8d;

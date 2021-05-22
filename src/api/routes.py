@@ -77,7 +77,8 @@ def protected():
 @api.route('/user/<int:id>', methods=['GET'])
 def get_one_user(id):
     users = User.query.get(id)
-    users = users.serialize()
+    users = user.serialize()
+    # users = users.serialize()
     return jsonify(users), 200
 
 

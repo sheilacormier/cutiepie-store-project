@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
@@ -13,6 +13,13 @@ import "../../styles/shop_collection&wishlist.scss";
 
 export const ShopCollection = () => {
 	const { store, actions } = useContext(Context);
+
+	const [isActive, setActive] = useState(false);
+
+	const handleToggle = () => {
+		setActive(!isActive);
+	};
+
 	return (
 		<Container className="mb-3">
 			<nav aria-label="page-navigation">
@@ -54,11 +61,11 @@ export const ShopCollection = () => {
 									<Button
 										bsPrefix="btn-like"
 										variant="warning"
-										onClick={() => actions.addWishlist(product)}>
+										onClick={handleToggle && (() => actions.addWishlist(product))}>
 										<i className="fa fa-heart" />
 									</Button>
-									<Card.Img className="pt-2 pb-4" variant="top" src={product.img} />
-									<Container className="bottom-btn-container">
+									<Card.Img className="pt-2" variant="top" src={product.img} />
+									<Container className="bottom-btn-container pt-2">
 										<Button as={Link} to="#" bsPrefix="btn-addtocart" variant="warning">
 											<i className="fa fa-shopping-cart" />
 										</Button>
@@ -72,8 +79,8 @@ export const ShopCollection = () => {
 									</Container>
 								</Container>
 
-								<Card.Body className="text-center">
-									<Card.Title className="mt-3">{product.title}</Card.Title>
+								<Card.Body className="text-center p-2 pb-3">
+									<Card.Title className="mt-2">{product.title}</Card.Title>
 									<Card.Text>{product.price}</Card.Text>
 								</Card.Body>
 							</Card>
