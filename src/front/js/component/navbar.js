@@ -10,12 +10,12 @@ export const MyNavbar = () => {
 	const { store, actions } = useContext(Context);
 	return (
 		<Navbar className="myNavbar" expand="lg">
-			<Navbar.Brand className="" as={Link} to="/">
+			<Navbar.Brand className="slide-in-top" as={Link} to="/">
 				<img src="https://res.cloudinary.com/scormier/image/upload/v1621447616/cutie-pie/cutie-pie_logo73x100_lojwos.png" />
 			</Navbar.Brand>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<Navbar.Collapse id="basic-navbar-nav">
-				<Nav className="ml-auto">
+				<Nav className="ml-auto slide-in-top">
 					<Nav.Link as={Link} to="/">
 						<i className="fas fa-home" />
 					</Nav.Link>
