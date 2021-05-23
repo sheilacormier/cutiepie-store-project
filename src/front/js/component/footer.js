@@ -15,10 +15,10 @@ export const Footer = () => (
 				<Col xs={12} md={8}>
 					<ul className="footerlinks">
 						<li>
-							<Link to="/">about us</Link>
+							<Link to="/our_story">about us</Link>
 						</li>
 						<li>
-							<Link to="/">contact us</Link>
+							<Link to="/our_story">contact us</Link>
 						</li>
 						<li>
 							<Link to="/terms_conditions">terms and conditions</Link>
