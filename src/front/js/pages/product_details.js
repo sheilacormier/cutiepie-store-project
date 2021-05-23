@@ -14,6 +14,7 @@ import "../../styles/product_details.scss";
 
 export const ProductDetails = () => {
 	const { store, actions } = useContext(Context);
+
 	let { productIndex } = useParams();
 	let products = store.product;
 	let selectedProduct = store.product.length > 0 && store.product[productIndex];
@@ -24,6 +25,7 @@ export const ProductDetails = () => {
 		},
 		[products]
 	);
+
 	const handleFavoriteClick = async product => {
 		// check if user is logged in, if not, short circuit this function
 		if (!store.user.loggedIn) {
@@ -116,7 +118,6 @@ export const ProductDetails = () => {
 
 								<Button
 									href={store.product[productIndex].url}
-									// className="col p-2 p-md-3 add-to-cart btn btn-default"
 									type="button"
 									className={
 										store.user.wishlist.find(item => item.id === selectedProduct.id)
@@ -124,7 +125,7 @@ export const ProductDetails = () => {
 											: "not-wished col p-2 p-md-3 add-to-cart btn btn-default"
 									}
 									onClick={e => handleFavoriteClick(selectedProduct)}>
-									{!"wished" ? "add to wishlist" : "added to wishlist"}
+									add to wishlist
 								</Button>
 							</Row>
 						</div>
