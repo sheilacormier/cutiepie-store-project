@@ -7,7 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import "../../styles/create-sign_in_account.scss";
+import "../../styles/our_story-terms-privacy.scss";
 
 export const OurStory = () => {
 	const { store, actions } = useContext(Context);
@@ -17,7 +17,7 @@ export const OurStory = () => {
 			<h5 className="create-account-title text-center pt-2">THE STORY OF CUTIE PIE</h5>
 			<Row className="mx-auto pt-4">
 				<Col className="mx-auto">
-					<p>
+					<p className="copy">
 						Cutie Pie was inspired by our kids and our love for fashion. When my son was a baby it was
 						challenging to find nice outfits for him. I had to navigate through many websites to find what I
 						was looking for. Currently my good friend and business partner is experiencing the same
@@ -27,17 +27,17 @@ export const OurStory = () => {
 						curate and direct you to the vendors to complete your purchase.
 					</p>
 					<h3>
-						<strong>Get In Touch</strong>
+						<strong className="header">Get In Touch</strong>
 					</h3>
-					<p>customerservice@cutiepie.com</p>
+					<p className="copy">customerservice@cutiepie.com</p>
 					<h3>
-						<strong>Hours</strong>
+						<strong className="header">Hours</strong>
 					</h3>
-					<p>Monday-Friday 8am-5pm EST</p>
+					<p className="copy">Monday-Friday 8am-5pm EST</p>
 					<h3>
-						<strong>Chat Hours</strong>
+						<strong className="header">Chat Hours</strong>
 					</h3>
-					<p>Monday-Friday 8am-5pm EST</p>
+					<p className="copy">Monday-Friday 8am-5pm EST</p>
 				</Col>
 			</Row>
 		</Container>

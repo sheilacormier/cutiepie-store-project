@@ -65,7 +65,7 @@ export const ProductDetails = () => {
 							<hr />
 							<Row className="colors-wrapper">
 								<Col>
-									<span className="color-label">Color:</span>
+									<span className="color-label">COLOR</span>
 									<Row>
 										{typeof selectedProduct !== "undefined"
 											? selectedProduct.colors.map((variant, index) => {
@@ -89,7 +89,7 @@ export const ProductDetails = () => {
 								</Col>
 							</Row>
 							<div className="sizes-wrapper">
-								<span className="size-label">Size:</span>
+								<span className="size-label">SIZE</span>
 								<Row>
 									<Col xs="auto">
 										<Form.Group className="mt-2">
@@ -99,13 +99,15 @@ export const ProductDetails = () => {
 														return <option key={index}>{variant.size}</option>;
 													})
 												) : (
-													<option>No Sizes Available</option>
+													<option> No Sizes Available</option>
 												)}
 											</Form.Control>
 										</Form.Group>
 									</Col>
 								</Row>
 							</div>
+							<hr />
+							<span className="description-label">WHY WE LOVE THIS PIECE</span>
 							<p className="product-description">{store.product[productIndex].description}</p>
 							<Row>
 								<Button
@@ -129,6 +131,53 @@ export const ProductDetails = () => {
 								</Button>
 							</Row>
 						</div>
+					</Col>
+					<Col>
+						{/* You also might light section starts here*/}
+						<Col className="mt-5 mb-3 d-flex justify-content-center align-items-center">
+							<h2 className="suggestions">YOU MIGHT ALSO LIKE</h2>
+						</Col>
+
+						{store.homeCards.map((product, index) => {
+							return (
+								<Col
+									sm={12}
+									md={6}
+									lg={3}
+									key={index}
+									className="d-flex justify-content-center align-items-center">
+									<div className="product-wrapper my-4 text-center">
+										<div className="product-img">
+											<img className="product-pic" src={product.img} alt="outfit" />
+
+											<span className="text-center">
+												<i className="fa fa-rupee" /> {product.price}
+											</span>
+											<div className="product-action">
+												<div className="product-action-style">
+													<Link
+														to="#"
+														className={
+															store.user.wishlist.find(item => item.id === product.id)
+																? "wished"
+																: "not-wished"
+														}
+														onClick={e => handleFavoriteClick(product)}>
+														<i className="fa fa-heart" />
+													</Link>
+													<Link to={`/product_details/${index}`}>
+														<i className="fas fa-search" />
+													</Link>
+													<a href={product.url} target="_blank" rel="noopener noreferrer">
+														<i className="fa fa-shopping-cart" />
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</Col>
+							);
+						})}
 					</Col>
 				</Row>
 			)}

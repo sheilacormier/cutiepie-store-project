@@ -7,7 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import "../../styles/create-sign_in_account.scss";
+import "../../styles/our_story-terms-privacy.scss";
 
 export const PrivacyPolicy = () => {
 	const { store, actions } = useContext(Context);
@@ -17,7 +17,7 @@ export const PrivacyPolicy = () => {
 			<h5 className="create-account-title text-center pt-2">PRIVACY POLICY</h5>
 			<Row className="mx-auto pt-4">
 				<Col className="mx-auto">
-					<p>
+					<p className="copy">
 						Cutie Pie, LLC (“we,”“us,” or “our”) is pleased to provide you with access to our Website. This
 						Privacy Policy describes our practices with respect to the collection, transfer, manipulation,
 						disclosure and other uses of Your Information and certain other information collected by us
@@ -26,7 +26,7 @@ export const PrivacyPolicy = () => {
 						information, including your first and last name and email address.
 					</p>
 
-					<p>
+					<p className="copy">
 						This Privacy Policy applies to information collected by us through our Website, but does not
 						apply to information collected by any person or entity other than us, even if related to our
 						Website (such as a third-party website, content, application or platform that may link to or be
@@ -42,21 +42,21 @@ export const PrivacyPolicy = () => {
 						periodically for updates.
 					</p>
 
-					<p>
+					<p className="copy">
 						Our Website is intended to be accessed and used only by adults and are not directed to minors.
 						If you are below the age of 18, you may access and participate in our Website only under the
 						supervision of a parent or legal guardian who agrees to be bound by this Privacy Policy and our
 						Terms of Use.
 					</p>
 
-					<p>
+					<p className="copy">
 						We do not knowingly collect personally identifiable information by anyone under the age of 16
 						and you should not provide us with any information regarding any individual under the age of 16.
 						If we learn that we have inadvertently gathered information from anyone under the age of 16, we
 						will take reasonable measures to promptly remove that information from our records.
 					</p>
 
-					<p>
+					<p className="copy">
 						California residents under 16 years of age may have additional rights regarding the collection
 						and sale of their personal information. Please see Section 10, “Your California Privacy Rights”
 						for more information. 2. What Information We Collect and How We Collect It We receive and
@@ -71,7 +71,7 @@ export const PrivacyPolicy = () => {
 						may provide your email.{" "}
 					</p>
 
-					<p>
+					<p className="copy">
 						We may also obtain information about you from social media networks on or through which you may
 						access the Website. The information that we will receive depends on the third party and your
 						privacy settings with that third party. All information that you disclose to third parties will
@@ -84,7 +84,7 @@ export const PrivacyPolicy = () => {
 						over time. “Cookies” are pieces of data stored on a computer, mobile phone or other device.{" "}
 					</p>
 
-					<p>
+					<p className="copy">
 						A “web beacon” is a type of technology that lets us know if you visited a certain page or
 						whether you opened an email. A “pixel tag” is a type of technology placed within a website or
 						e-mail for the purpose of tracking activity, which is often used in combination with cookies.
