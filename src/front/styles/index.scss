@@ -1,6 +1,9 @@
 .toast{
-    position: absolute;
-    top: 0;
-    right: 0;
+    // position: absolute;
+    // top: 0;
+    // right: 0;
+    position: fixed;
+  top: 50%;
+  left: 50%;
     z-index: 100;
 }
