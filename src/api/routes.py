@@ -5,14 +5,10 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Product
 from api.utils import generate_sitemap, APIException
 from cloudinary.uploader import upload
-from flask_jwt_extended import create_access_token
-from flask_jwt_extended import get_jwt_identity
-from flask_jwt_extended import jwt_required
-from flask_jwt_extended import JWTManager
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 
 
 api = Blueprint('api', __name__)
-jwt = JWTManager()
 
 # Handle/serialize errors like a JSON object
 @api.errorhandler(APIException)
@@ -117,6 +113,44 @@ def update_user():
 
     return jsonify(payload),200
 
+#Endpoint updates the user's wishlist by ID
+@api.route('/user/wishlist/<int:user_id>', methods=['PUT']) 
+@jwt_required()
+def update_user_wishlist(user_id):
+    # CHECK IF RESP IS JSON
+    if not request.is_json:
+        return jsonify({"msg": "Missing JSON in request"}), 400 
+
+    user = User.query.get(user_id)
+    products = Product.query.all()
+    wishlist = request.json.get('wishlist', None)
+
+    # if params are empty, return a 400
+    if wishlist is None:
+        return jsonify({"msg": "Missing wishlist parameter"}), 400
+
+    try:
+        user.wishlist = []
+
+        for product in wishlist:
+            current = Product.query.get(product['id'])
+            user.wishlist.append(current)
+        
+    except Exception as e:
+        return jsonify({
+            "msg": "Couldn't update wishlist",
+            "error": e
+            }), 409
+
+    db.session.commit()
+
+    payload = {
+        'msg': 'Wishlist successfully updated.',
+        'user': user.serialize()
+    }
+
+    return jsonify(payload),200
+
 
 #Endpoint to add users
 @api.route('/user', methods=['POST'])
@@ -131,39 +165,6 @@ def create_person():
 
         return "ok", 200
 
-
-#Endpoint to modify/update to wishlist
-@api.route('/user', methods=['PUT']) 
-def update_user_wishlist():
-    email = request.json.get("email", None)
-    resource_id = email = request.json.get("email", None)
-    resource_type = email = request.json.get("type", None)
-
-
-# Test presence of variables
-    if user_email is None:
-        return jsonify({"msg": "Missing required user_email"}), 401
-    if resource_id is None:
-        return jsonify({"msg": "Missing required resource id"}), 401
-    if resource_type is None:
-        return jsonify({"msg": "Missing required resource type"}), 401
-
-# Use of variables
-    user = User.query.get(user_email)
-
-    if user is None:
-        return jsonify({"msg": "Could not find specified user"}), 404
-
-    if resource_type == "product":
-        resource = Product.query.get(resource_id)
-        user.product.append(resource) 
-
-    db.session.commit()                   
-    
-    response_body = {
-        "msg": "Resource added successfully",
-        "user": user.serialize()
-    }
 
 
 # --------------Product Routes---------------

@@ -31,14 +31,17 @@ if os.getenv("DATABASE_URL") is not None:
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////tmp/test.db"
 
-app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
+jwt = JWTManager(app)
+
 MIGRATE = Migrate(app, db)
 db.init_app(app)
 
 # Allow CORS requests to this API
 CORS(app)
-jwt = JWTManager(app)
+
 # add the admin
 setup_admin(app)
 

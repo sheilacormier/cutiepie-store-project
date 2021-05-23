@@ -16,6 +16,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				email: "",
 				id: null,
 				wishlist: []
+			},
+			alert: {
+				type: "",
+				msg: "",
+				show: false
 			}
 		},
 		actions: {
@@ -23,6 +28,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 			initialize: () => {
 				getActions().checkToken();
 				getActions().getAllProducts();
+			},
+
+			setAlert: payload => {
+				/* payload should be an object with the following shape:
+                    {
+                        type: "",
+                        msg: "",
+                        show: false
+                    }
+                    type either: danger, success, warning
+                */
+				setStore({ alert: payload });
+			},
+
+			clearAlert: () => {
+				setStore({
+					alert: {
+						type: "",
+						msg: "",
+						show: false
+					}
+				});
 			},
 
 			getAllProducts: () => {
@@ -44,14 +71,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				if (tokenCheck !== null) {
 					// token is present, so do something (set loggedIn, maybe?)
-					console.log(tokenCheck);
-					let validate_token = fetch(`${base_url}/validate`, {
+					// console.log(tokenCheck);
+					return fetch(`${base_url}/validate`, {
 						headers: {
 							"Content-Type": "application/json",
 							Authorization: `Bearer ${tokenCheck.token}`
 						}
 					})
-						.then(res => res.json())
+						.then(res => {
+							if (res.status === 401) {
+								throw new Error("Token Expired, please login.");
+							}
+
+							if (!res.ok) throw new Error(res.statusText);
+							return res.json();
+						})
 						.then(data =>
 							setStore({
 								user: {
@@ -61,9 +95,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 									loggedIn: true
 								}
 							})
-						);
-				} else {
-					// token is not present, redirect to login flow
+						)
+						.catch(err => console.error(err));
 				}
 			},
 
@@ -81,19 +114,68 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addWishlist: data => {
 				//get the store
 				const store = getStore();
-				//and pushes data
-				store.wishlist.push(data);
-				//reset the global store
-				setStore(store);
+
+				let wishlist = store.user.wishlist.concat(data);
+				let tokenCheck = JSON.parse(localStorage.getItem("cutie-pie"));
+
+				let payload = {
+					wishlist: wishlist
+				};
+				// console.log(payload);
+
+				return fetch(`${base_url}/user/wishlist/${store.user.id}`, {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${tokenCheck.token}`
+					},
+					body: JSON.stringify(payload)
+				})
+					.then(res => {
+						if (!res.ok) throw new Error(res.statusText);
+						return res.json();
+					})
+					.then(data =>
+						setStore({
+							user: {
+								...data.user,
+								loggedIn: true
+							}
+						})
+					);
 			},
 
-			removeWishlist: index => {
-				//get the store
+			removeWishlist: product => {
 				const store = getStore();
-				//and filter data
-				let wishlist = store.wishlist.filter((item, i) => i !== index);
-				//reset the global store
-				setStore({ wishlist: wishlist });
+
+				let wishlist = store.user.wishlist.filter((item, i) => item.id !== product.id);
+				let tokenCheck = JSON.parse(localStorage.getItem("cutie-pie"));
+
+				let payload = {
+					wishlist: wishlist
+				};
+				// console.log(payload);
+
+				return fetch(`${base_url}/user/wishlist/${store.user.id}`, {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${tokenCheck.token}`
+					},
+					body: JSON.stringify(payload)
+				})
+					.then(res => {
+						if (!res.ok) throw new Error(res.statusText);
+						return res.json();
+					})
+					.then(data =>
+						setStore({
+							user: {
+								...data.user,
+								loggedIn: true
+							}
+						})
+					);
 			},
 
 			countWishlist: () => {
@@ -131,13 +213,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 							JSON.stringify({
 								token: data.token,
 								display_name: data.user.first_name, // Users first name typically
-								email: data.user.email
+								email: data.user.email,
+								id: data.user.id
 							})
 						);
 					});
 			},
 
-			signout: () => {
+			signOut: () => {
 				setStore({
 					user: {
 						...getStore().user,

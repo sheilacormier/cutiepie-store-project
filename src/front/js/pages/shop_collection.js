@@ -14,10 +14,26 @@ import "../../styles/shop_collection&wishlist.scss";
 export const ShopCollection = () => {
 	const { store, actions } = useContext(Context);
 
-	const [isActive, setActive] = useState(false);
+	const handleFavoriteClick = async product => {
+		// check if user is logged in, if not, short circuit this function
+		if (!store.user.loggedIn) {
+			actions.setAlert({
+				type: "danger",
+				msg: "Please login to select favorites!",
+				show: true
+			});
+			return;
+		}
 
-	const handleToggle = () => {
-		setActive(!isActive);
+		// Query product in the wishlist. This is either Undefined or a product object
+		let productQuery = store.user.wishlist.find(item => item.id === product.id);
+
+		// check if the query was undefined and either add or remove based on result
+		if (typeof productQuery === "undefined") {
+			await actions.addWishlist(product);
+		} else {
+			await actions.removeWishlist(product);
+		}
 	};
 
 	return (
@@ -61,20 +77,26 @@ export const ShopCollection = () => {
 									<Button
 										bsPrefix="btn-like"
 										variant="warning"
-										onClick={handleToggle && (() => actions.addWishlist(product))}>
+										className={
+											store.user.wishlist.find(item => item.id === product.id)
+												? "wished"
+												: "not-wished"
+										}
+										onClick={e => handleFavoriteClick(product)}>
 										<i className="fa fa-heart" />
 									</Button>
+
 									<Card.Img className="pt-2" variant="top" src={product.img} />
 									<Container className="bottom-btn-container pt-2">
 										<Button as={Link} to="#" bsPrefix="btn-addtocart" variant="warning">
-											<i className="fa fa-shopping-cart" />
+											<i className="fa fa-shopping-cart fa-lg" />
 										</Button>
 										<Button
 											as={Link}
 											to={`/product_details/${index}`}
 											bsPrefix="btn-seedetails"
 											variant="warning">
-											<i className="fas fa-search" />
+											<i className="fas fa-search fa-lg" />
 										</Button>
 									</Container>
 								</Container>

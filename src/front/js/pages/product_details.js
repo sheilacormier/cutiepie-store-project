@@ -14,6 +14,7 @@ import "../../styles/product_details.scss";
 
 export const ProductDetails = () => {
 	const { store, actions } = useContext(Context);
+
 	let { productIndex } = useParams();
 	let products = store.product;
 	let selectedProduct = store.product.length > 0 && store.product[productIndex];
@@ -24,6 +25,28 @@ export const ProductDetails = () => {
 		},
 		[products]
 	);
+
+	const handleFavoriteClick = async product => {
+		// check if user is logged in, if not, short circuit this function
+		if (!store.user.loggedIn) {
+			actions.setAlert({
+				type: "danger",
+				msg: "Please login to select favorites!",
+				show: true
+			});
+			return;
+		}
+
+		// Query product in the wishlist. This is either Undefined or a product object
+		let productQuery = store.user.wishlist.find(item => item.id === product.id);
+
+		// check if the query was undefined and either add or remove based on result
+		if (typeof productQuery === "undefined") {
+			await actions.addWishlist(product);
+		} else {
+			await actions.removeWishlist(product);
+		}
+	};
 
 	return (
 		<Container className="my-2 mb-5">
@@ -84,15 +107,27 @@ export const ProductDetails = () => {
 								</Row>
 							</div>
 							<p className="product-description">{store.product[productIndex].description}</p>
-							<div>
+							<Row>
 								<Button
 									href={store.product[productIndex].url}
-									className="add-to-cart btn btn-default w-100"
+									className="col mr-2 p-2 p-md-3 add-to-cart btn btn-default"
 									type="button"
 									target="_blank">
 									buy now
 								</Button>
-							</div>
+
+								<Button
+									href={store.product[productIndex].url}
+									type="button"
+									className={
+										store.user.wishlist.find(item => item.id === selectedProduct.id)
+											? "wished col p-2 p-md-3 add-to-cart btn btn-default"
+											: "not-wished col p-2 p-md-3 add-to-cart btn btn-default"
+									}
+									onClick={e => handleFavoriteClick(selectedProduct)}>
+									add to wishlist
+								</Button>
+							</Row>
 						</div>
 					</Col>
 				</Row>
