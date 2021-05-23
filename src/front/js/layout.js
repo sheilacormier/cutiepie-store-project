@@ -17,7 +17,7 @@ import { Footer } from "./component/footer";
 import { Slogan } from "./component/slogan";
 import { PrivacyPolicy } from "./pages/privacy_policy";
 import { TermsConditions } from "./pages/terms_conditions";
-import { AboutUs } from "./pages/about_us";
+import { OurStory } from "./pages/our_story";
 
 //create your first component
 const Layout = () => {
@@ -59,8 +59,8 @@ const Layout = () => {
 						<Route exact path="/privacy_policy">
 							<PrivacyPolicy />
 						</Route>
-						<Route exact path="/about_us">
-							<AboutUs />
+						<Route exact path="/our_story">
+							<OurStory />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
