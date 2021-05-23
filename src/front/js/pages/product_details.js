@@ -130,6 +130,53 @@ export const ProductDetails = () => {
 							</Row>
 						</div>
 					</Col>
+					<Col>
+						{/* You also might light section starts here*/}
+						<Col className="mt-5 mb-3 d-flex justify-content-center align-items-center">
+							<h2>YOU MIGHT ALSO LIKE</h2>
+						</Col>
+
+						{store.homeCards.map((product, index) => {
+							return (
+								<Col
+									sm={12}
+									md={6}
+									lg={3}
+									key={index}
+									className="d-flex justify-content-center align-items-center">
+									<div className="product-wrapper my-4 text-center">
+										<div className="product-img">
+											<img className="product-pic" src={product.img} alt="outfit" />
+
+											<span className="text-center">
+												<i className="fa fa-rupee" /> {product.price}
+											</span>
+											<div className="product-action">
+												<div className="product-action-style">
+													<Link
+														to="#"
+														className={
+															store.user.wishlist.find(item => item.id === product.id)
+																? "wished"
+																: "not-wished"
+														}
+														onClick={e => handleFavoriteClick(product)}>
+														<i className="fa fa-heart" />
+													</Link>
+													<Link to={`/product_details/${index}`}>
+														<i className="fas fa-search" />
+													</Link>
+													<a href={product.url} target="_blank" rel="noopener noreferrer">
+														<i className="fa fa-shopping-cart" />
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</Col>
+							);
+						})}
+					</Col>
 				</Row>
 			)}
 		</Container>
