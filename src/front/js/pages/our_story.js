@@ -30,9 +30,13 @@ export const OurStory = () => {
 						<strong>Get In Touch</strong>
 					</h3>
 					<p>customerservice@cutiepie.com</p>
-					<h3><strong>Hours</strong></h3>
+					<h3>
+						<strong>Hours</strong>
+					</h3>
 					<p>Monday-Friday 8am-5pm EST</p>
-					<h3><strong>Chat Hours</strong></h3>
+					<h3>
+						<strong>Chat Hours</strong>
+					</h3>
 					<p>Monday-Friday 8am-5pm EST</p>
 				</Col>
 			</Row>
