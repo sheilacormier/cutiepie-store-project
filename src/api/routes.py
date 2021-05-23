@@ -10,20 +10,25 @@ from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_requir
 
 api = Blueprint('api', __name__)
 
-# Handle/serialize errors like a JSON object
+
+
+#################### Handle/serialize errors like a JSON object ####################
+
 @api.errorhandler(APIException)
 def handle_invalid_usage(error):
     return jsonify(error.to_dict()), error.status_code
 
 
-# generate sitemap with all your endpoints
+#################### generate sitemap with all your endpoints ####################
+
 @api.route('/')
 def sitemap():
     return generate_sitemap(app)
 
 
-# Create a route to authenticate your users and return JWTs. The
-# create_access_token() function is used to actually generate the JWT.
+#################### Create a route to authenticate your users and return JWTs. The
+# create_access_token() function is used to actually generate the JWT. ####################
+
 @api.route("/login", methods=["POST"])
 def login():
     email = request.json.get("email", None)
@@ -41,8 +46,9 @@ def login():
     return jsonify(payload), 200
 
 
-# Protect a route with jwt_required, which will kick out requests
-# without a valid JWT present.
+#################### PROTECT a route with jwt_required, which will kick out 
+# requests without a valid JWT present. ####################
+
 @api.route("/validate", methods=["GET"])
 @jwt_required()
 def validate_token():
@@ -57,7 +63,8 @@ def validate_token():
     return jsonify(payload), 200
 
 
-# Protect a route with jwt_required
+#################### PROTECT a route with jwt_required ####################
+
 @api.route("/protected", methods=["GET"])
 @jwt_required()
 def protected():
@@ -69,7 +76,8 @@ def protected():
     }), 200
 
 
-#Endpoint to retrieve one user by ID
+#################### Endpoint to RETRIEVE one user by ID ####################
+
 @api.route('/user/<int:id>', methods=['GET'])
 def get_one_user(id):
     users = User.query.get(id)
@@ -78,7 +86,8 @@ def get_one_user(id):
     return jsonify(users), 200
 
 
-#Endpoint updates the user's information by ID
+#################### Endpoint UPDATES the user's information by ID ####################
+
 @api.route('/user', methods=['PUT']) 
 def update_user():
         
@@ -113,7 +122,9 @@ def update_user():
 
     return jsonify(payload),200
 
-#Endpoint updates the user's wishlist by ID
+
+#################### Endpoint UPDATES the user's wishlist by ID ####################
+
 @api.route('/user/wishlist/<int:user_id>', methods=['PUT']) 
 @jwt_required()
 def update_user_wishlist(user_id):
@@ -152,7 +163,8 @@ def update_user_wishlist(user_id):
     return jsonify(payload),200
 
 
-#Endpoint to add users
+#################### Endpoint to ADD users ####################
+
 @api.route('/user', methods=['POST'])
 def create_person():
         body = request.get_json() # get the request body content
@@ -165,12 +177,37 @@ def create_person():
 
         return "ok", 200
 
+#################### Reset Password ####################
+
+@api.route("/reset", methods=["POST"])
+def update_password():
+    if request.method == "POST":
+
+        new_password = request.json["password"]
+        email = request.json["email"]
+        # Validate
+        if not (new_password):
+            return jsonify({"error": "Invalid parameter"}), 400
+        
+        user = User.query.filter_by(email=email).first()
+
+        if not user:
+            return jsonify({"error": "Invalid parameter"}), 400
+        
+        # Create and set new password
+        new_password_hashed = generate_password_hash(new_password)
+        user.password = new_password_hashed
+        db.session.commit()        
 
 
-# --------------Product Routes---------------
+        return jsonify({"status": True}), 200
 
 
-#Endpoint to retrieve products
+#################### PRODUCT ROUTES START ####################
+
+
+#################### Endpoint to RETRIEVE products ####################
+
 @api.route('/product', methods=['GET'])
 def select_product():
     product = Product.query.all()
@@ -180,7 +217,8 @@ def select_product():
     return jsonify(response_body), 200 
 
 
-#Endpoint to add products
+#################### Endpoint to add products ####################
+
 @api.route('/product', methods=['POST'])
 def create_product():
         body = request.get_json() # get the request body content
@@ -194,7 +232,8 @@ def create_product():
         return "ok", 200
 
 
-#Endpoint to delete products
+#################### Endpoint to delete products ####################
+
 @api.route("/product/<int:id>", methods=["DELETE"])
 def product_delete(id):
     product = Product.query.get(id)
