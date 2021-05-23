@@ -65,7 +65,7 @@ export const ProductDetails = () => {
 							<hr />
 							<Row className="colors-wrapper">
 								<Col>
-									<span className="color-label">Color:</span>
+									<span className="color-label">COLOR</span>
 									<Row>
 										{typeof selectedProduct !== "undefined"
 											? selectedProduct.colors.map((variant, index) => {
@@ -89,7 +89,7 @@ export const ProductDetails = () => {
 								</Col>
 							</Row>
 							<div className="sizes-wrapper">
-								<span className="size-label">Size:</span>
+								<span className="size-label">SIZE</span>
 								<Row>
 									<Col xs="auto">
 										<Form.Group className="mt-2">
@@ -99,13 +99,15 @@ export const ProductDetails = () => {
 														return <option key={index}>{variant.size}</option>;
 													})
 												) : (
-													<option>No Sizes Available</option>
+													<option> No Sizes Available</option>
 												)}
 											</Form.Control>
 										</Form.Group>
 									</Col>
 								</Row>
 							</div>
+							<hr />
+							<span className="description-label">WHY WE LOVE THIS PIECE</span>
 							<p className="product-description">{store.product[productIndex].description}</p>
 							<Row>
 								<Button
@@ -133,7 +135,7 @@ export const ProductDetails = () => {
 					<Col>
 						{/* You also might light section starts here*/}
 						<Col className="mt-5 mb-3 d-flex justify-content-center align-items-center">
-							<h2>YOU MIGHT ALSO LIKE</h2>
+							<h2 className="suggestions">YOU MIGHT ALSO LIKE</h2>
 						</Col>
 
 						{store.homeCards.map((product, index) => {

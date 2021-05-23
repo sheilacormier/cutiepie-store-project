@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap');
+
 .colors-wrapper {
     img {
         max-width: 100px;
@@ -15,9 +17,12 @@
 
 .product-brand{
     text-transform: UPPERCASE;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 16px;
+    font-family: 'Khula', sans-serif;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 20px;
     color: grey;
+    margin-bottom: 0px;
 
 }
 .product-title{
@@ -29,9 +34,10 @@
 }
 
 .product-price {
-    font-family: sans-serif;
+    font-family: 'Khula', sans-serif;
     font-size: 18px;
     color: grey;
+    margin-top: 10px;
 }
 
 .color {
@@ -43,12 +49,24 @@
 .color-label {
     font-family: sans-serif;
     font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
     color: grey;
 }
 
 .size-label {
     font-family: sans-serif;
     font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: grey;
+}
+
+.description-label {
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
     color: grey;
 }
 
@@ -67,6 +85,7 @@ hr {
     font-family: sans-serif;
     font-size: 16px;
     color: grey;
+    margin-top: 10px;
 }
 
 .add-to-cart{
@@ -84,4 +103,16 @@ hr {
 .add-to-cart:hover{
     background: #f97f4d;
     color: #fff;
+}
+
+.suggestions{
+    text-transform: UPPERCASE;
+    font-family: 'Khula', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 39px;
+    letter-spacing: 4px;
+    color: grey;
+    margin-top: 100px;
+
 }
