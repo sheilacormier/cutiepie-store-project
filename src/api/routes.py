@@ -6,24 +6,31 @@ from api.models import db, User, Product
 from api.utils import generate_sitemap, APIException
 from cloudinary.uploader import upload
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
-
+import smtplib, ssl, os, random, string
+from email.mime.text import MIMEText
+from werkzeug.security import check_password_hash, generate_password_hash
 
 api = Blueprint('api', __name__)
 
-# Handle/serialize errors like a JSON object
+
+
+#################### Handle/serialize errors like a JSON object ####################
+
 @api.errorhandler(APIException)
 def handle_invalid_usage(error):
     return jsonify(error.to_dict()), error.status_code
 
 
-# generate sitemap with all your endpoints
+#################### generate sitemap with all your endpoints ####################
+
 @api.route('/')
 def sitemap():
     return generate_sitemap(app)
 
 
-# Create a route to authenticate your users and return JWTs. The
-# create_access_token() function is used to actually generate the JWT.
+#################### Create a route to authenticate your users and return JWTs. The
+# create_access_token() function is used to actually generate the JWT. ####################
+
 @api.route("/login", methods=["POST"])
 def login():
     email = request.json.get("email", None)
@@ -41,8 +48,9 @@ def login():
     return jsonify(payload), 200
 
 
-# Protect a route with jwt_required, which will kick out requests
-# without a valid JWT present.
+#################### PROTECT a route with jwt_required, which will kick out 
+# requests without a valid JWT present. ####################
+
 @api.route("/validate", methods=["GET"])
 @jwt_required()
 def validate_token():
@@ -57,7 +65,8 @@ def validate_token():
     return jsonify(payload), 200
 
 
-# Protect a route with jwt_required
+#################### PROTECT a route with jwt_required ####################
+
 @api.route("/protected", methods=["GET"])
 @jwt_required()
 def protected():
@@ -69,7 +78,8 @@ def protected():
     }), 200
 
 
-#Endpoint to retrieve one user by ID
+#################### Endpoint to RETRIEVE one user by ID ####################
+
 @api.route('/user/<int:id>', methods=['GET'])
 def get_one_user(id):
     users = User.query.get(id)
@@ -78,7 +88,8 @@ def get_one_user(id):
     return jsonify(users), 200
 
 
-#Endpoint updates the user's information by ID
+#################### Endpoint UPDATES the user's information by ID ####################
+
 @api.route('/user', methods=['PUT']) 
 def update_user():
         
@@ -113,7 +124,75 @@ def update_user():
 
     return jsonify(payload),200
 
-#Endpoint updates the user's wishlist by ID
+#################### Reset Password ####################
+
+@api.route("/reset", methods=["POST"])
+def update_password():
+    if request.method == "POST":
+        # new_password = request.json.get("password")
+        email = request.json.get("email")
+
+        if not email:
+            return jsonify({"msg": "Missing email in request."}), 400
+        
+        user = User.query.filter_by(email=email).first()
+        
+        # Create and set new password
+        result_str = ''.join(random.choice(string.ascii_letters) for i in range(12))
+        # new_password_hashed = generate_password_hash(result_str)
+
+        user.password = result_str
+        db.session.commit()        
+
+        payload = {
+            "msg": "Success. An email will be sent to your account with your temporary password."
+        }
+
+        try:
+            message = '''\
+A reset request was sent to our system. Please use the following password to login:
+{0}
+
+Thanks,
+Cutie Pie
+            '''.format(result_str)
+
+            msg = MIMEText(message, 'plain')
+            msg['Subject'] = "Password Reset Request"
+            msg['From'] = "Cutie Pie"
+            msg['To'] = email
+
+
+            send_email(msg,email)
+        except Exception as e:
+            print(e)
+            return jsonify({"msg": "Unable to send reset email."}), 400
+
+        return jsonify(payload), 200
+
+
+#################### Send Password Email  ####################
+
+def send_email(msg,email):
+    port = 465  # For SSL
+    password = os.environ.get('EMAIL_PASSWORD')
+    email_account = os.environ.get('EMAIL_ACCOUNT')
+
+    try:
+        server=smtplib.SMTP('smtp.gmail.com:587')
+        server.starttls()
+        server.login(email_account,password)
+        server.sendmail(msg['From'], msg['To'], msg.as_string())
+        
+    except Exception as e:
+        # Print any error messages to stdout
+        print(e)
+
+    server.quit()            
+
+
+#################### Endpoint UPDATES the user's wishlist by ID ####################
+
 @api.route('/user/wishlist/<int:user_id>', methods=['PUT']) 
 @jwt_required()
 def update_user_wishlist(user_id):
@@ -152,7 +231,8 @@ def update_user_wishlist(user_id):
     return jsonify(payload),200
 
 
-#Endpoint to add users
+#################### Endpoint to ADD users ####################
+
 @api.route('/user', methods=['POST'])
 def create_person():
         body = request.get_json() # get the request body content
@@ -167,10 +247,11 @@ def create_person():
 
 
 
-# --------------Product Routes---------------
+#################### PRODUCT ROUTES START ####################
 
 
-#Endpoint to retrieve products
+#################### Endpoint to RETRIEVE products ####################
+
 @api.route('/product', methods=['GET'])
 def select_product():
     product = Product.query.all()
@@ -180,7 +261,8 @@ def select_product():
     return jsonify(response_body), 200 
 
 
-#Endpoint to add products
+#################### Endpoint to add products ####################
+
 @api.route('/product', methods=['POST'])
 def create_product():
         body = request.get_json() # get the request body content
@@ -194,7 +276,8 @@ def create_product():
         return "ok", 200
 
 
-#Endpoint to delete products
+#################### Endpoint to delete products ####################
+
 @api.route("/product/<int:id>", methods=["DELETE"])
 def product_delete(id):
     product = Product.query.get(id)
@@ -202,6 +285,8 @@ def product_delete(id):
     db.session.commit()
 
     return "Product was successfully deleted"
+
+
 
 
 

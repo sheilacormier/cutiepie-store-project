@@ -241,8 +241,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(email);
 			},
 
-			updatePassword: password => {
-				console.log(password);
+			updatePassword: email => {
+				console.log(email);
+			},
+
+			forgotPassword: email => {
+				return fetch(process.env.BACKEND_URL + "/api/reset", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						email: email
+					})
+				})
+					.then(res => res.json())
+					.then(data => {
+						// setStore({ validate: info })
+						return data.msg;
+					});
 			}
 
 			// uploadImage: user => {
