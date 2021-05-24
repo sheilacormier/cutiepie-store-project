@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { Context } from "../store/appContext";
-import { useHistory } from "react-router-dom";
+
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
@@ -9,13 +9,10 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import "../../styles/create-sign_in_account.scss";
 
-export const SignIn = () => {
-	let history = useHistory();
+export const ForgotPassword = () => {
 	const { store, actions } = useContext(Context);
 	const emailRef = useRef(null);
-	const passRef = useRef(null);
 	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
 	const [validated, setValidated] = useState(false);
 
 	const handleSubmit = async e => {
@@ -26,7 +23,8 @@ export const SignIn = () => {
 			e.preventDefault();
 			e.stopPropagation();
 		} else if (form.checkValidity()) {
-			let signin = await actions.signIn(email, password);
+			let forgot = await actions.forgotPassword(email);
+			console.log(forgot);
 		}
 
 		setValidated(true);
@@ -34,7 +32,7 @@ export const SignIn = () => {
 
 	return (
 		<Container className="my-2">
-			<h5 className="create-account-title text-center pt-2">SIGN IN</h5>
+			<h5 className="create-account-title text-center pt-2">Forgot Password</h5>
 			<Row className="mx-auto pt-4">
 				<Col sm={12} md={6} lg={4} className="mx-auto align-items-center">
 					<Form noValidate validated={validated} onSubmit={handleSubmit}>
@@ -52,36 +50,9 @@ export const SignIn = () => {
 								{emailRef && emailRef.current && emailRef.current.validationMessage}
 							</Form.Control.Feedback>
 						</Form.Group>
-						<Form.Group controlId="formGroupPassword">
-							<Form.Control
-								type="password"
-								placeholder="Password"
-								value={password}
-								onChange={e => setPassword(e.target.value)}
-								required
-								autoComplete="on"
-								ref={passRef}
-							/>
-							<Form.Control.Feedback type="invalid">
-								{passRef && passRef.current && passRef.current.validationMessage}
-							</Form.Control.Feedback>
-						</Form.Group>
 						<Form.Group controlId="formGroupSubmit">
 							<Button className="w-100" type="submit" bsPrefix="btn-signin">
-								Sign in
-								<span />
-								<span />
-								<span />
-								<span />
-							</Button>
-						</Form.Group>
-						<Form.Group controlId="formGroupPasswordReminder">
-							<Button
-								className="w-100"
-								type="button"
-								bsPrefix="btn-signin"
-								onClick={e => history.push("/forgot")}>
-								Forgot your password?
+								Reset Password
 								<span />
 								<span />
 								<span />

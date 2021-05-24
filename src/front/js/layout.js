@@ -22,6 +22,7 @@ import { Slogan } from "./component/slogan";
 import { PrivacyPolicy } from "./pages/privacy_policy";
 import { TermsConditions } from "./pages/terms_conditions";
 import { OurStory } from "./pages/our_story";
+import { ForgotPassword } from "./pages/forgot_password";
 
 //create your first component
 const Layout = () => {
@@ -63,6 +64,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/sign_in">
 							<SignIn />
+						</Route>
+						<Route exact path="/forgot">
+							<ForgotPassword />
 						</Route>
 						<PrivateRoute exact path="/profile">
 							<Profile />

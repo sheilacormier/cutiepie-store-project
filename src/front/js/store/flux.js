@@ -257,6 +257,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				setStore({ validate: info });
 				alert("Your password has changed!");
+			},
+
+			forgotPassword: email => {
+				return fetch(process.env.BACKEND_URL + "/api/reset", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						email: email
+					})
+				})
+					.then(res => res.json())
+					.then(data => {
+						// setStore({ validate: info })
+						return data.msg;
+					});
 			}
 
 			// uploadImage: user => {
