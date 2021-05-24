@@ -241,22 +241,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(email);
 			},
 
-			updatePassword: async (email, password) => {
-				const url = process.env.BACKEND_URL + "/api/reset";
-				const response = await fetch(url, {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify({
-						email: email,
-						password: password
-					})
-				});
-				const info = await response.json();
-
-				setStore({ validate: info });
-				alert("Your password has changed!");
+			updatePassword: email => {
+				console.log(email);
 			},
 
 			forgotPassword: email => {

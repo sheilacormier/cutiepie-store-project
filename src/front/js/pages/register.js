@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { Context } from "../store/appContext";
-
+import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
@@ -73,6 +73,9 @@ export const Register = () => {
 								<span />
 							</Button>
 						</Form.Group>
+						<p>
+							Already have an account? <Link to="/sign_in">click here</Link> to login.
+						</p>
 					</Form>
 				</Col>
 				<Col sm={12} className="mx-auto">
