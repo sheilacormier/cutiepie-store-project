@@ -52,103 +52,125 @@ export const Home = () => {
 	};
 
 	return (
-		<Container className="my-2">
+		<Container fluid>
 			<Row className="justify-content-center align-items-center">
-				<Col>
+				<Col className="p-0">
 					<div className="hero-image" />
 				</Col>
 			</Row>
+			<Container className="my-2">
+				<Row>
+					{store.homeCards.map((product, index) => {
+						return (
+							<Col
+								sm={12}
+								md={6}
+								lg={3}
+								key={index}
+								className="d-flex justify-content-center align-items-center">
+								<div className="product-wrapper my-4 text-center">
+									<div className="product-img">
+										<img className="product-pic" src={product.img} alt="outfit" />
 
-			<Row>
-				{store.homeCards.map((product, index) => {
-					return (
-						<Col
-							sm={12}
-							md={6}
-							lg={3}
-							key={index}
-							className="d-flex justify-content-center align-items-center">
-							<div className="product-wrapper my-4 text-center">
-								<div className="product-img">
-									<img className="product-pic" src={product.img} alt="outfit" />
-
-									<span className="text-center">
-										<i className="fa fa-rupee" /> {product.price}
-									</span>
-									<div className="product-action">
-										<div className="product-action-style">
-											<Link
-												to="#"
-												className={
-													store.user.wishlist.find(item => item.id === product.id)
-														? "wished"
-														: "not-wished"
-												}
-												onClick={e => handleFavoriteClick(product)}>
-												<i className="fa fa-heart" />
-											</Link>
-											<Link to={`/product_details/${index}`}>
-												<i className="fas fa-search" />
-											</Link>
-											<a href={product.url} target="_blank" rel="noopener noreferrer">
-												<i className="fa fa-shopping-cart" />
-											</a>
+										<span className="text-center">
+											<i className="fa fa-rupee" /> {product.price}
+										</span>
+										<div className="product-action">
+											<div className="product-action-style">
+												<Link
+													to="#"
+													className={
+														store.user.wishlist.find(item => item.id === product.id)
+															? "wished"
+															: "not-wished"
+													}
+													onClick={e => handleFavoriteClick(product)}>
+													<i className="fa fa-heart" />
+												</Link>
+												<Link to={`/product_details/${index}`}>
+													<i className="fas fa-search" />
+												</Link>
+												<a href={product.url} target="_blank" rel="noopener noreferrer">
+													<i className="fa fa-shopping-cart" />
+												</a>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-						</Col>
-					);
-				})}
-			</Row>
-			<Row>
-				<Col xs={12} md={4} className="my-3">
-					<div>
+							</Col>
+						);
+					})}
+				</Row>
+				<Row>
+					<Col xs={12} md={4} className="my-3">
+						<div>
+							<img
+								src="https://res.cloudinary.com/scormier/image/upload/v1620161770/cutie-pie/heart-large_trfvou.png"
+								alt="heart"
+								width="37"
+								height="34"
+							/>
+						</div>
+						<span className="subscribetext">Join our family! Subscribe to our newsletter.</span>
+						<Form noValidate validated={validated} onSubmit={handleSubmit}>
+							<Form.Row>
+								<Col xs="auto" className="w-100 justify-content-center align-items-center my-1">
+									<Form.Control
+										id="inlineFormInputName"
+										placeholder="youremail@gmail.com"
+										type="email"
+										value={email}
+										required
+										autoComplete="on"
+										onChange={e => setEmail(e.target.value)}
+										ref={emailRef}
+									/>
+									<Form.Control.Feedback type="invalid">
+										{email && emailRef.current && emailRef.current.validationMessage}
+									</Form.Control.Feedback>
+								</Col>
+								<Col xs="auto" className="my-1">
+									<Button type="submit" bsPrefix="btn-signup-newsletter">
+										Sign Up
+										<span />
+										<span />
+										<span />
+										<span />
+									</Button>
+								</Col>
+							</Form.Row>
+						</Form>
+					</Col>
+					<Col xs={12} md={8}>
 						<img
-							src="https://res.cloudinary.com/scormier/image/upload/v1620161770/cutie-pie/heart-large_trfvou.png"
-							alt="heart"
-							width="37"
-							height="34"
+							className="img-fluid"
+							src="https://res.cloudinary.com/scormier/image/upload/v1620405014/cutie-pie/model-babies_ujsoxh.png"
+							alt="Baby model"
+							width="734"
+							height="408"
 						/>
-					</div>
-					<span className="subscribetext">Join our family! Subscribe to our newsletter.</span>
-					<Form noValidate validated={validated} onSubmit={handleSubmit}>
-						<Form.Row>
-							<Col xs="auto" className="w-100 justify-content-center align-items-center my-1">
-								<Form.Control
-									id="inlineFormInputName"
-									placeholder="youremail@gmail.com"
-									type="email"
-									value={email}
-									required
-									autoComplete="on"
-									onChange={e => setEmail(e.target.value)}
-									ref={emailRef}
-								/>
-								<Form.Control.Feedback type="invalid">
-									{email && emailRef.current && emailRef.current.validationMessage}
-								</Form.Control.Feedback>
-							</Col>
-							<Col xs="auto" className="my-1">
-								<Button type="submit" bsPrefix="btn-signup-newsletter">
-									Sign Up
-									<span />
-									<span />
-									<span />
-									<span />
-								</Button>
-							</Col>
-						</Form.Row>
-					</Form>
+					</Col>
+				</Row>
+			</Container>
+			<Row className="brands-container">
+				<h2 className="brands-header">Brands we love</h2>
+				<Col className="p-0">
+					<img src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/hap5qqxogfrt7hu2page.png" />
 				</Col>
-				<Col xs={12} md={8}>
-					<img
-						className="img-fluid"
-						src="https://res.cloudinary.com/scormier/image/upload/v1620405014/cutie-pie/model-babies_ujsoxh.png"
-						alt="Baby model"
-						width="734"
-						height="408"
-					/>
+				<Col className="p-0">
+					<img src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/ffphln37xkdhh5fultru.png" />
+				</Col>
+				<Col className="p-0">
+					<img src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/w00dkwzmr49jie7cgmbd.png" />
+				</Col>
+				<Col className="p-0">
+					<img src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/hap5qqxogfrt7hu2page.png" />
+				</Col>
+				<Col className="p-0">
+					<img src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/ffphln37xkdhh5fultru.png" />
+				</Col>
+				<Col className="p-0">
+					<img src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/w00dkwzmr49jie7cgmbd.png" />
 				</Col>
 			</Row>
 		</Container>

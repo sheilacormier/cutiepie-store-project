@@ -1,8 +1,9 @@
-
 .hero-image{
-    height: 50vh;
+    // height: 50vh;
+    height: 60vh;
     background-image: url("https://res.cloudinary.com/scormier/image/upload/v1620161770/cutie-pie/model-baby_tcmmus.jpg");
-    background-position: center;
+    // background-position: center;
+    background-position: 80% 55%;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
@@ -65,4 +66,20 @@
 
 .btn-signup-newsletter span:nth-child(4) {
     --n: 4;
+}
+
+.brands-container{
+    background: #f9f9f9;
+    height: 30vh;
+}
+
+.brands-header{
+    text-transform: UPPERCASE;
+    font-family: 'Khula', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 39px;
+    letter-spacing: 4px;
+    color: grey;
+    margin-top: 50px;
 }

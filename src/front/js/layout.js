@@ -7,6 +7,7 @@ import PrivateRoute from "./component/privateRoute";
 import Toast from "react-bootstrap/Toast";
 import ToastHeader from "react-bootstrap/ToastHeader";
 import ToastBody from "react-bootstrap/ToastBody";
+import Container from "react-bootstrap/Container";
 
 import { Home } from "./pages/home";
 import { Single } from "./pages/single";
@@ -34,17 +35,23 @@ const Layout = () => {
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<Toast
-						className={`bg-${store.alert.type}`}
-						onClose={e => actions.clearAlert()}
-						show={store.alert.show}
-						delay={3000}
-						autohide>
-						<Toast.Header>
-							<strong className="mr-auto">Cutie Pie</strong>
-						</Toast.Header>
-						<Toast.Body>{store.alert.msg}</Toast.Body>
-					</Toast>
+					<Container className="alert-container">
+						<Toast
+							className={`bg-${store.alert.type}`}
+							onClose={e => actions.clearAlert()}
+							show={store.alert.show}
+							delay={5000}
+							autohide>
+							<Toast.Header>
+								<img
+									src="https://res.cloudinary.com/scormier/image/upload/v1621447616/cutie-pie/cutie-pie_logo73x100_lojwos.png"
+									className="logo-alert mr-2"
+								/>
+								<strong className="mr-auto text-dark">Cutie Pie</strong>
+							</Toast.Header>
+							<Toast.Body className="text-light">{store.alert.msg}</Toast.Body>
+						</Toast>
+					</Container>
 
 					<MyNavbar />
 					<Slogan />
