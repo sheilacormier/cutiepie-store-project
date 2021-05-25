@@ -230,7 +230,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			register: (email, password) => {
-				// const store = getStore();
+				const store = getStore();
 				return (
 					fetch(`${base_url}/user/`, {
 						method: "POST",
@@ -245,66 +245,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 						// 	fetch(`${base_url}/user/`)
 						.then(res => res.json())
 						.then(data => {
+							console.log("data ", data);
 							setStore({
 								user: {
+									...store.user,
 									...data.user
 								}
 							});
-							// add token and info to local storage
-							localStorage.setItem(
-								"cutie-pie",
-								JSON.stringify({
-									token: data.token,
-									email: data.user.email,
-									password: data.user.password,
-									id: data.user.id
-								})
-							);
+							getActions().setAlert({
+								type: "success",
+								msg: data.msg,
+								show: true
+							});
+
+							return true;
 						})
 				);
+
 				// });
 			},
-
-			// register: (email, password) => {
-			// 	const store = getStore();
-			// 	fetch(`${base_url}/user`, {
-			// 		method: "post",
-			// 		cors: "no-cors",
-			// 		headers: { "Content-type": "application/json" },
-			// 		body: JSON.stringify({
-			// 			email: email,
-			// 			password: password
-			// 		})
-			// 	})
-			// 		.then(resp => {
-			// 			if (!resp.ok) {
-			// 				throw new Error(resp.statusText);
-			// 			}
-			// 			return resp.json();
-			// 		})
-			// 		.then(resp => {
-			// 			if (resp.status_code !== 200) throw resp;
-			// 			return resp;
-			// 		})
-			// 		.catch(err => {
-			// 			return err;
-			// 		});
-			// },
-
-			// register: (email, password) => {
-			// 	const store = getStore();
-			// 	fetch(`${base_url}/user`, {
-			// 		method: "post",
-			// 		cors: "no-cors",
-			// 		headers: { "Content-type": "application/json" },
-			// 		body: JSON.stringify({
-			// 			email: email,
-			// 			password: password
-			// 		})
-			// 	}).then(() => {
-			// 		getActions().getUser();
-			// 	});
-			// },
 
 			newsletter: email => {
 				console.log(email);

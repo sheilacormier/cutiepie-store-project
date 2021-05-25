@@ -236,17 +236,26 @@ def update_user_wishlist(user_id):
 @api.route('/user', methods=['POST'])
 def create_person():
         body = request.json # get the request body content
+        email = request.json.get('email')
+        password = request.json.get('password')
+
         if body is None:
             return "The request body is null", 400
-        if 'email' not in body:
+        if not email:
             return 'You need to specify the email',400
-        if 'password' not in body:
+        if not password:
             return 'You need to enter a password', 400
 
-        db.session.commit()
-        print(body)
+        user = User(email=email,password=password,is_active=True)
 
-        return "ok", 200
+        db.session.add(user)
+        db.session.commit()
+        payload = {
+            'msg': 'User Added Successfully',
+            'user': user.serialize()
+        }
+
+        return jsonify(payload), 200
 
 
 

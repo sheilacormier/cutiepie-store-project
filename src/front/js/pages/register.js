@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
@@ -11,11 +11,13 @@ import "../../styles/create-sign_in_account.scss";
 
 export const Register = () => {
 	const { store, actions } = useContext(Context);
+	let history = useHistory();
 	const emailRef = useRef(null);
 	const passRef = useRef(null);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [validated, setValidated] = useState(false);
+	const [created, setCreated] = useState(false);
 
 	const handleSubmit = async e => {
 		e.preventDefault();
@@ -26,10 +28,22 @@ export const Register = () => {
 			e.stopPropagation();
 		} else if (form.checkValidity()) {
 			let register = await actions.register(email, password);
+			console.log(register);
+			if (register) {
+				console.log("register is true", history);
+				setCreated(true);
+			}
 		}
 
 		setValidated(true);
 	};
+
+	useEffect(
+		() => {
+			if (created) history.push("/sign_in");
+		},
+		[created]
+	);
 	return (
 		<Container className="my-2">
 			<h5 className="create-account-title text-center pt-2">REGISTER</h5>
