@@ -171,7 +171,7 @@ Cutie Pie
         return jsonify(payload), 200
 
 
-#################### Send Password Email  ####################
+#################### Send Password Reset Email  ####################
 
 def send_email(msg,email):
     port = 465  # For SSL
