@@ -25,7 +25,7 @@ export const Register = () => {
 			e.preventDefault();
 			e.stopPropagation();
 		} else if (form.checkValidity()) {
-			let signin = await actions.register(email, password);
+			let register = await actions.register(email, password);
 		}
 
 		setValidated(true);

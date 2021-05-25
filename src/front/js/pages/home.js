@@ -155,7 +155,7 @@ export const Home = () => {
 			<Row className="brands-container">
 				<Col xs={12}>
 					{" "}
-					<h2 className="brands-header text-center my-4">Brands we love</h2>
+					<h2 className="brands-header text-center my-4">The Brands we love</h2>
 				</Col>
 				<Col xs={12} sm={6} md={4} lg={3} className="py-2 d-flex justify-content-center align-items-center">
 					<img

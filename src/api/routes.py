@@ -233,15 +233,18 @@ def update_user_wishlist(user_id):
 
 #################### Endpoint to ADD users ####################
 
-@api.route('/user', methods=['POST'])
+@api.route('/user/', methods=['POST'])
 def create_person():
-        body = request.get_json() # get the request body content
+        body = request.json # get the request body content
         if body is None:
             return "The request body is null", 400
         if 'email' not in body:
             return 'You need to specify the email',400
         if 'password' not in body:
             return 'You need to enter a password', 400
+
+        db.session.commit()
+        print(body)
 
         return "ok", 200
 
