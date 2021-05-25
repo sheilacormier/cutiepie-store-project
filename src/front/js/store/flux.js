@@ -231,35 +231,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			register: (email, password) => {
 				// const store = getStore();
-				fetch(`${base_url}/user/`, {
-					method: "POST",
-					cors: "no-cors",
-					headers: { "Content-type": "application/json" },
-					body: JSON.stringify({
-						email: email,
-						password: password
+				return (
+					fetch(`${base_url}/user/`, {
+						method: "POST",
+						cors: "no-cors",
+						headers: { "Content-type": "application/json" },
+						body: JSON.stringify({
+							email: email,
+							password: password
+						})
 					})
-				})
-					// .then(getDataUpdated => {
-					// 	fetch(`${base_url}/user/`)
-					.then(res => res.json())
-					.then(data => {
-						setStore({
-							user: {
-								...data.user
-							}
-						});
-						// add token and info to local storage
-						localStorage.setItem(
-							"cutie-pie",
-							JSON.stringify({
-								token: data.token,
-								email: data.user.email,
-								password: data.user.password,
-								id: data.user.id
-							})
-						);
-					});
+						// .then(getDataUpdated => {
+						// 	fetch(`${base_url}/user/`)
+						.then(res => res.json())
+						.then(data => {
+							setStore({
+								user: {
+									...data.user
+								}
+							});
+							// add token and info to local storage
+							localStorage.setItem(
+								"cutie-pie",
+								JSON.stringify({
+									token: data.token,
+									email: data.user.email,
+									password: data.user.password,
+									id: data.user.id
+								})
+							);
+						})
+				);
 				// });
 			},
 

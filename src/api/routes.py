@@ -233,7 +233,7 @@ def update_user_wishlist(user_id):
 
 #################### Endpoint to ADD users ####################
 
-@api.route('/user/', methods=['POST'])
+@api.route('/user', methods=['POST'])
 def create_person():
         body = request.json # get the request body content
         if body is None:
