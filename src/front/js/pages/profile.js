@@ -214,7 +214,11 @@ export const Profile = () => {
 					</Row>
 				)}
 			</Container>
+<<<<<<< HEAD
 			<Row className="justify-content-center align-items-center mt-4">
+=======
+			<Row className="justify-content-center align-items-center">
+>>>>>>> ab3aa49b0f2e4469416f8b8367f82fc69f37b32e
 				<Col className="p-0">
 					<div className="hero-image-profile" />
 				</Col>
