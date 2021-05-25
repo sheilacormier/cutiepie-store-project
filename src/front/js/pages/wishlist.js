@@ -76,7 +76,7 @@ export const Wishlist = () => {
 										className={
 											store.user.wishlist.find(item => item.id === product.id)
 												? "wished"
-												: "not-wished"
+												: "btn-like"
 										}
 										onClick={e => handleFavoriteClick(product)}>
 										<i className="fa fa-heart" />

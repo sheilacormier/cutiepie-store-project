@@ -153,24 +153,45 @@ export const Home = () => {
 				</Row>
 			</Container>
 			<Row className="brands-container">
-				<h2 className="brands-header">Brands we love</h2>
-				<Col className="p-0">
-					<img src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/hap5qqxogfrt7hu2page.png" />
+				<Col xs={12}>
+					{" "}
+					<h2 className="brands-header text-center my-4">Brands we love</h2>
 				</Col>
-				<Col className="p-0">
-					<img src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/ffphln37xkdhh5fultru.png" />
+				<Col xs={12} sm={6} md={4} lg={3} className="py-2 d-flex justify-content-center align-items-center">
+					<img
+						src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/hap5qqxogfrt7hu2page.png"
+						className="brands-imgs"
+					/>
 				</Col>
-				<Col className="p-0">
-					<img src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/w00dkwzmr49jie7cgmbd.png" />
+				<Col xs={12} sm={6} md={4} lg={3} className="py-2 d-flex justify-content-center align-items-center">
+					<img
+						src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/ffphln37xkdhh5fultru.png"
+						className="brands-imgs"
+					/>
 				</Col>
-				<Col className="p-0">
-					<img src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/hap5qqxogfrt7hu2page.png" />
+				<Col xs={12} sm={6} md={4} lg={3} className="py-2 d-flex justify-content-center align-items-center">
+					<img
+						src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/w00dkwzmr49jie7cgmbd.png"
+						className="brands-imgs"
+					/>
 				</Col>
-				<Col className="p-0">
-					<img src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/ffphln37xkdhh5fultru.png" />
+				<Col xs={12} sm={6} md={4} lg={3} className="py-2 d-flex justify-content-center align-items-center">
+					<img
+						src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/hap5qqxogfrt7hu2page.png"
+						className="brands-imgs"
+					/>
 				</Col>
-				<Col className="p-0">
-					<img src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/w00dkwzmr49jie7cgmbd.png" />
+				<Col className="py-2 d-flex justify-content-center align-items-center">
+					<img
+						src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/ffphln37xkdhh5fultru.png"
+						className="brands-imgs"
+					/>
+				</Col>
+				<Col xs={12} sm={6} md={4} lg={3} className="py-2 d-flex justify-content-center align-items-center">
+					<img
+						src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/w00dkwzmr49jie7cgmbd.png"
+						className="brands-imgs"
+					/>
 				</Col>
 			</Row>
 		</Container>
