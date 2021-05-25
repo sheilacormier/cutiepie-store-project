@@ -230,8 +230,78 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			register: (email, password) => {
-				console.log(email, password);
+				const store = getStore();
+				fetch(`${base_url}/user`, {
+					method: "post",
+					cors: "no-cors",
+					headers: { "Content-type": "application/json" },
+					body: JSON.stringify({
+						email: email,
+						password: password
+					})
+				}).then(getDataUpdated => {
+					fetch(`${base_url}/user`)
+						.then(res => res.json())
+						.then(data => {
+							setStore({
+								user: {
+									...data.user
+								}
+							});
+							// add token and info to local storage
+							localStorage.setItem(
+								"cutie-pie",
+								JSON.stringify({
+									token: data.token,
+									email: data.user.email,
+									password: data.user.password,
+									id: data.user.id
+								})
+							);
+						});
+				});
 			},
+
+			// register: (email, password) => {
+			// 	const store = getStore();
+			// 	fetch(`${base_url}/user`, {
+			// 		method: "post",
+			// 		cors: "no-cors",
+			// 		headers: { "Content-type": "application/json" },
+			// 		body: JSON.stringify({
+			// 			email: email,
+			// 			password: password
+			// 		})
+			// 	})
+			// 		.then(resp => {
+			// 			if (!resp.ok) {
+			// 				throw new Error(resp.statusText);
+			// 			}
+			// 			return resp.json();
+			// 		})
+			// 		.then(resp => {
+			// 			if (resp.status_code !== 200) throw resp;
+			// 			return resp;
+			// 		})
+			// 		.catch(err => {
+			// 			return err;
+			// 		});
+			// },
+
+			// register: (email, password) => {
+			// 	const store = getStore();
+			// 	fetch(`${base_url}/user`, {
+			// 		method: "post",
+			// 		cors: "no-cors",
+			// 		headers: { "Content-type": "application/json" },
+			// 		body: JSON.stringify({
+			// 			email: email,
+			// 			password: password
+			// 		})
+			// 	}).then(() => {
+			// 		getActions().getUser();
+			// 	});
+			// },
 
 			newsletter: email => {
 				console.log(email);
@@ -261,36 +331,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return data.msg;
 					});
 			}
-
-			// uploadImage: user => {
-			// 	setStore({
-			// 		...getStore().user,
-			// 		photo_url: image
-			// 	});
-			// }
-
-			// changeColor: (index, color) => {
-			// 	//get the store
-			// 	const store = getStore();
-
-			// 	//we have to loop the entire demo array to look for the respective index
-			// 	//and change its color
-			// 	// const demo = store.demo.map((elm, i) => {
-			// 	// 	if (i === index) elm.background = color;
-			// 	// 	return elm;
-			// 	// });
-
-			// 	//reset the global store
-			// 	// setStore({ demo: demo });
-			// },
-
-			// getMessage: () => {
-			// 	// fetching data from the backend
-			// 	fetch(process.env.BACKEND_URL + "/api/hello")
-			// 		.then(resp => resp.json())
-			// 		.then(data => setStore({ message: data.message }))
-			// 		.catch(error => console.log("Error loading message from backend", error));
-			// }
 		}
 	};
 };

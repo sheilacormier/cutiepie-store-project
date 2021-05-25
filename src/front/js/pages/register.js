@@ -73,7 +73,7 @@ export const Register = () => {
 								<span />
 							</Button>
 						</Form.Group>
-						<p>
+						<p className="already-text text-center">
 							Already have an account? <Link to="/sign_in">click here</Link> to login.
 						</p>
 					</Form>
