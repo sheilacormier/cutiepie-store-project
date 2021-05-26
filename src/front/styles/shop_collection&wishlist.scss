@@ -84,3 +84,17 @@
     }
 }
 
+ul.pagination li a{
+     background: #f9f9f9;
+     margin: 0 4px;
+     transition: background-color .3s;
+     padding: 8px 16px;
+     &:hover, &:active, &:focus{
+         background: #b5bbbf;
+         color: #fff;
+     }
+}
+
+.page-item:last-child .page-link, .page-item:first-child .page-link{
+    border-radius: 0;
+}
