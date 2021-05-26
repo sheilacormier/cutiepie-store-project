@@ -18,12 +18,12 @@ export const Home = () => {
 	const [validated, setValidated] = useState(false);
 
 	const handleSubmit = async e => {
+		e.preventDefault();
 		const form = e.currentTarget;
 		if (form.checkValidity() === false) {
-			e.preventDefault();
 			e.stopPropagation();
 		} else if (form.checkValidity()) {
-			let signupNewsletter = await actions.newsletter(email);
+			let signupNewsletter = await actions.addMailingListSubscriber(email);
 		}
 
 		setValidated(true);
