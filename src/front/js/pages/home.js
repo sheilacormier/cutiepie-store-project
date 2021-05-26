@@ -157,39 +157,38 @@ export const Home = () => {
 					{" "}
 					<h2 className="brands-header text-center my-4">The Brands we love</h2>
 				</Col>
-				<Col xs={12} sm={6} md={4} lg={3} className="py-2 d-flex justify-content-center align-items-center">
+				<Col xs={12} sm={6} md={4} className="py-2 d-flex justify-content-center align-items-center">
 					<img
 						src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/hap5qqxogfrt7hu2page.png"
 						className="brands-imgs"
 					/>
 				</Col>
-				<Col xs={12} sm={6} md={4} lg={3} className="py-2 d-flex justify-content-center align-items-center">
-					<img
-						src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/ffphln37xkdhh5fultru.png"
-						className="brands-imgs"
-					/>
-				</Col>
-				<Col xs={12} sm={6} md={4} lg={3} className="py-2 d-flex justify-content-center align-items-center">
+				<Col xs={12} sm={6} md={4} className="py-3 py-sm-2 d-flex justify-content-center align-items-center">
 					<img
 						src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/w00dkwzmr49jie7cgmbd.png"
 						className="brands-imgs"
 					/>
 				</Col>
-				<Col xs={12} sm={6} md={4} lg={3} className="py-2 d-flex justify-content-center align-items-center">
+				<Col xs={12} sm={6} md={4} className="py-3 py-sm-2 d-flex justify-content-center align-items-center">
 					<img
-						src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/hap5qqxogfrt7hu2page.png"
+						src="https://res.cloudinary.com/scormier/image/upload/v1621973399/cutie-pie/zujfax1uv8zct6ffprko.png"
 						className="brands-imgs"
 					/>
 				</Col>
-				<Col className="py-2 d-flex justify-content-center align-items-center">
+
+				<Col
+					xs={12}
+					sm={6}
+					md={4}
+					className="pt-2 pb-2 pb-sm-4 d-flex justify-content-center align-items-center">
 					<img
 						src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/ffphln37xkdhh5fultru.png"
 						className="brands-imgs"
 					/>
 				</Col>
-				<Col xs={12} sm={6} md={4} lg={3} className="py-2 d-flex justify-content-center align-items-center">
+				<Col xs={12} sm={6} md={4} className="pt-2 pb-4 d-flex justify-content-center align-items-center">
 					<img
-						src="https://res.cloudinary.com/scormier/image/upload/v1621811594/cutie-pie/w00dkwzmr49jie7cgmbd.png"
+						src="https://res.cloudinary.com/scormier/image/upload/v1621973412/cutie-pie/sghwfmvjoncrsolff59d.png"
 						className="brands-imgs"
 					/>
 				</Col>
