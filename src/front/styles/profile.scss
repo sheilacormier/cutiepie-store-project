@@ -1,0 +1,162 @@
+.hero-image-profile{
+    height: 50vh;
+    background-image: url("https://res.cloudinary.com/scormier/image/upload/v1620490307/cutie-pie/model-babies2_hofgql.jpg");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.profile-container{
+    min-height: 300px;
+    border: 1px solid #d4edda;
+    border-radius: 5px;
+    color: #fd9e77;
+}
+    @media (min-width:768px){
+        .profile-container{
+        border: none;
+        }
+}
+
+@media (min-width:768px){
+        .profile-container-left{
+        border-right: 1px solid #d4edda;
+        }
+        .profile-container{
+            border-radius: 0;
+        }
+}
+
+.profile-image{
+    width: 120px;
+    height: 120px;
+}
+
+@media (min-width:768px){
+        .logout{
+        border-left: 1px solid #d4edda;
+        }
+}
+
+// .form-file{
+//      position: absolute;
+//   width: 1px;
+//   height: 1px;
+//   padding: 0;
+//   overflow: hidden;
+//   clip: rect(0, 0, 0, 0);
+//   white-space: nowrap; /* 1 */
+//   clip-path: inset(50%);
+//   border: 0;
+// }
+
+
+// .upload-photo{
+//     &:focus-within{
+//         border: 1px solid #d4edda;
+//         padding: 5px;
+//     }
+//     cursor: pointer;
+// }
+
+.btn-update-email, .btn-update-password, .btn-upload-photo{
+    color: #fd9e77;
+    position: relative;
+    padding: 0.75em;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    font-size: 18px;
+    margin: 0.75rem 0.5rem;
+    &::after, &::before{
+        content: '';
+        display: block;
+        position: absolute;
+        width: 20%;
+        height: 20%;
+        border: 2px solid;
+        transition: all 0.6s ease;
+        border-radius: 2px;
+    }
+    &::after{
+        bottom: 0;
+        right: 0;
+        border-top-color: transparent;
+        border-left-color: transparent;
+        border-bottom-color: #35c77e;
+        border-right-color: #35c77e;
+    }
+    &::before{
+        top: 0;
+        left: 0;
+        border-bottom-color: transparent;
+        border-right-color: transparent;
+        border-top-color: #35c77e;
+        border-left-color: #35c77e;
+    }
+    &:hover:after, &:hover:before{
+        width: 100%;
+        height: 100%;
+    }
+}
+  
+a.nav-link{
+    color: #fd9e77;
+    &:hover{
+        color: darken(#fd9e77, 25%);
+    }
+}
+
+// #file-upload-button.form-control-file {
+//     --c: #f97f4d;
+//     color: var(--c);
+//     border: 0.1em solid #f97f4d;
+//     border-radius: 0.5em;
+//     height: 3.25rem;
+//     text-transform: uppercase;
+//     font-weight: bold;
+//     position: relative;
+//     overflow: hidden;
+//     z-index: 1;
+//     transition: 0.7s;
+//     color: darken(#f97f4d, 25%);
+//     background-color: transparent;
+//     &:hover{
+//         color: #fff;
+//     }
+// }
+
+// #file-upload-button.form-control-file span{
+//     position: absolute;
+//     width: 25%;
+//     height: 100%;
+//     background-color: var(--c);
+//     transform: translateY(150%);
+//     border-radius: 50%;
+//     left: calc((var(--n) - 1) * 25%);
+//     transition: 0.7s;
+//     transition-delay: calc((var(--n) - 1) * 0.1s);
+//     z-index: -1;
+// }
+
+// #file-upload-button.form-control-file:hover span {
+//     transform: translateY(0) scale(2);
+// }
+
+// #file-upload-button.form-control-file span:nth-child(1) {
+//     --n: 1;
+// }
+
+// #file-upload-button.form-control-file span:nth-child(2) {
+//     --n: 2;
+// }
+
+// #file-upload-button.form-control-file span:nth-child(3) {
+//     --n: 3;
+// }
+
+// #file-upload-button.form-control-file span:nth-child(4) {
+//     --n: 4;
+// }

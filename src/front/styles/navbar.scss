@@ -1,0 +1,38 @@
+.myNavbar{
+    background: #d4edda;
+    .navbar-nav .nav-link{
+        font-size: 18px;
+        color: #f80c8d;
+        &:hover{
+            color: darken(#f80c8d, 25%)
+        }
+    }
+    
+}
+
+.navbar-toggler{
+    padding: 1px 6px;
+}
+
+.navbar-light .navbar-toggler-icon{
+    background-image: url("https://res.cloudinary.com/scormier/image/upload/v1620265208/cutie-pie/pie_hn2tdx.png");
+    width: 40px;
+    height: 40px;
+}
+
+// logo and nav links slide-in-top //
+
+.slide-in-top {
+	animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

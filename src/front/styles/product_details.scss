@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap');
+
+.colors-wrapper {
+    img {
+        max-width: 100px;
+    }
+}
+
+.sizes-wrapper, .quantity-wrapper {
+    margin-top: 10px;    
+}
+
+.large-product-pic {
+    width: 100%;   
+    object-fit: cover;
+}
+
+.product-brand{
+    text-transform: UPPERCASE;
+    font-family: 'Khula', sans-serif;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 20px;
+    color: grey;
+    margin-bottom: 0px;
+
+}
+.product-title{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 0; 
+    color: grey;
+}
+
+.product-price {
+    font-family: 'Khula', sans-serif;
+    font-size: 18px;
+    color: grey;
+    margin-top: 10px;
+}
+
+.color {
+    font-family: sans-serif;
+    font-size: 12px;
+    color: grey;
+}
+
+.color-label {
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: grey;
+}
+
+.size-label {
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: grey;
+}
+
+.description-label {
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: grey;
+}
+
+hr {
+    width:100%;
+    color: grey;
+}
+
+.thumb-product-pic {
+    max-width: 100%;
+    display: block;
+    border: 1px solid #fd9e77;  
+}
+
+.product-description{
+    font-family: sans-serif;
+    font-size: 16px;
+    color: grey;
+    margin-top: 10px;
+}
+
+.add-to-cart{
+    background: #fd9e77;
+    padding: 1.2em 1.5em;
+    border: none;
+    text-transform: UPPERCASE;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 20px;
+    -webkit-transition: background .3s ease;
+    transition: background .3s ease; 
+}
+
+.add-to-cart:hover{
+    background: #f97f4d;
+    color: #fff;
+}
+
+.suggestions{
+    text-transform: UPPERCASE;
+    font-family: 'Khula', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 39px;
+    letter-spacing: 4px;
+    color: grey;
+    margin-top: 100px;
+
+}

@@ -1,0 +1,100 @@
+.page-title{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #fa0c8d;
+}
+
+.collection-card{
+    background: #d4edda;
+    border-radius: 10px;
+    transform: scale(0.95);
+    transition: box-shadow 0.5s, transform 0.5s;
+    &:hover{
+        transform: scale(1);
+        box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
+        cursor: pointer;
+  }
+}
+
+.bottom-btn-container{
+	display: flex;
+	justify-content: flex-end;
+}
+
+.btn-addtocart, .btn-addtocart:hover{
+    background: #fd9e77;
+}
+
+.btn-seedetails, .btn-seedetails:hover {
+    background: #35c77e;
+}
+
+.btn-addtocart, .btn-seedetails {
+    border: none;
+    width: 60px;
+	height: 60px;
+    margin: 0 5px;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    &:hover{
+        transform: scale(1.1);
+        color: #fff;
+        text-decoration: none;
+    }
+}
+.btn-addtocart, .btn-seedetails, .btn-like{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-like{
+    position: absolute;
+	width: 30px;
+	height: 30px;
+	background: none;
+	right: 20px;
+	top: 15px;
+    z-index: 10;
+    border-radius: 50%;
+    padding: 1rem;
+    border: none;
+    font-size: 1.75rem;
+    color: #fff;
+    &:hover{
+        transform: scale(1.2);
+    }
+}
+
+.btn-like.wished i{
+    color: #fa0c8d;
+}
+
+.page-link{
+    color: #f80c8d;
+    border: none;
+    &:hover{
+        background: none;
+        color: darken(rgb(248, 12, 141), 25%);
+
+    }
+    &:focus{
+        box-shadow: none;
+    }
+}
+
+ul.pagination li a{
+     background: #f9f9f9;
+     margin: 0 4px;
+     transition: background-color .3s;
+     padding: 8px 16px;
+     &:hover, &:active, &:focus{
+         background: #b5bbbf;
+         color: #fff;
+     }
+}
+
+.page-item:last-child .page-link, .page-item:first-child .page-link{
+    border-radius: 0;
+}
