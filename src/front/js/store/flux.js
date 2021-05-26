@@ -212,7 +212,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 							"cutie-pie",
 							JSON.stringify({
 								token: data.token,
-								display_name: data.user.first_name, // Users first name typically
 								email: data.user.email,
 								id: data.user.id
 							})
@@ -231,38 +230,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			register: (email, password) => {
 				const store = getStore();
-				return (
-					fetch(`${base_url}/user/`, {
-						method: "POST",
-						cors: "no-cors",
-						headers: { "Content-type": "application/json" },
-						body: JSON.stringify({
-							email: email,
-							password: password
-						})
+				return fetch(`${base_url}/user/`, {
+					method: "POST",
+					cors: "no-cors",
+					headers: { "Content-type": "application/json" },
+					body: JSON.stringify({
+						email: email,
+						password: password
 					})
-						// .then(getDataUpdated => {
-						// 	fetch(`${base_url}/user/`)
-						.then(res => res.json())
-						.then(data => {
-							console.log("data ", data);
-							setStore({
-								user: {
-									...store.user,
-									...data.user
-								}
-							});
-							getActions().setAlert({
-								type: "success",
-								msg: data.msg,
-								show: true
-							});
+				})
+					.then(res => res.json())
+					.then(data => {
+						console.log("data ", data);
+						setStore({
+							user: {
+								...store.user,
+								...data.user
+							}
+						});
+						getActions().setAlert({
+							type: "success",
+							msg: data.msg,
+							show: true
+						});
 
-							return true;
-						})
-				);
-
-				// });
+						return true;
+					});
 			},
 
 			newsletter: email => {
