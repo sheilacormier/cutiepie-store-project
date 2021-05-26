@@ -92,36 +92,32 @@ def get_one_user(id):
 
 @api.route('/user', methods=['PUT']) 
 def update_user():
-        
-    # user = User.query.get(id)
-    email = request.form.get('email', None)
-    password = request.form.get('password', None)
-    photo = request.files['photo']
 
     # if params are empty, return a 400
-    if not email:
+    if 'email' not in request.form:
         return jsonify({"msg": "Missing email parameter"}), 400
-    # if not password:
-    #     return jsonify({"msg": "Missing password parameter"}), 400
-    
-
+        
+    email = request.form['email']
     user = User.query.filter_by(email=email).first()
-    user.email = email
 
-    if password is not None:
+    if 'password' in request.form:
+        password = request.form['password']
         user.password = password
+
+    if 'newEmail' in request.form:
+        new_email = request.form['newEmail']
+        user.email = new_email
     
-    # if there is no photo, just create update 
-    if photo is not None:
+    if 'photo' in request.files:
+        photo = request.files['photo']
         result = upload(photo)
         user.photo_url = result["secure_url"]
         
-    db.session.commit()
     payload = {
         'msg': 'Profile successfully updated.',
         'user': user.serialize()
     }
-
+    db.session.commit()
     return jsonify(payload),200
 
 #################### Reset Password ####################

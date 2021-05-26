@@ -28,32 +28,10 @@ export const Profile = () => {
 	// ______This sends the image to the state
 	const uploadImage = e => {
 		e.preventDefault();
-		let data = new FormData();
 		let payload = {
-			email: email
+			photo: image
 		};
-
-		if (password !== "") payload.password = password;
-		if (typeof image === "object") payload.photo = image;
-
-		for (let key in payload) {
-			if (key === "photo") {
-				data.append("photo", payload[key]);
-			} else {
-				data.append(key, payload[key]);
-			}
-		}
-		console.log(data);
-
-		fetch(process.env.BACKEND_URL + "/api/user", {
-			method: "PUT",
-			body: data
-		})
-			.then(resp => resp.json())
-			.then(data => {
-				console.log("success");
-			})
-			.catch(err => console.error(err));
+		if (typeof image === "object") actions.updateUserProfile(payload);
 	};
 
 	const handleEmailSubmit = async e => {
@@ -64,7 +42,7 @@ export const Profile = () => {
 			e.preventDefault();
 			e.stopPropagation();
 		} else if (form.checkValidity()) {
-			let updateEmail = await actions.updateEmail(email);
+			let updateEmail = await actions.updateUserProfile({ newEmail: email });
 		}
 
 		setEmailValidated(true);
@@ -78,7 +56,7 @@ export const Profile = () => {
 			e.preventDefault();
 			e.stopPropagation();
 		} else if (form.checkValidity()) {
-			let updatePassword = await actions.updatePassword(password);
+			let updatePassword = await actions.updateUserProfile({ password: password });
 		}
 
 		setPassValidated(true);

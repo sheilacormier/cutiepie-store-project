@@ -86,7 +86,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							if (!res.ok) throw new Error(res.statusText);
 							return res.json();
 						})
-						.then(data =>
+						.then(data => {
 							setStore({
 								user: {
 									...getStore().user,
@@ -94,8 +94,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 									...data.user,
 									loggedIn: true
 								}
-							})
-						)
+							});
+						})
 						.catch(err => console.error(err));
 				}
 			},
@@ -281,39 +281,43 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => console.log(data));
 			},
 
-			updateEmail: email => {
+			updateUserProfile: profileData => {
+				let tokenCheck = JSON.parse(localStorage.getItem("cutie-pie"));
+
+				let data = new FormData();
+				let payload = {
+					...profileData,
+					email: getStore().user.email
+				};
+
+				for (let key in payload) {
+					if (key === "photo") {
+						data.append("photo", payload[key]);
+					} else {
+						data.append(key, payload[key]);
+					}
+				}
+
 				return fetch(`${base_url}/user/`, {
 					method: "PUT",
 					cors: "no-cors",
 					headers: {
-						"Content-Type": "application/json"
+						Authorization: `Bearer ${tokenCheck.token}`
 					},
-					body: JSON.stringify({
-						email: email
-					})
+					body: data
 				})
-					.then(res => res.json())
-					.then(data => {
-						// setStore({ validate: info })
-						return data.msg;
-					});
-			},
-
-			updatePassword: email => {
-				return fetch(`${base_url}/user/`, {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify({
-						password: password
+					.then(res => {
+						if (!res.ok) throw new Error(res.statusText);
+						return res.json();
 					})
-				})
-					.then(res => res.json())
-					.then(data => {
-						// setStore({ validate: info })
-						return data.msg;
-					});
+					.then(data =>
+						setStore({
+							user: {
+								...data.user,
+								loggedIn: true
+							}
+						})
+					);
 			},
 
 			forgotPassword: email => {

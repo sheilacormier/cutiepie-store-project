@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
+import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import injectContext, { Context } from "./store/appContext";
 import PrivateRoute from "./component/privateRoute";
@@ -28,14 +28,16 @@ import { ForgotPassword } from "./pages/forgot_password";
 //create your first component
 const Layout = () => {
 	const { store, actions } = useContext(Context);
+	let history = useHistory();
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
 
 	return (
 		<div className="d-flex flex-column h-100">
-			<BrowserRouter basename={basename}>
+			<BrowserRouter basename={basename} history={history}>
 				<ScrollToTop>
+					{/* {store.user.loggedIn && history.push("/profile")} */}
 					<Container className="alert-container">
 						<Toast
 							className={`bg-${store.alert.type}`}
