@@ -299,8 +299,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 
-			updatePassword: password => {
-				console.log(password);
+			updatePassword: email => {
+				return fetch(`${base_url}/user/`, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						password: password
+					})
+				})
+					.then(res => res.json())
+					.then(data => {
+						// setStore({ validate: info })
+						return data.msg;
+					});
 			},
 
 			forgotPassword: email => {
