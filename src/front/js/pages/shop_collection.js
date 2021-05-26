@@ -38,35 +38,6 @@ export const ShopCollection = () => {
 
 	return (
 		<Container className="mb-3">
-			<nav aria-label="page-navigation">
-				<ul className="pagination justify-content-end mb-0 py-2">
-					<li className="page-item">
-						<a className="page-link" href="#">
-							{"<<"}
-						</a>
-					</li>
-					<li className="page-item">
-						<a className="page-link" href="#">
-							1
-						</a>
-					</li>
-					<li className="page-item">
-						<a className="page-link" href="#">
-							2
-						</a>
-					</li>
-					<li className="page-item">
-						<a className="page-link" href="#">
-							3
-						</a>
-					</li>
-					<li className="page-item">
-						<a className="page-link" href="#">
-							{">>"}
-						</a>
-					</li>
-				</ul>
-			</nav>
 			<h5 className="text-center page-title pt-2 pb-3">SHOP COLLECTION</h5>
 			<Row className="mx-auto">
 				{store.shopCollection.map((product, index) => {
@@ -110,6 +81,35 @@ export const ShopCollection = () => {
 					);
 				})}
 			</Row>
+			<nav aria-label="page-navigation">
+				<ul className="pagination justify-content-center mb-0 py-2">
+					<li className="page-item">
+						<a className="page-link" href="#">
+							{"<<"}
+						</a>
+					</li>
+					<li className="page-item">
+						<a className="page-link" href="#">
+							1
+						</a>
+					</li>
+					<li className="page-item">
+						<a className="page-link" href="#">
+							2
+						</a>
+					</li>
+					<li className="page-item">
+						<a className="page-link" href="#">
+							3
+						</a>
+					</li>
+					<li className="page-item">
+						<a className="page-link" href="#">
+							{">>"}
+						</a>
+					</li>
+				</ul>
+			</nav>
 		</Container>
 	);
 };
