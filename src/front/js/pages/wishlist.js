@@ -32,35 +32,6 @@ export const Wishlist = () => {
 
 	return (
 		<Container className="mb-3">
-			<nav aria-label="page-navigation">
-				<ul className={store.user.wishlist.length > 0 ? "pagination justify-content-end mb-0 py-2" : "d-none"}>
-					<li className="page-item">
-						<a className="page-link" href="#">
-							{"<<"}
-						</a>
-					</li>
-					<li className="page-item">
-						<a className="page-link" href="#">
-							1
-						</a>
-					</li>
-					<li className="page-item">
-						<a className="page-link" href="#">
-							2
-						</a>
-					</li>
-					<li className="page-item">
-						<a className="page-link" href="#">
-							3
-						</a>
-					</li>
-					<li className="page-item">
-						<a className="page-link" href="#">
-							{">>"}
-						</a>
-					</li>
-				</ul>
-			</nav>
 			<h5 className="pt-2 pb-3 text-center page-title">
 				{store.user.wishlist.length > 0 ? "YOUR WISHED ITEMS" : "NO ITEMS ADDED TO WISHLIST"}
 			</h5>
@@ -105,6 +76,38 @@ export const Wishlist = () => {
 					);
 				})}
 			</Row>
+			<nav aria-label="page-navigation">
+				<ul
+					className={
+						store.user.wishlist.length > 0 ? "pagination justify-content-center mb-0 py-2" : "d-none"
+					}>
+					<li className="page-item">
+						<a className="page-link" href="#">
+							{"<<"}
+						</a>
+					</li>
+					<li className="page-item">
+						<a className="page-link" href="#">
+							1
+						</a>
+					</li>
+					<li className="page-item">
+						<a className="page-link" href="#">
+							2
+						</a>
+					</li>
+					<li className="page-item">
+						<a className="page-link" href="#">
+							3
+						</a>
+					</li>
+					<li className="page-item">
+						<a className="page-link" href="#">
+							{">>"}
+						</a>
+					</li>
+				</ul>
+			</nav>
 		</Container>
 	);
 };

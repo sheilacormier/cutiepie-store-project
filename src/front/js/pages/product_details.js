@@ -64,28 +64,27 @@ export const ProductDetails = () => {
 							</h4>
 							<hr />
 							<Row className="colors-wrapper">
-								<Col>
-									<span className="color-label">COLOR</span>
-									<Row>
-										{typeof selectedProduct !== "undefined"
-											? selectedProduct.colors.map((variant, index) => {
-													return (
-														<Col
-															className="d-flex flex-column align-items-center mt-2"
-															key={index}>
+								<Col xs={12} className="color-label">
+									COLOR
+								</Col>
+								<Col className="d-flex">
+									{typeof selectedProduct !== "undefined"
+										? selectedProduct.colors.map((variant, index) => {
+												return (
+													<div className="d-flex mr-3 " key={index}>
+														<div className="d-flex flex-column mt-2">
 															<Link
 																to="#"
 																onClick={e => setSelectedimage(variant.img)}
-																className="thumb-product-pic">
+																className="p-1 thumb-product-pic">
 																<img src={variant.img} />
 															</Link>
-															<br />
-															<p className="color mt-1"> {variant.color}</p>
-														</Col>
-													);
-											  })
-											: "No Variants Available"}
-									</Row>
+															<p className="text-center color mt-1"> {variant.color}</p>
+														</div>
+													</div>
+												);
+										  })
+										: "No Variants Available"}
 								</Col>
 							</Row>
 							<div className="sizes-wrapper">
