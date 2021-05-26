@@ -52,6 +52,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 
+			addMailingListSubscriber: email => {
+				let criticalAPI = new URL("https://portalc.criticalimpact.com/api8/subscriber/");
+				let criticalKey = process.env.CRITICAL_API_KEY;
+				//Optional fields commented out below:
+				//listId can be one listid, or for multiple lists, pass a comma-delimited list of listIds
+				//$post_params['listId']="1";
+
+				let params = {
+					apiKey: criticalKey,
+					listId: "1000IS000000004G5ZL",
+					email: email
+				};
+
+				criticalAPI.search = new URLSearchParams(params).toString();
+
+				return fetch(criticalAPI, {
+					method: "POST"
+					// body: JSON.stringify(payload)
+				})
+					.then(res => res.json())
+					.then(data => console.log(data));
+			},
+
 			getAllProducts: () => {
 				return fetch(`${base_url}/product`)
 					.then(res => res.json())
@@ -212,7 +235,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 							"cutie-pie",
 							JSON.stringify({
 								token: data.token,
-								display_name: data.user.first_name, // Users first name typically
 								email: data.user.email,
 								id: data.user.id
 							})
@@ -231,46 +253,71 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			register: (email, password) => {
 				const store = getStore();
-				return (
-					fetch(`${base_url}/user/`, {
-						method: "POST",
-						cors: "no-cors",
-						headers: { "Content-type": "application/json" },
-						body: JSON.stringify({
-							email: email,
-							password: password
-						})
+				return fetch(`${base_url}/user/`, {
+					method: "POST",
+					cors: "no-cors",
+					headers: { "Content-type": "application/json" },
+					body: JSON.stringify({
+						email: email,
+						password: password
 					})
-						// .then(getDataUpdated => {
-						// 	fetch(`${base_url}/user/`)
-						.then(res => res.json())
-						.then(data => {
-							console.log("data ", data);
-							setStore({
-								user: {
-									...store.user,
-									...data.user
-								}
-							});
-							getActions().setAlert({
-								type: "success",
-								msg: data.msg,
-								show: true
-							});
+				})
+					.then(res => res.json())
+					.then(data => {
+						console.log("data ", data);
+						setStore({
+							user: {
+								...store.user,
+								...data.user
+							}
+						});
+						getActions().setAlert({
+							type: "success",
+							msg: data.msg,
+							show: true
+						});
 
-							return true;
-						})
-				);
-
-				// });
+						return true;
+					});
 			},
 
-			newsletter: email => {
-				console.log(email);
-			},
+			// newsletter: email => {
+			// 	return fetch(`${base_url}/user/`, {
+			// 		method: "POST",
+			// 		cors: "no-cors",
+			// 		headers: { "Content-type": "application/json" },
+			// 		body: JSON.stringify({
+			// 			email: email
+			// 		})
+			// 	})
+			// 		.then(res => res.json())
+			// 		.then(data => {
+			// 			console.log("data ", data);
+			// 			setStore({
+			// 				user: {
+			// 					...store.user,
+			// 					...data.user
+			// 				}
+			// 			});
+			// 		});
+			// },
 
 			updateEmail: email => {
-				console.log(email);
+				return fetch(process.env.BACKEND_URL + "/api/user", {
+					method: "PUT",
+					cors: "no-cors",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						email: email
+					})
+				})
+					.then(res => res.json())
+					.then(data => {
+						// setStore({ validate: info })
+						return data.msg;
+					});
 			},
 
 			updatePassword: email => {
