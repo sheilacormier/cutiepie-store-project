@@ -52,29 +52,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 
-			addMailingListSubscriber: email => {
-				let criticalAPI = new URL("https://portalc.criticalimpact.com/api8/subscriber/");
-				let criticalKey = process.env.CRITICAL_API_KEY;
-				//Optional fields commented out below:
-				//listId can be one listid, or for multiple lists, pass a comma-delimited list of listIds
-				//$post_params['listId']="1";
-
-				let params = {
-					apiKey: criticalKey,
-					listId: "1000IS000000004G5ZL",
-					email: email
-				};
-
-				criticalAPI.search = new URLSearchParams(params).toString();
-
-				return fetch(criticalAPI, {
-					method: "POST"
-					// body: JSON.stringify(payload)
-				})
-					.then(res => res.json())
-					.then(data => console.log(data));
-			},
-
 			getAllProducts: () => {
 				return fetch(`${base_url}/product`)
 					.then(res => res.json())
@@ -281,29 +258,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 
-			// newsletter: email => {
-			// 	return fetch(`${base_url}/user/`, {
-			// 		method: "POST",
-			// 		cors: "no-cors",
-			// 		headers: { "Content-type": "application/json" },
-			// 		body: JSON.stringify({
-			// 			email: email
-			// 		})
-			// 	})
-			// 		.then(res => res.json())
-			// 		.then(data => {
-			// 			console.log("data ", data);
-			// 			setStore({
-			// 				user: {
-			// 					...store.user,
-			// 					...data.user
-			// 				}
-			// 			});
-			// 		});
-			// },
+			addMailingListSubscriber: email => {
+				let criticalAPI = new URL("https://portalc.criticalimpact.com/api8/subscriber/");
+				let criticalKey = process.env.CRITICAL_API_KEY;
+				//Optional fields commented out below:
+				//listId can be one listid, or for multiple lists, pass a comma-delimited list of listIds
+				//$post_params['listId']="1";
+
+				let params = {
+					apiKey: criticalKey,
+					listId: "1000IS000000004G5ZL",
+					email: email
+				};
+
+				criticalAPI.search = new URLSearchParams(params).toString();
+
+				return fetch(criticalAPI, {
+					method: "POST"
+					// body: JSON.stringify(payload)
+				})
+					.then(res => res.json())
+					.then(data => console.log(data));
+			},
 
 			updateEmail: email => {
-				return fetch(process.env.BACKEND_URL + "/api/user", {
+				return fetch(`${base_url}/user/`, {
 					method: "PUT",
 					cors: "no-cors",
 					headers: {
@@ -320,8 +299,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 
-			updatePassword: email => {
-				console.log(email);
+			updatePassword: password => {
+				console.log(password);
 			},
 
 			forgotPassword: email => {
