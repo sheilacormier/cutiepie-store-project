@@ -84,29 +84,31 @@ export const ShopCollection = () => {
 			<nav aria-label="page-navigation">
 				<ul className="pagination justify-content-center mb-0 py-2">
 					<li className="page-item">
-						<a className="page-link" href="#">
-							{"<<"}
-						</a>
+						<Link className="page-link" to="#">
+							{/* &laquo;  */}
+							&larr;
+						</Link>
 					</li>
 					<li className="page-item">
-						<a className="page-link" href="#">
+						<Link className="page-link" to="#">
 							1
-						</a>
+						</Link>
 					</li>
 					<li className="page-item">
-						<a className="page-link" href="#">
+						<Link className="page-link" to="#">
 							2
-						</a>
+						</Link>
 					</li>
 					<li className="page-item">
-						<a className="page-link" href="#">
+						<Link className="page-link" to="#">
 							3
-						</a>
+						</Link>
 					</li>
 					<li className="page-item">
-						<a className="page-link" href="#">
-							{">>"}
-						</a>
+						<Link className="page-link" to="#">
+							{/* &raquo; */}
+							&rarr;
+						</Link>
 					</li>
 				</ul>
 			</nav>
