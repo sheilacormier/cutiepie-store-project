@@ -10,7 +10,6 @@ import ToastBody from "react-bootstrap/ToastBody";
 import Container from "react-bootstrap/Container";
 
 import { Home } from "./pages/home";
-import { Single } from "./pages/single";
 import { ShopCollection } from "./pages/shop_collection";
 import { Wishlist } from "./pages/wishlist";
 import { Register } from "./pages/register";
