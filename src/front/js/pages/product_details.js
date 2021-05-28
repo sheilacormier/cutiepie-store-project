@@ -51,90 +51,95 @@ export const ProductDetails = () => {
 	return (
 		<Container className="my-2 mb-5">
 			{store.product.length > 0 && (
-				<Row className="mx-auto pt-4">
-					<Col xl={6} className="large-product-pic justify-content-center text-center pt-2">
-						<img className="large-product-pic" src={selectedimage} />
-					</Col>
-					<Col xl={6} className="mx-auto pt-2">
-						<div className="container-fluid">
-							<h4 className="product-brand">{store.product[productIndex].brand}</h4>
-							<h4 className="product-title">{store.product[productIndex].title}</h4>
-							<h4 className="product-price">
-								<span>{store.product[productIndex].price}</span>
-							</h4>
-							<hr />
-							<Row className="colors-wrapper">
-								<Col xs={12} className="color-label">
-									COLOR
-								</Col>
-								<Col className="d-flex">
-									{typeof selectedProduct !== "undefined"
-										? selectedProduct.colors.map((variant, index) => {
-												return (
-													<div className="d-flex mr-3 " key={index}>
-														<div className="d-flex flex-column mt-2">
-															<Link
-																to="#"
-																onClick={e => setSelectedimage(variant.img)}
-																className="p-1 thumb-product-pic">
-																<img src={variant.img} />
-															</Link>
-															<p className="text-center color mt-1"> {variant.color}</p>
+				<Container>
+					<Row className="mx-auto pt-4 mb-5">
+						<Col xl={6} className="large-product-pic justify-content-center text-center pt-2">
+							<img className="large-product-pic" src={selectedimage} />
+						</Col>
+						<Col xl={6} className="mx-auto pt-2">
+							<div className="container-fluid">
+								<h4 className="product-brand">{store.product[productIndex].brand}</h4>
+								<h4 className="product-title">{store.product[productIndex].title}</h4>
+								<h4 className="product-price">
+									<span>{store.product[productIndex].price}</span>
+								</h4>
+								<hr />
+								<Row className="colors-wrapper">
+									<Col xs={12} className="color-label">
+										COLOR
+									</Col>
+									<Col className="d-flex">
+										{typeof selectedProduct !== "undefined"
+											? selectedProduct.colors.map((variant, index) => {
+													return (
+														<div className="d-flex mr-3 " key={index}>
+															<div className="d-flex flex-column mt-2">
+																<Link
+																	to="#"
+																	onClick={e => setSelectedimage(variant.img)}
+																	className="p-1 thumb-product-pic">
+																	<img src={variant.img} />
+																</Link>
+																<p className="text-center color mt-1">
+																	{" "}
+																	{variant.color}
+																</p>
+															</div>
 														</div>
-													</div>
-												);
-										  })
-										: "No Variants Available"}
-								</Col>
-							</Row>
-							<div className="sizes-wrapper">
-								<span className="size-label">SIZE</span>
-								<Row>
-									<Col xs="auto">
-										<Form.Group className="mt-2">
-											<Form.Control size="sm" as="select">
-												{typeof selectedProduct !== "undefined" ? (
-													selectedProduct.sizes.map((variant, index) => {
-														return <option key={index}>{variant.size}</option>;
-													})
-												) : (
-													<option> No Sizes Available</option>
-												)}
-											</Form.Control>
-										</Form.Group>
+													);
+											  })
+											: "No Variants Available"}
 									</Col>
 								</Row>
-							</div>
-							<hr />
-							<span className="description-label">WHY WE LOVE THIS PIECE</span>
-							<p className="product-description">{store.product[productIndex].description}</p>
-							<Row>
-								<Button
-									href={store.product[productIndex].url}
-									className="col mr-2 p-2 p-md-3 add-to-cart btn btn-default"
-									type="button"
-									target="_blank">
-									buy now
-								</Button>
+								<div className="sizes-wrapper">
+									<span className="size-label">SIZE</span>
+									<Row>
+										<Col xs="auto">
+											<Form.Group className="mt-2">
+												<Form.Control size="sm" as="select">
+													{typeof selectedProduct !== "undefined" ? (
+														selectedProduct.sizes.map((variant, index) => {
+															return <option key={index}>{variant.size}</option>;
+														})
+													) : (
+														<option> No Sizes Available</option>
+													)}
+												</Form.Control>
+											</Form.Group>
+										</Col>
+									</Row>
+								</div>
+								<hr />
+								<span className="description-label">WHY WE LOVE THIS PIECE</span>
+								<p className="product-description">{store.product[productIndex].description}</p>
+								<Row>
+									<Button
+										href={store.product[productIndex].url}
+										className="col mr-2 p-2 p-md-3 add-to-cart btn btn-default"
+										type="button"
+										target="_blank">
+										buy now
+									</Button>
 
-								<Button
-									href={store.product[productIndex].url}
-									type="button"
-									className={
-										store.user.wishlist.find(item => item.id === selectedProduct.id)
-											? "wished col p-2 p-md-3 add-to-cart btn btn-default"
-											: "not-wished col p-2 p-md-3 add-to-cart btn btn-default"
-									}
-									onClick={e => handleFavoriteClick(selectedProduct)}>
-									add to wishlist
-								</Button>
-							</Row>
-						</div>
-					</Col>
-					<Col>
-						{/* You also might light section starts here*/}
-						<Col className="mt-5 mb-3 d-flex justify-content-center align-items-center">
-							<h2 className="suggestions">YOU MIGHT ALSO LIKE</h2>
+									<Button
+										href={store.product[productIndex].url}
+										type="button"
+										className={
+											store.user.wishlist.find(item => item.id === selectedProduct.id)
+												? "wished col p-2 p-md-3 add-to-cart btn btn-default"
+												: "not-wished col p-2 p-md-3 add-to-cart btn btn-default"
+										}
+										onClick={e => handleFavoriteClick(selectedProduct)}>
+										add to wishlist
+									</Button>
+								</Row>
+							</div>
+						</Col>
+					</Row>
+					<Row>
+						{/* You also might like section starts here*/}
+						<Col xs={12} className="mt-5 mb-3 d-flex justify-content-center align-items-center">
+							<h2 className="suggestions text-center">YOU MIGHT ALSO LIKE</h2>
 						</Col>
 
 						{store.homeCards.map((product, index) => {
@@ -177,8 +182,8 @@ export const ProductDetails = () => {
 								</Col>
 							);
 						})}
-					</Col>
-				</Row>
+					</Row>
+				</Container>
 			)}
 		</Container>
 	);

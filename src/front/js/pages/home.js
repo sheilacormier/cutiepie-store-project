@@ -111,7 +111,11 @@ export const Home = () => {
 								height="34"
 							/>
 						</div>
-						<span className="subscribetext">Join our family! Subscribe to our newsletter.</span>
+						<span className="subscribetext">
+							{/* {signupNewsletter !== "undefined" && !signupNewsletter
+								? "Join our family! Subscribe to our newsletter."
+								: "Thank you for subscribing"} */}
+						</span>
 						<Form noValidate validated={validated} onSubmit={handleSubmit}>
 							<Form.Row>
 								<Col xs="auto" className="w-100 justify-content-center align-items-center my-1">
