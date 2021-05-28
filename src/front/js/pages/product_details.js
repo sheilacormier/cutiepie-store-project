@@ -18,10 +18,10 @@ export const ProductDetails = () => {
 	let { productIndex } = useParams();
 	let products = store.product;
 	let selectedProduct = store.product.length > 0 && store.product[productIndex];
-	const [selectedImage, setSelectedImage] = useState("");
+	const [selectedimage, setSelectedimage] = useState("");
 	useEffect(
 		() => {
-			if (store.product.length > 0) setSelectedImage(store.product[productIndex].img);
+			if (store.product.length > 0) setSelectedimage(store.product[productIndex].img);
 		},
 		[products]
 	);
@@ -54,7 +54,7 @@ export const ProductDetails = () => {
 				<Container>
 					<Row className="mx-auto pt-4 mb-5">
 						<Col xl={6} className="large-product-pic justify-content-center text-center pt-2">
-							<img className="large-product-pic" src={selectedImage} />
+							<img className="large-product-pic" src={selectedimage} />
 						</Col>
 						<Col xl={6} className="mx-auto pt-2">
 							<div className="container-fluid">
@@ -76,7 +76,7 @@ export const ProductDetails = () => {
 															<div className="d-flex flex-column mt-2">
 																<Link
 																	to="#"
-																	onClick={e => setSelectedImage(variant.img)}
+																	onClick={e => setSelectedimage(variant.img)}
 																	className="p-1 thumb-product-pic">
 																	<img src={variant.img} />
 																</Link>
