@@ -115,19 +115,18 @@ export const ProductDetails = () => {
 								<Row>
 									<Button
 										href={store.product[productIndex].url}
-										className="col mr-2 p-2 p-md-3 add-to-cart btn btn-default"
+										className="col mr-2 p-2 p-sm-4 add-to-cart btn btn-default d-flex justify-content-center align-items-center"
 										type="button"
 										target="_blank">
 										buy now
 									</Button>
 
 									<Button
-										href={store.product[productIndex].url}
 										type="button"
 										className={
 											store.user.wishlist.find(item => item.id === selectedProduct.id)
-												? "wished col p-2 p-md-3 add-to-cart btn btn-default"
-												: "not-wished col p-2 p-md-3 add-to-cart btn btn-default"
+												? "wished col p-2 p-sm-4 add-to-cart btn btn-default"
+												: "not-wished col p-2 p-sm-4 add-to-cart btn btn-default"
 										}
 										onClick={e => handleFavoriteClick(selectedProduct)}>
 										add to wishlist
@@ -169,7 +168,7 @@ export const ProductDetails = () => {
 														onClick={e => handleFavoriteClick(product)}>
 														<i className="fa fa-heart" />
 													</Link>
-													<Link to={`/product_details/${index}`}>
+													<Link to={`${index}`}>
 														<i className="fas fa-search" />
 													</Link>
 													<a href={product.url} target="_blank" rel="noopener noreferrer">
