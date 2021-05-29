@@ -222,10 +222,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 			signOut: () => {
 				setStore({
 					user: {
-						...getStore().user,
-						loggedIn: false
+						photo_url: "",
+						token: "",
+						loggedIn: false,
+						display_name: "",
+						email: "",
+						id: null,
+						wishlist: []
 					}
 				});
+
+				localStorage.setItem(
+					"cutie-pie",
+					JSON.stringify({
+						token: "",
+						email: "",
+						id: ""
+					})
+				);
 			},
 
 			register: (email, password) => {

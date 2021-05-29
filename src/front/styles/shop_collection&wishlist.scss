@@ -84,15 +84,21 @@
     }
 }
 
-ul.pagination li a{
+.page-link{
      background: #f9f9f9;
      margin: 0 4px;
      transition: background-color .3s;
      padding: 8px 16px;
-     &:hover, &:active, &:focus{
+     &:hover, &:focus{
          background: #b5bbbf;
          color: #fff;
      }
+}
+
+.page-item.active .page-link{
+    background: #b5bbbf;
+    color: #fff;
+    border: none;
 }
 
 .page-item:last-child .page-link, .page-item:first-child .page-link{

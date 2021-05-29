@@ -115,6 +115,7 @@ export const ProductDetails = () => {
 								<Row>
 									<Button
 										href={store.product[productIndex].url}
+										bsPrefix="add-to-cart"
 										className="col mr-2 p-2 p-sm-4 add-to-cart btn btn-default d-flex justify-content-center align-items-center"
 										type="button"
 										target="_blank">
@@ -123,6 +124,7 @@ export const ProductDetails = () => {
 
 									<Button
 										type="button"
+										bsPrefix="add-to-cart"
 										className={
 											store.user.wishlist.find(item => item.id === selectedProduct.id)
 												? "wished col p-2 p-sm-4 add-to-cart btn btn-default"
@@ -150,30 +152,17 @@ export const ProductDetails = () => {
 									key={index}
 									className="d-flex justify-content-center align-items-center">
 									<div className="product-wrapper my-4 text-center">
-										<div className="product-img">
+										<div className="product-img-profile">
 											<img className="product-pic" src={product.img} alt="outfit" />
-
-											<span className="text-center">
-												<i className="fa fa-rupee" /> {product.price}
-											</span>
 											<div className="product-action">
-												<div className="product-action-style">
-													<Link
-														to="#"
-														className={
-															store.user.wishlist.find(item => item.id === product.id)
-																? "wished"
-																: "not-wished"
-														}
-														onClick={e => handleFavoriteClick(product)}>
-														<i className="fa fa-heart" />
-													</Link>
-													<Link to={`${index}`}>
-														<i className="fas fa-search" />
-													</Link>
-													<a href={product.url} target="_blank" rel="noopener noreferrer">
-														<i className="fa fa-shopping-cart" />
-													</a>
+												<div className="product-action-style-profile">
+													<Button
+														href={product.url}
+														target="_blank"
+														bsPrefix="btn-addtocart"
+														variant="warning">
+														<i className="fa fa-shopping-cart fa-lg" />
+													</Button>
 												</div>
 											</div>
 										</div>
