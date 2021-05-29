@@ -221,13 +221,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			signOut: () => {
 				setStore({
-					photo_url: "",
-					token: "",
-					loggedIn: false,
-					display_name: "",
-					email: "",
-					id: null,
-					wishlist: []
+					user: {
+						photo_url: "",
+						token: "",
+						loggedIn: false,
+						display_name: "",
+						email: "",
+						id: null,
+						wishlist: []
+					}
 				});
 
 				localStorage.setItem(
