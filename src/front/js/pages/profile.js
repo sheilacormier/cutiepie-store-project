@@ -81,7 +81,7 @@ export const Profile = () => {
 
 								<img
 									src={
-										src !== ""
+										src !== null
 											? src
 											: "https://res.cloudinary.com/scormier/image/upload/v1620690465/cutie-pie/1452484590-sweet-baby-boy-image-screenshot_wzzhx5.jpg"
 									}
