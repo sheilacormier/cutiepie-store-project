@@ -152,10 +152,6 @@ export const ProductDetails = () => {
 									<div className="product-wrapper my-4 text-center">
 										<div className="product-img-profile">
 											<img className="product-pic" src={product.img} alt="outfit" />
-
-											{/* <span className="text-center">
-												<i className="fa fa-rupee" /> {product.price}
-											</span> */}
 											<div className="product-action">
 												<div className="product-action-style-profile">
 													<Button
