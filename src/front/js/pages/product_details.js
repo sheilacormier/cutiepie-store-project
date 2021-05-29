@@ -115,6 +115,7 @@ export const ProductDetails = () => {
 								<Row>
 									<Button
 										href={store.product[productIndex].url}
+										bsPrefix="add-to-cart"
 										className="col mr-2 p-2 p-sm-4 add-to-cart btn btn-default d-flex justify-content-center align-items-center"
 										type="button"
 										target="_blank">
@@ -123,6 +124,7 @@ export const ProductDetails = () => {
 
 									<Button
 										type="button"
+										bsPrefix="add-to-cart"
 										className={
 											store.user.wishlist.find(item => item.id === selectedProduct.id)
 												? "wished col p-2 p-sm-4 add-to-cart btn btn-default"

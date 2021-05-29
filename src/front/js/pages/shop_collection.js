@@ -1,8 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
+import { MyPagination } from "../component/pagination";
 
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
@@ -13,6 +14,15 @@ import "../../styles/shop_collection&wishlist.scss";
 
 export const ShopCollection = () => {
 	const { store, actions } = useContext(Context);
+	const [selectedData, setSelectedData] = useState([]);
+	const [num, setNum] = useState(0);
+
+	useEffect(
+		() => {
+			setSelectedData(store.shopCollection.slice(0, 9));
+		},
+		[store.shopCollection]
+	);
 
 	const handleFavoriteClick = async product => {
 		// check if user is logged in, if not, short circuit this function
@@ -40,7 +50,7 @@ export const ShopCollection = () => {
 		<Container className="mb-3">
 			<h5 className="text-center page-title pt-2 pb-3">SHOP COLLECTION</h5>
 			<Row className="mx-auto">
-				{store.shopCollection.map((product, index) => {
+				{selectedData.map((product, index) => {
 					return (
 						<Col sm={12} md={6} lg={4} key={index}>
 							<Card className="mb-3 collection-card" style={{ width: "18rem" }}>
@@ -59,7 +69,7 @@ export const ShopCollection = () => {
 
 									<Card.Img className="pt-2" variant="top" src={product.img} />
 									<Container className="bottom-btn-container pt-2">
-										<Button as={Link} to="#" bsPrefix="btn-addtocart" variant="warning">
+										<Button href={product.url} bsPrefix="btn-addtocart" variant="warning">
 											<i className="fa fa-shopping-cart fa-lg" />
 										</Button>
 										<Button
@@ -81,37 +91,7 @@ export const ShopCollection = () => {
 					);
 				})}
 			</Row>
-			<nav aria-label="page-navigation">
-				<ul className="pagination justify-content-center mb-0 py-2">
-					<li className="page-item">
-						<Link className="page-link" to="#">
-							{/* &laquo;  */}
-							&larr;
-						</Link>
-					</li>
-					<li className="page-item">
-						<Link className="page-link" to="#">
-							1
-						</Link>
-					</li>
-					<li className="page-item">
-						<Link className="page-link" to="#">
-							2
-						</Link>
-					</li>
-					<li className="page-item">
-						<Link className="page-link" to="#">
-							3
-						</Link>
-					</li>
-					<li className="page-item">
-						<Link className="page-link" to="#">
-							{/* &raquo; */}
-							&rarr;
-						</Link>
-					</li>
-				</ul>
-			</nav>
+			<MyPagination data={store.shopCollection} pageSize={9} setSelected={setSelectedData} />
 		</Container>
 	);
 };

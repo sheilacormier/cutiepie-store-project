@@ -99,12 +99,17 @@ hr {
     margin-top: 20px;
     -webkit-transition: background .3s ease;
     transition: background .3s ease; 
+    &:hover{
+        background: #f97f4d;
+        color: #fff;
+    }
+    &:active, &:focus{
+        background: darken(#fd9e77, 25%);
+        box-shadow: none;
+    }
 }
 
-.add-to-cart:hover{
-    background: #f97f4d;
-    color: #fff;
-}
+
 
 .suggestions{
     text-transform: UPPERCASE;
