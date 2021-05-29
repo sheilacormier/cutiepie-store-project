@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
+import { MyPagination } from "../component/pagination";
+
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -76,38 +78,7 @@ export const Wishlist = () => {
 					);
 				})}
 			</Row>
-			<nav aria-label="page-navigation">
-				<ul
-					className={
-						store.user.wishlist.length > 0 ? "pagination justify-content-center mb-0 py-2" : "d-none"
-					}>
-					<li className="page-item">
-						<a className="page-link" href="#">
-							{"<<"}
-						</a>
-					</li>
-					<li className="page-item">
-						<a className="page-link" href="#">
-							1
-						</a>
-					</li>
-					<li className="page-item">
-						<a className="page-link" href="#">
-							2
-						</a>
-					</li>
-					<li className="page-item">
-						<a className="page-link" href="#">
-							3
-						</a>
-					</li>
-					<li className="page-item">
-						<a className="page-link" href="#">
-							{">>"}
-						</a>
-					</li>
-				</ul>
-			</nav>
+		<MyPagination data={store.shopCollection} pageSize={9} setSelected={setSelectedData} />
 		</Container>
 	);
 };
