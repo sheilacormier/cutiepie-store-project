@@ -78,7 +78,7 @@ export const Wishlist = () => {
 					);
 				})}
 			</Row>
-		<MyPagination data={store.shopCollection} pageSize={9} setSelected={setSelectedData} />
+			<MyPagination data={store.shopCollection} pageSize={9} setSelected={setSelectedData} />
 		</Container>
 	);
 };
