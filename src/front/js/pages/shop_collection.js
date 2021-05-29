@@ -15,7 +15,6 @@ import "../../styles/shop_collection&wishlist.scss";
 export const ShopCollection = () => {
 	const { store, actions } = useContext(Context);
 	const [selectedData, setSelectedData] = useState([]);
-	const [num, setNum] = useState(0);
 
 	useEffect(
 		() => {
