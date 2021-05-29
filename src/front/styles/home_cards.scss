@@ -78,3 +78,19 @@
 .wished i{
     color: #f80c8d;
 }
+
+.product-action-style-profile {
+    background-color: transparent;
+    display: inline-block;
+    padding: 16px 2px 12px;
+}
+
+.product-img-profile:hover {
+    overflow: hidden;
+    position: relative;
+    border: 0px;
+    border-radius: 10;
+    background-color: #35c77e;
+    opacity: 1;
+    transition: all 0.6s ease 0s;
+}
