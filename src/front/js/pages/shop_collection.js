@@ -69,7 +69,12 @@ export const ShopCollection = () => {
 
 									<Card.Img className="pt-2" variant="top" src={product.img} />
 									<Container className="bottom-btn-container pt-2">
-										<Button href={product.url} bsPrefix="btn-addtocart" variant="warning">
+										<Button
+											href={product.url}
+											target="_blank"
+											rel="noopener noreferrer"
+											bsPrefix="btn-addtocart"
+											variant="warning">
 											<i className="fa fa-shopping-cart fa-lg" />
 										</Button>
 										<Button
