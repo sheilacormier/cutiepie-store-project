@@ -150,17 +150,6 @@ export const Profile = () => {
 										</div>
 									</Form.Group>
 								</Form>
-
-								{/* <div className="d-flex flex-column">
-									<Form.Control type="password" placeholder="Current Password" required />
-									<Button
-										type="submit"
-										className="align-self-end"
-										bsPrefix="btn-update-password"
-										variant="warning">
-										Update Password
-									</Button>
-								</div> */}
 								<Form noValidate validated={passValid} onSubmit={handlePassSubmit}>
 									<Form.Group controlId="formPassword" className=" mx-2 pt-1 mb-0">
 										<div className="d-flex flex-column">
