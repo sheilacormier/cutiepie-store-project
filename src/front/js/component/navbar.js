@@ -39,7 +39,9 @@ export const MyNavbar = () => {
 							<Nav.Link as={Link} to="/sign_in">
 								sign in
 							</Nav.Link>
-							<div className="d-flex flex-column align-content-center justify-content-center">/</div>
+							<div className="d-flex flex-column align-content-center justify-content-center divider">
+								|
+							</div>
 
 							<Nav.Link as={Link} to="/register">
 								register

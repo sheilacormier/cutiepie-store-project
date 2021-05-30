@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
+import { MyPagination } from "../component/pagination";
 
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
@@ -13,6 +14,15 @@ import "../../styles/shop_collection&wishlist.scss";
 
 export const ShopCollection = () => {
 	const { store, actions } = useContext(Context);
+	const [selectedData, setSelectedData] = useState([]);
+	const [num, setNum] = useState(0);
+
+	useEffect(
+		() => {
+			setSelectedData(store.shopCollection.slice(0, 9));
+		},
+		[store.shopCollection]
+	);
 
 	const handleFavoriteClick = async product => {
 		// check if user is logged in, if not, short circuit this function
@@ -40,9 +50,9 @@ export const ShopCollection = () => {
 		<Container className="mb-3">
 			<h5 className="text-center page-title pt-2 pb-3">SHOP COLLECTION</h5>
 			<Row className="mx-auto">
-				{store.shopCollection.map((product, index) => {
+				{selectedData.map((product, index) => {
 					return (
-						<Col sm={12} md={6} lg={3} key={index}>
+						<Col sm={12} md={6} lg={4} key={index}>
 							<Card className="mb-3 collection-card" style={{ width: "18rem" }}>
 								<Container className="p-0">
 									<Button
@@ -86,6 +96,7 @@ export const ShopCollection = () => {
 					);
 				})}
 			</Row>
+			<MyPagination data={store.shopCollection} pageSize={9} setSelected={setSelectedData} />
 		</Container>
 	);
 };
