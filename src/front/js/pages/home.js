@@ -17,6 +17,7 @@ export const Home = () => {
 	const [email, setEmail] = useState("");
 	const emailRef = useRef(null);
 	const [validated, setValidated] = useState(false);
+	const [changeText, setChangeText] = useState("Join our family! Subscribe to our newsletter");
 
 	const handleSubmit = async e => {
 		e.preventDefault();
@@ -25,6 +26,7 @@ export const Home = () => {
 			e.stopPropagation();
 		} else if (form.checkValidity()) {
 			let signupNewsletter = await actions.addMailingListSubscriber(email);
+			setChangeText("Thank you for subscribing");
 		}
 
 		setValidated(true);
@@ -122,11 +124,7 @@ export const Home = () => {
 								height="34"
 							/>
 						</div>
-						<span className="subscribetext">
-							{/* {signupNewsletter !== "undefined" && !signupNewsletter
-								? "Join our family! Subscribe to our newsletter."
-								: "Thank you for subscribing"} */}
-						</span>
+						<span className="subscribetext">{changeText}</span>
 						<Form noValidate validated={validated} onSubmit={handleSubmit}>
 							<Form.Row>
 								<Col xs="auto" className="w-100 justify-content-center align-items-center my-1">
