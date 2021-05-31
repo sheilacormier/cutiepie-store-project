@@ -36,16 +36,19 @@ export const MyNavbar = () => {
 						</>
 					) : (
 						<>
-							<Nav.Link as={Link} to="/sign_in">
-								sign in
-							</Nav.Link>
-							<div className="d-flex flex-column align-content-center justify-content-center divider">
-								|
+							<div className="d-flex">
+								<Nav.Link className="pr-2 p-lg-2" as={Link} to="/sign_in">
+									sign in
+								</Nav.Link>
+								<div className="d-flex flex-column align-content-center justify-content-center divider">
+									|
+								</div>
+
+								<Nav.Link className="p-2" as={Link} to="/register">
+									register
+								</Nav.Link>
 							</div>
 
-							<Nav.Link as={Link} to="/register">
-								register
-							</Nav.Link>
 							<Nav.Link as={Link} to="/profile">
 								profile
 							</Nav.Link>

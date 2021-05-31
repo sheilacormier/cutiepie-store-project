@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import ReactDOM from "react-dom";
@@ -15,6 +15,7 @@ import "../../styles/shop_collection&wishlist.scss";
 
 export const Wishlist = () => {
 	const { store, actions } = useContext(Context);
+
 	const handleFavoriteClick = async product => {
 		// check if user is logged in, if not, short circuit this function
 		if (!store.user.loggedIn) {
@@ -35,7 +36,7 @@ export const Wishlist = () => {
 	return (
 		<Container className="mb-3">
 			<h5 className="pt-2 pb-3 text-center page-title">
-				{store.user.wishlist.length > 10 ? "YOUR WISHED ITEMS" : "NO ITEMS ADDED TO WISHLIST"}
+				{store.user.wishlist.length > 0 ? "YOUR WISHED ITEMS" : "NO ITEMS ADDED TO WISHLIST"}
 			</h5>
 			<Row className="mx-auto">
 				{store.user.wishlist.map((product, index) => {
@@ -83,7 +84,6 @@ export const Wishlist = () => {
 					);
 				})}
 			</Row>
-			<MyPagination data={store.shopCollection} pageSize={9} setSelected={setSelectedData} />
 		</Container>
 	);
 };

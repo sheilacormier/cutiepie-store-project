@@ -1,8 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
+import { MyPagination } from "../component/pagination";
 
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
@@ -11,17 +13,20 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import "../../styles/shop_collection&wishlist.scss";
 
-export const ShopCollection = () => {
+export const Wishlist = () => {
 	const { store, actions } = useContext(Context);
+	const [selectedData, setSelectedData] = useState([]);
+
+	useEffect(
+		() => {
+			setSelectedData(store.user.wishlist);
+		},
+		[store.user.wishlist]
+	);
 
 	const handleFavoriteClick = async product => {
 		// check if user is logged in, if not, short circuit this function
 		if (!store.user.loggedIn) {
-			actions.setAlert({
-				type: "danger",
-				msg: "Please login to select favorites!",
-				show: true
-			});
 			return;
 		}
 
@@ -38,11 +43,13 @@ export const ShopCollection = () => {
 
 	return (
 		<Container className="mb-3">
-			<h5 className="text-center page-title pt-2 pb-3">SHOP COLLECTION</h5>
+			<h5 className="pt-2 pb-3 text-center page-title">
+				{store.user.wishlist.length > 0 ? "YOUR WISHED ITEMS" : "NO ITEMS ADDED TO WISHLIST"}
+			</h5>
 			<Row className="mx-auto">
-				{store.shopCollection.map((product, index) => {
+				{selectedData.map((product, index) => {
 					return (
-						<Col sm={12} md={6} lg={3} key={index}>
+						<Col sm={12} md={6} lg={4} key={index}>
 							<Card className="mb-3 collection-card" style={{ width: "18rem" }}>
 								<Container className="p-0">
 									<Button
@@ -56,7 +63,6 @@ export const ShopCollection = () => {
 										onClick={e => handleFavoriteClick(product)}>
 										<i className="fa fa-heart" />
 									</Button>
-
 									<Card.Img className="pt-2" variant="top" src={product.img} />
 									<Container className="bottom-btn-container pt-2">
 										<Button
@@ -69,7 +75,7 @@ export const ShopCollection = () => {
 										</Button>
 										<Button
 											as={Link}
-											to={selectedData / `/product_details/${index}`}
+											to={`/product_details/${index}`}
 											bsPrefix="btn-seedetails"
 											variant="warning">
 											<i className="fas fa-search fa-lg" />
@@ -86,6 +92,16 @@ export const ShopCollection = () => {
 					);
 				})}
 			</Row>
+			{store.user.wishlist.length >= 10 ? (
+				<MyPagination data={store.user.wishlist} pageSize={9} setSelected={setSelectedData} />
+			) : (
+				<MyPagination
+					className="d-none"
+					data={store.user.wishlist}
+					pageSize={9}
+					setSelected={setSelectedData}
+				/>
+			)}
 		</Container>
 	);
 };
