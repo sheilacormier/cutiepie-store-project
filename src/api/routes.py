@@ -247,7 +247,7 @@ def create_person():
         db.session.add(user)
         db.session.commit()
         payload = {
-            'msg': 'Thank you for registering. Your account has been added successfully.',
+            'msg': 'Thank you! Your account has been added successfully. Please Sign In.',
             'user': user.serialize()
         }
 

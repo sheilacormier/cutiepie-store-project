@@ -7,7 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import "../../styles/create-sign_in_account.scss";
+import "../../styles/register-sign_in_account.scss";
 
 export const Register = () => {
 	const { store, actions } = useContext(Context);
