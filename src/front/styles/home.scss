@@ -1,14 +1,60 @@
 @import url('https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap');
 
 .hero-image{
-    // height: 50vh;
     height: 60vh;
-    background-image: url("https://res.cloudinary.com/scormier/image/upload/v1620161770/cutie-pie/model-baby_tcmmus.jpg");
-    // background-position: center;
+    background-image: url("https://res.cloudinary.com/scormier/image/upload/v1622386010/cutie-pie/zdmsnyfstgo1oxtduqd6.jpg");
     background-position: 80% 55%;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+}
+
+.hero-image2{
+    height: 60vh;
+    background-image: url("https://res.cloudinary.com/scormier/image/upload/v1622386278/cutie-pie/pd3vioyavrzfo55sqosd.jpg");
+    background-position: 80% 55%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.hero-image3{
+    height: 60vh;
+    background-image: url("https://res.cloudinary.com/scormier/image/upload/v1622387806/cutie-pie/nl6ya58nhkgvyeddx9a2.jpg");
+    background-position: 80% 55%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.carousel-item {
+    position: relative; 
+    display: none;
+    float: left;
+    width: 100%;
+    margin-right: -100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    opacity: 0;
+    transition: none;
+    transform: translate3d(0,0,0) !important;
+    background-color: #f9f9f9;
+}
+
+.carousel-inner {
+    position: relative;
+    height: 60vh;
+    width: 100%;
+    overflow: hidden;
+    transition: opacity 5s ease-in-out;
+    opacity: 1;
+}
+
+.carousel-fade .carousel-item {
+    opacity: 0;
+    transition-property: opacity;
+    -webkit-transform: none;
+    transform: none;
 }
 
 .subscribetext {

@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import Carousel from "react-bootstrap/Carousel";
 import "../../styles/home_cards.scss";
 import "../../styles/home.scss";
 
@@ -55,7 +56,17 @@ export const Home = () => {
 		<Container fluid>
 			<Row className="justify-content-center align-items-center">
 				<Col className="p-0">
-					<div className="hero-image" />
+					<Carousel fade>
+						<Carousel.Item>
+							<div className="hero-image showing" />
+						</Carousel.Item>
+						<Carousel.Item>
+							<div className="hero-image2 showing" />
+						</Carousel.Item>
+						<Carousel.Item>
+							<div className="hero-image3 showing" />
+						</Carousel.Item>
+					</Carousel>
 				</Col>
 			</Row>
 			<Container className="my-2">

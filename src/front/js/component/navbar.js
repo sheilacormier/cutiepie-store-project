@@ -40,8 +40,8 @@ export const MyNavbar = () => {
 								<Nav.Link as={Link} to="/sign_in">
 									sign in
 								</Nav.Link>
-								<div className="d-flex flex-column align-content-center justify-content-center px-1">
-									/
+								<div className="d-flex flex-column align-content-center justify-content-center px-1 divider">
+									|
 								</div>
 
 								<Nav.Link as={Link} to="/register">
