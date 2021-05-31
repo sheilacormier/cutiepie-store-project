@@ -69,7 +69,7 @@ export const ShopCollection = () => {
 										</Button>
 										<Button
 											as={Link}
-											to={selectedData / `/product_details/${index}`}
+											to={`/product_details/${index}`}
 											bsPrefix="btn-seedetails"
 											variant="warning">
 											<i className="fas fa-search fa-lg" />
