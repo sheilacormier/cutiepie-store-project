@@ -131,7 +131,9 @@ export const ProductDetails = () => {
 												: "not-wished col p-2 p-sm-4 add-to-cart btn btn-default"
 										}
 										onClick={e => handleFavoriteClick(selectedProduct)}>
-										add to wishlist
+										{store.user.wishlist.find(item => item.id === selectedProduct.id)
+											? "remove from wishlist"
+											: "add to wishlist"}
 									</Button>
 								</Row>
 							</div>
