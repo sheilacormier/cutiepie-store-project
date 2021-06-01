@@ -26,7 +26,7 @@ export const Home = () => {
 			e.stopPropagation();
 		} else if (form.checkValidity()) {
 			let signupNewsletter = await actions.addMailingListSubscriber(email);
-			setChangeText("Thank you for subscribing");
+			setChangeText("Yay! Thank you for subscribing");
 		}
 
 		setValidated(true);
