@@ -37,13 +37,13 @@ export const ShopCollection = () => {
 	};
 
 	return (
-		<Container className="mb-3">
+		<Container className="mb-3 shop-collection-container">
 			<h5 className="text-center page-title pt-2 pb-3">SHOP COLLECTION</h5>
 			<Row className="mx-auto">
 				{store.shopCollection.map((product, index) => {
 					return (
-						<Col sm={12} md={6} lg={3} key={index}>
-							<Card className="mb-3 collection-card" style={{ width: "18rem" }}>
+						<Col sm={12} md={6} lg={4} xl={3} key={index}>
+							<Card className="mb-3 mx-auto collection-card" style={{ width: "18rem" }}>
 								<Container className="p-0">
 									<Button
 										bsPrefix="btn-like"
