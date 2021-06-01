@@ -38,11 +38,11 @@ export const ShopCollection = () => {
 
 	return (
 		<Container className="mb-3 shop-collection-container">
-			<h5 className="text-center page-title pt-2 pb-3">Shop Collection</h5>
-			<Row className="mx-auto">
+			<h5 className="text-center page-title pt-2 pb-3">SHOP COLLECTION</h5>
+			<Row>
 				{store.shopCollection.map((product, index) => {
 					return (
-						<Col sm={12} md={6} lg={4} xl={3} key={index}>
+						<Col sm={12} md={6} lg={4} xl={3} key={index} className="p-0">
 							<Card className="mb-3 mx-auto collection-card" style={{ width: "18rem" }}>
 								<Container className="p-0">
 									<Button
