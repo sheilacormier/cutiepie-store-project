@@ -130,6 +130,7 @@ export const Profile = () => {
 									<Form.Group controlId="formBasicEmail" className=" mx-2 mt-2 mb-0">
 										<div className="d-flex flex-column">
 											<Form.Control
+												className="field-color"
 												type="email"
 												value={email}
 												placeholder="Email"
@@ -154,6 +155,7 @@ export const Profile = () => {
 									<Form.Group controlId="formPassword" className=" mx-2 pt-1 mb-0">
 										<div className="d-flex flex-column">
 											<Form.Control
+												className="field-color"
 												type="password"
 												value={password}
 												placeholder="New Password"

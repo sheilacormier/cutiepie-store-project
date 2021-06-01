@@ -1,6 +1,9 @@
-.create-account-title {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
+.page-title {
+    font-family: 'Handlee', cursive;
     color: #fa0c8d;
+    font-size: 28px;
 }
 
 .btn-signin {
@@ -66,4 +69,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 100;
+}
+
+.field-color {
+    background-color: #f9ebe6;
+    height: 50px;
+    border: 0px;
 }
