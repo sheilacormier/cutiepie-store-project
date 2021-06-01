@@ -249,11 +249,15 @@ def create_person():
         try:
             message = '''\
 Thank you for registering! You can sign in by visiting the link below:
+<br/>
+<br/>
+
 <a href="https://cutie-pie-store.herokuapp.com/sign_in">Click here</a>
-
-
+<br/>
+<br/>
 
 Thanks,
+<br/>
 Cutie Pie
             '''.format("")
 
