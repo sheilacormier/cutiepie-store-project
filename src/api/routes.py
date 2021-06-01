@@ -146,14 +146,21 @@ def update_password():
 
         try:
             message = '''\
-A reset request was sent to our system. Please use the following password to login:
+A reset request was sent to our system. Please use the following password to sign in:
+<br/>
 {0}
+<br/>
+<br/>
+<a href="https://cutie-pie-store.herokuapp.com/sign_in">Click here</a> to sign in.
+<br/>
+<br/>
 
 Thanks,
+<br/>
 Cutie Pie
             '''.format(result_str)
 
-            msg = MIMEText(message, 'plain')
+            msg = MIMEText(message, 'html')
             msg['Subject'] = "Password Reset Request"
             msg['From'] = "Cutie Pie"
             msg['To'] = email
@@ -248,14 +255,20 @@ def create_person():
         db.session.commit()
         try:
             message = '''\
-Thank you for registering! You can sign in by visiting the link below:
+Thank you for registering! You can sign in by visiting the link below.
+<br/>
+<br/>
 
+<a href="https://cutie-pie-store.herokuapp.com/sign_in">Click here</a> to sign in to your account.
+<br/>
+<br/>
 
 Thanks,
+<br/>
 Cutie Pie
-            '''.format("https://cutie-pie-store.herokuapp.com/sign_in")
+            '''.format("")
 
-            msg = MIMEText(message, 'plain')
+            msg = MIMEText(message, 'html')
             msg['Subject'] = "Welcome to Cutie Pie"
             msg['From'] = "Cutie Pie"
             msg['To'] = email
@@ -266,7 +279,7 @@ Cutie Pie
             
             return jsonify({"msg": "Unable to send welcome email."}), 400
         payload = {
-            'msg': 'Thank you! Your account has been added successfully. Please Sign in',
+            'msg': 'Thank you! Your account has been added successfully. Please sign in.',
             'user': user.serialize()
         }
 
