@@ -257,7 +257,7 @@ Thanks,
 Cutie Pie
             '''.format("")
 
-            msg = MIMEText(message, 'plain')
+            msg = MIMEText(message, 'html')
             msg['Subject'] = "Welcome to Cutie Pie"
             msg['From'] = "Cutie Pie"
             msg['To'] = email
