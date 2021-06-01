@@ -246,6 +246,25 @@ def create_person():
 
         db.session.add(user)
         db.session.commit()
+        try:
+            message = '''\
+Thank you for registering! You can sign in by visiting the link below:
+
+
+Thanks,
+Cutie Pie
+            '''.format("https://cutie-pie-store.herokuapp.com/sign_in")
+
+            msg = MIMEText(message, 'plain')
+            msg['Subject'] = "Welcome to Cutie Pie"
+            msg['From'] = "Cutie Pie"
+            msg['To'] = email
+
+
+            send_email(msg,email)
+        except Exception as e:
+            
+            return jsonify({"msg": "Unable to send welcome email."}), 400
         payload = {
             'msg': 'Thank you! Your account has been added successfully. Please Sign in',
             'user': user.serialize()
