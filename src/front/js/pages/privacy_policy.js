@@ -14,7 +14,7 @@ export const PrivacyPolicy = () => {
 
 	return (
 		<Container className="my-2">
-			<h5 className="create-account-title text-center pt-2">PRIVACY POLICY</h5>
+			<h5 className="page-title text-center pt-2">Privacy Policy</h5>
 			<Row className="mx-auto pt-4">
 				<Col className="mx-auto">
 					<p className="copy">

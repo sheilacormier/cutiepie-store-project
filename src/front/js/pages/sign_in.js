@@ -34,12 +34,13 @@ export const SignIn = () => {
 
 	return (
 		<Container className="my-2">
-			<h5 className="create-account-title text-center pt-2">SIGN IN</h5>
+			<h5 className="page-title text-center pt-2">Sign In</h5>
 			<Row className="mx-auto pt-4">
 				<Col sm={12} md={6} lg={4} className="mx-auto align-items-center">
 					<Form noValidate validated={validated} onSubmit={handleSubmit}>
 						<Form.Group controlId="formGroupEmail">
 							<Form.Control
+								className="field-color"
 								type="email"
 								placeholder="Enter email"
 								value={email}
@@ -54,6 +55,7 @@ export const SignIn = () => {
 						</Form.Group>
 						<Form.Group controlId="formGroupPassword">
 							<Form.Control
+								className="field-color"
 								type="password"
 								placeholder="Password"
 								value={password}

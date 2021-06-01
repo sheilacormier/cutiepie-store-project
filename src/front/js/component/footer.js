@@ -27,6 +27,35 @@ export const Footer = () => (
 							<Link to="/privacy_policy">privacy policy</Link>
 						</li>
 					</ul>
+					<ul className="socialmediaicons">
+						<span className="connect">LET&apos;S CONNECT</span>
+						<li>
+							<Link to="#">
+								<img
+									src="https://res.cloudinary.com/scormier/image/upload/v1622570819/cutie-pie/rj4vvr2vypfifnx6huvc.png"
+									alt="pinterest"
+									width="40"
+									height="40"
+								/>
+							</Link>
+							<Link to="#" className="pr-2 pl-2">
+								<img
+									src="https://res.cloudinary.com/scormier/image/upload/v1622570820/cutie-pie/o2qdlguiqmhf0buifv6o.png"
+									alt="instagram"
+									width="40"
+									height="40"
+								/>
+							</Link>
+							<Link to="#">
+								<img
+									src="https://res.cloudinary.com/scormier/image/upload/v1622570819/cutie-pie/zb4cgqci4olfqwfqk6py.png"
+									alt="facebook"
+									width="40"
+									height="40"
+								/>
+							</Link>
+						</li>
+					</ul>
 				</Col>
 				<Col xs={6} md={4}>
 					<img
