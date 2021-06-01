@@ -129,8 +129,9 @@ export const Home = () => {
 							<Form.Row>
 								<Col xs="auto" className="w-100 justify-content-center align-items-center my-1">
 									<Form.Control
+										className="field-color"
 										id="inlineFormInputName"
-										placeholder="youremail@gmail.com"
+										placeholder="Email"
 										type="email"
 										value={email}
 										required
@@ -144,7 +145,7 @@ export const Home = () => {
 								</Col>
 								<Col xs="auto" className="my-1">
 									<Button type="submit" bsPrefix="btn-signup-newsletter">
-										Sign Up
+										SUBMIT
 										<span />
 										<span />
 										<span />

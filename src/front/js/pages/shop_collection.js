@@ -38,7 +38,7 @@ export const ShopCollection = () => {
 
 	return (
 		<Container className="mb-3 shop-collection-container">
-			<h5 className="text-center page-title pt-2 pb-3">SHOP COLLECTION</h5>
+			<h5 className="text-center page-title pt-2 pb-3">Shop Collection</h5>
 			<Row className="mx-auto">
 				{store.shopCollection.map((product, index) => {
 					return (

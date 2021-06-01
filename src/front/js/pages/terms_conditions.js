@@ -14,7 +14,7 @@ export const TermsConditions = () => {
 
 	return (
 		<Container className="my-2">
-			<h5 className="create-account-title text-center pt-2">TERMS AND CONDITIONS</h5>
+			<h5 className="page-title text-center pt-2">Terms and Conditions</h5>
 			<Row className="mx-auto pt-4">
 				<Col sm={12} className="copy mx-auto">
 					<p>1. Introduction</p>

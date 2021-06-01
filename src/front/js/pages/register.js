@@ -46,12 +46,13 @@ export const Register = () => {
 	);
 	return (
 		<Container className="my-2">
-			<h5 className="create-account-title text-center pt-2">REGISTER</h5>
+			<h5 className="page-title text-center pt-2">Register</h5>
 			<Row className="mx-auto pt-4">
 				<Col sm={12} md={6} lg={4} className="mx-auto">
 					<Form noValidate validated={validated} onSubmit={handleSubmit}>
 						<Form.Group controlId="formGroupEmail">
 							<Form.Control
+								className="field-color"
 								required
 								autoComplete="on"
 								type="email"
@@ -66,6 +67,7 @@ export const Register = () => {
 						</Form.Group>
 						<Form.Group controlId="formGroupPassword">
 							<Form.Control
+								className="field-color"
 								required
 								autoComplete="on"
 								type="password"

@@ -44,7 +44,7 @@ export const Wishlist = () => {
 	return (
 		<Container className="mb-3">
 			<h5 className="pt-2 pb-3 text-center page-title">
-				{store.user.wishlist.length > 0 ? "YOUR WISHED ITEMS" : "NO ITEMS ADDED TO WISHLIST"}
+				{store.user.wishlist.length > 0 ? "Your Wished Items" : "No Items Added to Wishlist"}
 			</h5>
 			<Row className="mx-auto">
 				{selectedData.map((product, index) => {

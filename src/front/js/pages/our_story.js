@@ -14,7 +14,7 @@ export const OurStory = () => {
 
 	return (
 		<Container className="my-2">
-			<h5 className="create-account-title text-center pt-2">THE STORY OF CUTIE PIE</h5>
+			<h5 className="page-title text-center pt-2">The Story of Cutie Pie</h5>
 			<Row className="mx-auto pt-4">
 				<Col className="mx-auto">
 					<p className="copy">
