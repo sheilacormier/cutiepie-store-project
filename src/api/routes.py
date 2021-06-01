@@ -249,11 +249,13 @@ def create_person():
         try:
             message = '''\
 Thank you for registering! You can sign in by visiting the link below:
+<a href="https://cutie-pie-store.herokuapp.com/sign_in">Click here</a>
+
 
 
 Thanks,
 Cutie Pie
-            '''.format("https://cutie-pie-store.herokuapp.com/sign_in")
+            '''.format("")
 
             msg = MIMEText(message, 'plain')
             msg['Subject'] = "Welcome to Cutie Pie"
@@ -266,7 +268,7 @@ Cutie Pie
             
             return jsonify({"msg": "Unable to send welcome email."}), 400
         payload = {
-            'msg': 'Thank you! Your account has been added successfully. Please Sign in',
+            'msg': 'Thank you! Your account has been added successfully. Please sign in.',
             'user': user.serialize()
         }
 
