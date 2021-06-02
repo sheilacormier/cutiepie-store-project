@@ -201,6 +201,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(res => res.json())
 					.then(data => {
+						if (typeof data.user === "undefined") throw new Error(data.msg);
+
 						setStore({
 							user: {
 								...data.user,
@@ -216,7 +218,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 								id: data.user.id
 							})
 						);
-					});
+					})
+					.catch(err =>
+						getActions().setAlert({
+							type: "danger",
+							msg: err.message,
+							show: true
+						})
+					);
 			},
 
 			signOut: () => {

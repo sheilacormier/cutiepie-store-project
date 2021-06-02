@@ -38,7 +38,10 @@ def login():
 
     user = User.query.filter_by(email=email).first()
     if user is None:
-        return jsonify({"msg": "You are not a registered user, please create an account"}), 401
+        return jsonify({
+            "msg": "You are not a registered user, please create an account"
+        }), 401
+    
     if password != user.password:
         return jsonify({"msg": "Incorrect password"}), 401
 
