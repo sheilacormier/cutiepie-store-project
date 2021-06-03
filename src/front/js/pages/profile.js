@@ -72,6 +72,7 @@ export const Profile = () => {
 	};
 	return (
 		<Container fluid>
+			<h3 className="page-title text-center mb-3">Welcome Back to Cutie Pie</h3>
 			<Container className="my-1">
 				{typeof store.user.id !== "undefined" && (
 					<Row className="mx-auto align-items-center justify-content-center mt-2">

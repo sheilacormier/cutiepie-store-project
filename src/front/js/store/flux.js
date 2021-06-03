@@ -333,14 +333,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 						if (!res.ok) throw new Error(res.statusText);
 						return res.json();
 					})
-					.then(data =>
+					.then(data => {
 						setStore({
 							user: {
 								...data.user,
 								loggedIn: true
 							}
-						})
-					);
+						});
+						getActions().setAlert({
+							type: "success",
+							msg: data.msg,
+							show: true
+						});
+					});
 			},
 
 			forgotPassword: email => {

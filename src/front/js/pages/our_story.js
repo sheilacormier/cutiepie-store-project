@@ -21,9 +21,9 @@ export const OurStory = () => {
 						Cutie Pie was inspired by our kids and our love for fashion. When my son was a baby it was
 						challenging to find nice outfits for him. I had to navigate through many websites to find what I
 						was looking for. Currently my good friend and business partner is experiencing the same
-						challenge with her baby. We noticed that still there is not a good resource or influencer on the
-						web for highend fashion for babies and that is hoe Cutie Pie was born. Our goal is to curate
-						those fabulous outfits so parents dont have to go from website to website to find them. We
+						challenge with her baby. We noticed there is still not a good resource or influencer on the web
+						for highend fashion for babies and that is how Cutie Pie was born. Our goal is to curate those
+						fabulous outfits so parents don&apos;t have to go from website to website to find them. We
 						curate and direct you to the vendors to complete your purchase.
 					</p>
 					<h3>
