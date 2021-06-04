@@ -340,6 +340,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 								loggedIn: true
 							}
 						});
+						localStorage.setItem(
+							"cutie-pie",
+							JSON.stringify({
+								token: data.token ? data.token : tokenCheck.token,
+								email: data.user.email,
+								id: data.user.id
+							})
+						);
 						getActions().setAlert({
 							type: "success",
 							msg: data.msg,
