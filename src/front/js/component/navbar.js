@@ -48,10 +48,6 @@ export const MyNavbar = () => {
 									register
 								</Nav.Link>
 							</div>
-
-							<Nav.Link as={Link} to="/profile">
-								profile
-							</Nav.Link>
 						</>
 					)}
 				</Nav>

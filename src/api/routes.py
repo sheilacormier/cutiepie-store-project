@@ -124,7 +124,7 @@ def update_user():
         'user': user.serialize()
     }
     if access_token is not None:
-        payload.token = access_token
+        payload['token'] = access_token
 
     db.session.commit()
     return jsonify(payload),200
