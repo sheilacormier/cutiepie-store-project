@@ -112,7 +112,7 @@ def update_user():
     if 'newEmail' in request.form:
         new_email = request.form['newEmail']
         user.email = new_email
-        access_token = create_access_token(identity=email)
+        access_token = create_access_token(identity=new_email)
     
     if 'photo' in request.files:
         photo = request.files['photo']
@@ -125,7 +125,7 @@ def update_user():
     }
     if access_token is not None:
         payload.token = access_token
-        
+
     db.session.commit()
     return jsonify(payload),200
 
