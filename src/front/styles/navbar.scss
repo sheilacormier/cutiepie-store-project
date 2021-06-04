@@ -1,10 +1,10 @@
 .myNavbar{
-    background: #d4edda;
+    background: #a4ebb5;
     .navbar-nav .nav-link{
         font-size: 18px;
         color: #f80c8d;
         &:hover{
-            color: darken(#f80c8d, 25%)
+            color: darken(#f80c8d, 15%)
         }
     }
     
