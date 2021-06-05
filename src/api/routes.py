@@ -123,7 +123,8 @@ def update_user():
         'msg': 'Profile successfully updated.',
         'user': user.serialize()
     }
-    if access_token is not None:
+    
+    if 'access_token' in locals():
         payload['token'] = access_token
 
     db.session.commit()
