@@ -27,11 +27,10 @@ export const SignIn = () => {
 			e.stopPropagation();
 		} else if (form.checkValidity()) {
 			let signin = await actions.signIn(email, password);
+
+			setValidated(true);
 		}
-
-		setValidated(true);
 	};
-
 	return (
 		<Container className="my-2">
 			<h5 className="page-title text-center pt-2">Sign In</h5>
